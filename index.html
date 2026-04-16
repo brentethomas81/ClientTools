@@ -1036,10 +1036,10 @@ function calculate() {
     verdictTitle = 'Moderate Deal — not going to blow your socks off, but solid.';
     verdictBody  = `Cash flow is slim but positive. The real play here is likely appreciation and equity build. Make sure the rent assumptions are realistic before pulling the trigger.`;
   } else {
-    verdictClass = 'caution';
-    verdictIcon  = '🔴';
-    verdictTitle = 'Proceed with Caution — the numbers need work.';
-    verdictBody  = `Negative or near-zero cash flow means this deal needs either a lower purchase price, higher rent, or both. Try adjusting the inputs — sometimes a small tweak changes everything.`;
+    verdictClass = 'moderate';
+    verdictIcon  = '🟡';
+    verdictTitle = 'Numbers Need Work — but a small tweak can change everything.';
+    verdictBody  = `Cash flow is tight on these numbers. Try adjusting the purchase price, rent, or down payment — sometimes a small move makes a big difference. Give Brent a call to talk through the options.`;
   }
 
   document.getElementById('verdictBox').innerHTML = `
