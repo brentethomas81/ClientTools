@@ -1450,6 +1450,104 @@
     .community-price { font-size: 0.85rem; }
   }
 
+  /* ── CLUB VIDEO EMBED ── */
+  .club-video {
+    margin: 4px 0 16px;
+  }
+  .club-video-thumb {
+    display: block;
+    width: 100%;
+    position: relative;
+    background: #000;
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    padding: 0;
+    font-family: 'Jost', sans-serif;
+  }
+  .club-video-thumb:hover {
+    border-color: var(--gold);
+    box-shadow: 0 6px 20px rgba(201,168,76,0.2);
+  }
+  .club-video-thumb img {
+    width: 100%;
+    display: block;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+  .club-video-thumb:hover img { opacity: 0.95; }
+  .club-video-play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+  .club-video-play-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--gold);
+    color: var(--forest);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    padding-left: 4px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.55);
+    transition: transform 0.2s;
+  }
+  .club-video-thumb:hover .club-video-play-icon { transform: scale(1.08); }
+  .club-video-label {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    background: rgba(0,0,0,0.72);
+    color: var(--gold-light);
+    font-size: 0.66rem;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+  .club-video iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 8px;
+  }
+
+  /* ── CLOSEST HOMES CALLOUT (for courses without residential) ── */
+  .club-nearby-box {
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-left: 3px solid var(--gold);
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin-top: 6px;
+    font-size: 0.82rem;
+    color: var(--cream-dim);
+    line-height: 1.5;
+  }
+  .club-nearby-box strong {
+    color: var(--gold);
+    font-size: 0.62rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .club-nearby-box a {
+    color: var(--gold-light);
+    text-decoration: underline;
+    text-decoration-color: rgba(201,168,76,0.3);
+  }
+  .club-nearby-box a:hover { text-decoration-color: var(--gold); }
+
   /* ── SITE FOOTER (copyright / legal) ── */
   .site-footer {
     text-align: center;
@@ -3014,6 +3112,9 @@
       <button type="button" class="grid-cat-btn" data-cc-filter="summerlin">Summerlin</button>
       <button type="button" class="grid-cat-btn" data-cc-filter="henderson">Henderson</button>
       <button type="button" class="grid-cat-btn" data-cc-filter="sw">SW Vegas</button>
+      <button type="button" class="grid-cat-btn" data-cc-filter="central">Central LV</button>
+      <button type="button" class="grid-cat-btn" data-cc-filter="northlv">North LV</button>
+      <button type="button" class="grid-cat-btn" data-cc-filter="bouldercity">Boulder City</button>
     </div>
 
     <div class="club-list">
@@ -3179,6 +3280,130 @@
         </div></div>
       </div>
 
+      <!-- LAS VEGAS COUNTRY CLUB -->
+      <div class="club-card" data-cc-loc="central">
+        <div class="club-card-header">
+          <div class="club-card-name">
+            <h3>Las Vegas Country Club</h3>
+            <div class="club-meta">Central LV · Edmund Ault · 1967 · Homes $700K–$3M+</div>
+          </div>
+          <span class="club-card-chevron">▼</span>
+        </div>
+        <div class="club-card-body"><div class="club-card-body-inner">
+          <div class="club-detail-grid">
+            <div><div class="d-label">Joining Fee</div><div class="d-value">~$35,000–$60,000</div></div>
+            <div><div class="d-label">Monthly Dues</div><div class="d-value">~$800–$1,200</div></div>
+            <div><div class="d-label">Guest Rate</div><div class="d-value">~$120–$175 (accompanied)</div></div>
+            <div><div class="d-label">Membership</div><div class="d-value">Private equity</div></div>
+          </div>
+          <div class="club-info-block"><strong>Course</strong>Vegas's original private country club — opened 1967, making it the oldest private course in the valley. Mature trees, established conditioning, and classic parkland routing. Hosted PGA Tour's Sahara/Las Vegas Invitational for years in the '70s and '80s.</div>
+          <div class="club-info-block"><strong>Amenities</strong>Full clubhouse with fine dining and grill room, tennis courts, pool, fitness, event space. Traditional country club feel with deep history.</div>
+          <div class="club-info-block"><strong>Social / Access</strong>The establishment play. Multigenerational membership, old-Vegas traditions, and a location that's minutes to the Strip. Less flashy than the newer clubs — which is exactly the point.</div>
+          <a href="https://key2tee.realgeeks.com/search/results/?community=Las%20Vegas%20Country%20Club" target="_blank" rel="noopener" class="club-homes-btn">🔍 View Homes in Las Vegas Country Club →</a>
+        </div></div>
+      </div>
+
+      <!-- SERKET (FORMERLY RIO SECCO) — SEVEN HILLS -->
+      <div class="club-card" data-cc-loc="henderson">
+        <div class="club-card-header">
+          <div class="club-card-name">
+            <h3>Serket Golf Club (formerly Rio Secco) · Seven Hills</h3>
+            <div class="club-meta">Henderson · Rees Jones · 1997 · Homes $1M–$5M</div>
+          </div>
+          <span class="club-card-chevron">▼</span>
+        </div>
+        <div class="club-card-body"><div class="club-card-body-inner">
+          <div class="club-detail-grid">
+            <div><div class="d-label">Joining Fee</div><div class="d-value">~$30,000–$50,000</div></div>
+            <div><div class="d-label">Monthly Dues</div><div class="d-value">~$800–$1,100</div></div>
+            <div><div class="d-label">Guest Rate</div><div class="d-value">~$130–$195 (accompanied)</div></div>
+            <div><div class="d-label">Membership</div><div class="d-value">Private · semi-private days</div></div>
+          </div>
+          <div class="club-info-block"><strong>Course</strong>A Rees Jones design carved into the rocky foothills above Henderson. 7,300+ yards, dramatic elevation, and a signature par-3 over a canyon. Recently rebranded from Rio Secco to Serket — same course, same routing, refreshed identity.</div>
+          <div class="club-info-block"><strong>Amenities</strong>Clubhouse with casual + fine dining, pro shop, practice facility, and event space. Anchors the Seven Hills residential community with gated access.</div>
+          <div class="club-info-block"><strong>Social / Access</strong>Seven Hills residents get priority access and preferred rates. Non-residents can play on semi-private days. One of the best courses in Henderson for the price.</div>
+          <a href="https://key2tee.realgeeks.com/search/results/?community=Seven%20Hills" target="_blank" rel="noopener" class="club-homes-btn">🔍 View Homes in Seven Hills →</a>
+        </div></div>
+      </div>
+
+      <!-- SHADOW CREEK (MGM) -->
+      <div class="club-card" data-cc-loc="northlv">
+        <div class="club-card-header">
+          <div class="club-card-name">
+            <h3>Shadow Creek</h3>
+            <div class="club-meta">North Las Vegas · Tom Fazio · 1989 · Invitation only</div>
+          </div>
+          <span class="club-card-chevron">▼</span>
+        </div>
+        <div class="club-card-body"><div class="club-card-body-inner">
+          <div class="club-detail-grid">
+            <div><div class="d-label">Access Model</div><div class="d-value">Invitation · MGM-owned</div></div>
+            <div><div class="d-label">Green Fee</div><div class="d-value">~$1,000+ (high-roller comp common)</div></div>
+            <div><div class="d-label">Amenities</div><div class="d-value">Luxury clubhouse, limo included</div></div>
+            <div><div class="d-label">Membership</div><div class="d-value">N/A — guest-only access</div></div>
+          </div>
+          <div class="club-info-block"><strong>Course</strong>Tom Fazio's desert-to-parkland masterpiece. $60M+ build in 1989 — manufactured entire ecosystems of pine trees and streams in the middle of the Mojave. Consistently ranked top 50 in the US. Signature 17th hole is a postcard.</div>
+          <div class="club-info-block"><strong>Amenities</strong>Limousine transport included from any MGM property. Private clubhouse, fine dining, luxury locker rooms. The full concierge experience.</div>
+          <div class="club-info-block"><strong>Access Notes</strong>Owned by MGM Resorts. No public membership. Access is typically arranged through MGM casino hosts for qualifying players, or booked through MGM Resorts at premium daily rates. Not a residential community.</div>
+          <div class="club-nearby-box">
+            <strong>Nearest Residential Homes</strong>
+            Shadow Creek has no residential community attached. The closest luxury homes are in <a href="https://key2tee.realgeeks.com/search/results/?community=Aliante" target="_blank" rel="noopener">Aliante</a> and <a href="https://key2tee.realgeeks.com/search/results/?community=Centennial%20Hills" target="_blank" rel="noopener">Centennial Hills</a>, ~10 minutes away.
+          </div>
+        </div></div>
+      </div>
+
+      <!-- LAS VEGAS PAIUTE GOLF RESORT -->
+      <div class="club-card" data-cc-loc="northlv">
+        <div class="club-card-header">
+          <div class="club-card-name">
+            <h3>Las Vegas Paiute Golf Resort</h3>
+            <div class="club-meta">NW Vegas (tribal land) · Pete Dye · 3 courses</div>
+          </div>
+          <span class="club-card-chevron">▼</span>
+        </div>
+        <div class="club-card-body"><div class="club-card-body-inner">
+          <div class="club-detail-grid">
+            <div><div class="d-label">Access Model</div><div class="d-value">Public daily-fee · tribal</div></div>
+            <div><div class="d-label">Peak Green Fee</div><div class="d-value">~$170–$280</div></div>
+            <div><div class="d-label">Off-Peak</div><div class="d-value">~$100–$150</div></div>
+            <div><div class="d-label">Courses</div><div class="d-value">Snow Mountain · Sun Mountain · Wolf</div></div>
+          </div>
+          <div class="club-info-block"><strong>Course</strong>Three Pete Dye–designed championship courses on the Las Vegas Paiute Indian Reservation, ~25 minutes NW of the Strip. Desert-style routing with Mt. Charleston views. Wolf is the most challenging (7,600+ yards from the tips).</div>
+          <div class="club-info-block"><strong>Amenities</strong>Resort-style clubhouse with casual dining, pro shop, full practice facility. No spa or residential amenities — it's purely a golf destination.</div>
+          <div class="club-info-block"><strong>Access Notes</strong>Owned and operated by the Las Vegas Paiute Tribe. Open to the public on a daily-fee basis — no membership required. Popular with locals and destination golf travelers.</div>
+          <div class="club-nearby-box">
+            <strong>Nearest Residential Homes</strong>
+            Paiute sits on tribal land — no residential community is attached. The closest luxury homes are in <a href="https://key2tee.realgeeks.com/search/results/?community=Centennial%20Hills" target="_blank" rel="noopener">Centennial Hills</a>, <a href="https://key2tee.realgeeks.com/search/results/?community=Skye%20Canyon" target="_blank" rel="noopener">Skye Canyon</a>, and <a href="https://key2tee.realgeeks.com/search/results/?community=Aliante" target="_blank" rel="noopener">Aliante</a>, ~15–20 min south.
+          </div>
+        </div></div>
+      </div>
+
+      <!-- CASCATA GOLF CLUB (CAESARS) -->
+      <div class="club-card" data-cc-loc="bouldercity">
+        <div class="club-card-header">
+          <div class="club-card-name">
+            <h3>Cascata Golf Club</h3>
+            <div class="club-meta">Boulder City · Rees Jones · 2000 · Resort access</div>
+          </div>
+          <span class="club-card-chevron">▼</span>
+        </div>
+        <div class="club-card-body"><div class="club-card-body-inner">
+          <div class="club-detail-grid">
+            <div><div class="d-label">Access Model</div><div class="d-value">Caesars-owned · public resort</div></div>
+            <div><div class="d-label">Peak Green Fee</div><div class="d-value">~$295–$495</div></div>
+            <div><div class="d-label">Off-Peak</div><div class="d-value">~$195–$295</div></div>
+            <div><div class="d-label">Ownership</div><div class="d-value">Caesars Entertainment</div></div>
+          </div>
+          <div class="club-info-block"><strong>Course</strong>A Rees Jones design tucked into a mountain canyon south of the Strip. Named for the 418-foot waterfall that runs through the clubhouse — yes, really. 7,137 yards of dramatic desert/mountain routing. Consistently ranked a top-50 US resort course.</div>
+          <div class="club-info-block"><strong>Amenities</strong>Italian-villa clubhouse with fine dining, waterfall views, and spa-tier locker rooms. Pro shop, full practice facility. One of the most photogenic clubhouses in American golf.</div>
+          <div class="club-info-block"><strong>Access Notes</strong>Owned by Caesars Entertainment. Bookable by the public at resort rates — Caesars Rewards high-rollers often play on comps. No membership, no residential component.</div>
+          <div class="club-nearby-box">
+            <strong>Nearest Residential Homes</strong>
+            Cascata has no residential community — it's a golf-only Caesars property. The closest homes are in <a href="https://key2tee.realgeeks.com/search/results/?community=Boulder%20City" target="_blank" rel="noopener">Boulder City</a> itself, or in south Henderson's <a href="https://key2tee.realgeeks.com/search/results/?community=Anthem%20Country%20Club" target="_blank" rel="noopener">Anthem Country Club</a> ~20 minutes north.
+          </div>
+        </div></div>
+      </div>
+
       <!-- BEAR'S BEST (THE RIDGES) -->
       <div class="club-card" data-cc-loc="summerlin">
         <div class="club-card-header">
@@ -3337,8 +3562,19 @@
         <div class="community-arrow">→</div>
       </a>
 
-      <a href="https://key2tee.realgeeks.com/search/results/?community=Lake%20Las%20Vegas" target="_blank" rel="noopener" class="community-row">
+      <a href="https://key2tee.realgeeks.com/search/results/?community=Seven%20Hills" target="_blank" rel="noopener" class="community-row">
         <div class="community-rank">7</div>
+        <div class="community-info">
+          <div class="community-name">Seven Hills</div>
+          <div class="community-meta">Henderson · Serket (formerly Rio Secco) · Rees Jones</div>
+          <div class="community-desc">Henderson's gated golf answer. Rees Jones course (recently rebranded from Rio Secco to Serket), strong schools, and solid luxury pricing without the Summit-level premium.</div>
+        </div>
+        <div class="community-price">$1M–$5M</div>
+        <div class="community-arrow">→</div>
+      </a>
+
+      <a href="https://key2tee.realgeeks.com/search/results/?community=Lake%20Las%20Vegas" target="_blank" rel="noopener" class="community-row">
+        <div class="community-rank">8</div>
         <div class="community-info">
           <div class="community-name">Lake Las Vegas</div>
           <div class="community-meta">Henderson · Reflection Bay (Nicklaus)</div>
@@ -3349,7 +3585,7 @@
       </a>
 
       <a href="https://key2tee.realgeeks.com/search/results/?community=Summerlin" target="_blank" rel="noopener" class="community-row">
-        <div class="community-rank">8</div>
+        <div class="community-rank">9</div>
         <div class="community-info">
           <div class="community-name">TPC Summerlin</div>
           <div class="community-meta">Summerlin · PGA Tour host course</div>
@@ -3360,7 +3596,7 @@
       </a>
 
       <a href="https://key2tee.realgeeks.com/search/results/?community=Spanish%20Trail" target="_blank" rel="noopener" class="community-row">
-        <div class="community-rank">9</div>
+        <div class="community-rank">10</div>
         <div class="community-info">
           <div class="community-name">Spanish Trail</div>
           <div class="community-meta">SW Vegas · Spanish Trail CC (27 holes)</div>
@@ -3371,7 +3607,7 @@
       </a>
 
       <a href="https://key2tee.realgeeks.com/search/results/?community=Anthem%20Country%20Club" target="_blank" rel="noopener" class="community-row">
-        <div class="community-rank">10</div>
+        <div class="community-rank">11</div>
         <div class="community-info">
           <div class="community-name">Anthem Country Club</div>
           <div class="community-meta">Henderson · Anthem CC (Hale Irwin)</div>
@@ -3381,8 +3617,19 @@
         <div class="community-arrow">→</div>
       </a>
 
+      <a href="https://key2tee.realgeeks.com/search/results/?community=Las%20Vegas%20Country%20Club" target="_blank" rel="noopener" class="community-row">
+        <div class="community-rank">12</div>
+        <div class="community-info">
+          <div class="community-name">Las Vegas Country Club</div>
+          <div class="community-meta">Central LV · LVCC (est. 1967) · Edmund Ault</div>
+          <div class="community-desc">Vegas's original private country club — the OG address with deep PGA Tour history, mature trees, and location that's minutes to the Strip. Less flashy than the newer clubs, which is exactly the appeal.</div>
+        </div>
+        <div class="community-price">$700K–$3M+</div>
+        <div class="community-arrow">→</div>
+      </a>
+
       <a href="https://key2tee.realgeeks.com/search/results/?community=Canyon%20Gate" target="_blank" rel="noopener" class="community-row">
-        <div class="community-rank">11</div>
+        <div class="community-rank">13</div>
         <div class="community-info">
           <div class="community-name">Canyon Gate Country Club</div>
           <div class="community-meta">Summerlin · Canyon Gate CC</div>
@@ -3393,7 +3640,7 @@
       </a>
 
       <a href="https://key2tee.realgeeks.com/search/results/?community=Siena" target="_blank" rel="noopener" class="community-row">
-        <div class="community-rank">12</div>
+        <div class="community-rank">14</div>
         <div class="community-info">
           <div class="community-name">Siena</div>
           <div class="community-meta">Summerlin · Siena Golf Club</div>
@@ -3404,7 +3651,7 @@
       </a>
 
       <a href="https://key2tee.realgeeks.com/search/results/?community=Summerlin" target="_blank" rel="noopener" class="community-row">
-        <div class="community-rank">13</div>
+        <div class="community-rank">15</div>
         <div class="community-info">
           <div class="community-name">Eagle Hills</div>
           <div class="community-meta">Summerlin · Angel Park vicinity</div>
@@ -3415,7 +3662,7 @@
       </a>
 
       <a href="https://key2tee.realgeeks.com/search/results/?community=Anthem%20Highlands" target="_blank" rel="noopener" class="community-row">
-        <div class="community-rank">14</div>
+        <div class="community-rank">16</div>
         <div class="community-info">
           <div class="community-name">Revere at Anthem</div>
           <div class="community-meta">Henderson · The Revere Golf Club</div>
@@ -3426,7 +3673,7 @@
       </a>
 
       <a href="https://key2tee.realgeeks.com/search/results/?community=Sun%20City%20Summerlin" target="_blank" rel="noopener" class="community-row">
-        <div class="community-rank">15</div>
+        <div class="community-rank">17</div>
         <div class="community-info">
           <div class="community-name">Highland Falls</div>
           <div class="community-meta">Summerlin · Highland Falls GC</div>
@@ -3437,7 +3684,7 @@
       </a>
 
       <a href="https://key2tee.realgeeks.com/search/results/?community=Tuscany" target="_blank" rel="noopener" class="community-row">
-        <div class="community-rank">16</div>
+        <div class="community-rank">18</div>
         <div class="community-info">
           <div class="community-name">Tuscany Village</div>
           <div class="community-meta">Henderson · Tuscany Golf Club</div>
@@ -3448,7 +3695,7 @@
       </a>
 
       <a href="https://key2tee.realgeeks.com/search/results/?community=Rhodes%20Ranch" target="_blank" rel="noopener" class="community-row">
-        <div class="community-rank">17</div>
+        <div class="community-rank">19</div>
         <div class="community-info">
           <div class="community-name">Rhodes Ranch</div>
           <div class="community-meta">SW Vegas · Rhodes Ranch GC</div>
@@ -3459,7 +3706,7 @@
       </a>
 
       <a href="https://key2tee.realgeeks.com/search/results/?community=Painted%20Desert" target="_blank" rel="noopener" class="community-row">
-        <div class="community-rank">18</div>
+        <div class="community-rank">20</div>
         <div class="community-info">
           <div class="community-name">Painted Desert</div>
           <div class="community-meta">NW Vegas · Painted Desert GC</div>
@@ -3470,7 +3717,7 @@
       </a>
 
       <a href="https://key2tee.realgeeks.com/search/results/?community=Silverstone%20Ranch" target="_blank" rel="noopener" class="community-row">
-        <div class="community-rank">19</div>
+        <div class="community-rank">21</div>
         <div class="community-info">
           <div class="community-name">Silverstone Ranch</div>
           <div class="community-meta">NW Vegas · Silverstone Golf Club</div>
@@ -3481,7 +3728,7 @@
       </a>
 
       <a href="https://key2tee.realgeeks.com/search/results/?community=Sun%20City%20Summerlin" target="_blank" rel="noopener" class="community-row">
-        <div class="community-rank">20</div>
+        <div class="community-rank">22</div>
         <div class="community-info">
           <div class="community-name">Sun City Summerlin (55+)</div>
           <div class="community-meta">Summerlin · Eagle Crest / Highland Falls / Palm Valley</div>
@@ -3492,7 +3739,7 @@
       </a>
 
       <a href="https://key2tee.realgeeks.com/search/results/?community=Aliante" target="_blank" rel="noopener" class="community-row">
-        <div class="community-rank">21</div>
+        <div class="community-rank">23</div>
         <div class="community-info">
           <div class="community-name">Aliante</div>
           <div class="community-meta">North Las Vegas · Aliante Golf Club</div>
@@ -5252,7 +5499,7 @@ function quizInit() {
 }
 quizInit();
 
-// ═══════════════════════ COUNTRY CLUB DIRECTORY (accordion + filter) ═══════════════════════
+// ═══════════════════════ COUNTRY CLUB DIRECTORY (accordion + filter + video) ═══════════════════════
 document.querySelectorAll('.club-card-header').forEach(header => {
   header.addEventListener('click', () => {
     header.parentElement.classList.toggle('open');
@@ -5266,6 +5513,16 @@ document.querySelectorAll('[data-cc-filter]').forEach(btn => {
       card.hidden = !(filter === 'all' || card.dataset.ccLoc === filter);
     });
   });
+});
+
+// Video thumbnail click → swap in autoplay YouTube iframe (delegated so new videos work even if added later)
+document.addEventListener('click', (e) => {
+  const thumb = e.target.closest('.club-video-thumb[data-video]');
+  if (!thumb) return;
+  e.stopPropagation();
+  const videoId = thumb.dataset.video;
+  const container = thumb.parentElement;
+  container.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1" title="Course tour video" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
 });
 
 // ═══════════════════════ GOLF COMMUNITY FINDER (QUIZ) ═══════════════════════
@@ -5383,58 +5640,80 @@ const GOLF_COMMUNITIES = {
     signature: "The only Nicklaus Signature course built on a private lake in the Southwest — 1.5 miles of shoreline.",
     blurb: "The resort-at-home play. A 320-acre private lake, Mediterranean village feel, marina access, and a Nicklaus course that plays right along the water. If you want the feel of a permanent vacation — boat in the morning, golf in the afternoon, waterfront dining at night — this is it.",
     homes: 'https://key2tee.realgeeks.com/search/results/?community=Lake%20Las%20Vegas'
+  },
+  lvcc: {
+    name: 'Las Vegas Country Club',
+    course: 'Las Vegas Country Club',
+    architect: 'Edmund Ault · 1967',
+    hoa: '~$800–$1,200 /mo + CC dues',
+    price: '$700K–$3M+',
+    member: 'Private equity',
+    signature: "Vegas's original private club — the oldest country club in the valley, with location that's minutes to the Strip.",
+    blurb: "The establishment play. Opened in 1967, LVCC is the OG private club in Vegas — mature trees, old-school traditions, and PGA Tour history from when the Sahara Invitational called it home. If you want classic country club life with a short drive to the Strip, this is the move.",
+    homes: 'https://key2tee.realgeeks.com/search/results/?community=Las%20Vegas%20Country%20Club'
+  },
+  sevenHills: {
+    name: 'Seven Hills',
+    course: 'Serket (formerly Rio Secco)',
+    architect: 'Rees Jones · 1997',
+    hoa: '~$200–$350 /mo',
+    price: '$1M–$5M',
+    member: 'Community HOA · club membership optional',
+    signature: 'Henderson hillside community anchored by the recently rebranded Serket Golf Club.',
+    blurb: "Henderson's gated golf answer. Rees Jones course (recently rebranded from Rio Secco to Serket), strong schools, and solid luxury pricing without the Summit-level premium. Great balance of golf access, community vibe, and value.",
+    homes: 'https://key2tee.realgeeks.com/search/results/?community=Seven%20Hills'
   }
 };
 
 const GOLF_SCORES = [
   // Q1 — Course Style
   [
-    { macdonald:4, ridges:4, redrock:3, summit:5 },
-    { southern:5, tpc:5, redrock:2, summit:5 },
-    { spanish:5, canyongate:4, anthem:3 },
-    { lakelv:5, macdonald:3, ridges:2 }
+    { macdonald:4, ridges:4, redrock:3, summit:5, sevenHills:3 },
+    { southern:5, tpc:5, redrock:2, summit:5, sevenHills:4, lvcc:3 },
+    { spanish:5, canyongate:4, anthem:3, lvcc:5, sevenHills:2 },
+    { lakelv:5, macdonald:3, ridges:2, sevenHills:1, lvcc:2 }
   ],
   // Q2 — Budget
   [
-    { anthem:4, canyongate:4, spanish:3, lakelv:3, tpc:2 },
-    { redrock:4, spanish:4, tpc:4, anthem:3, ridges:3, lakelv:3, canyongate:2 },
-    { macdonald:4, southern:3, ridges:4, redrock:4, lakelv:3, summit:2 },
-    { macdonald:5, southern:5, ridges:5, summit:5 }
+    { anthem:4, canyongate:4, spanish:3, lakelv:3, tpc:2, lvcc:5, sevenHills:4 },
+    { redrock:4, spanish:4, tpc:4, anthem:3, ridges:3, lakelv:3, canyongate:2, lvcc:4, sevenHills:5 },
+    { macdonald:4, southern:3, ridges:4, redrock:4, lakelv:3, summit:2, lvcc:2, sevenHills:3 },
+    { macdonald:5, southern:5, ridges:5, summit:5, sevenHills:1, lvcc:1 }
   ],
   // Q3 — Membership
   [
-    { southern:5, tpc:4, spanish:3, summit:5 },
-    { redrock:4, anthem:4, canyongate:4, spanish:4, summit:2 },
-    { ridges:4, lakelv:2 },
-    { lakelv:5, ridges:2, macdonald:2 }
+    { southern:5, tpc:4, spanish:3, summit:5, lvcc:3, sevenHills:2 },
+    { redrock:4, anthem:4, canyongate:4, spanish:4, summit:2, lvcc:5, sevenHills:4 },
+    { ridges:4, lakelv:2, sevenHills:4, lvcc:1 },
+    { lakelv:5, ridges:2, macdonald:2, sevenHills:1 }
   ],
   // Q4 — Community Vibe
   [
-    { southern:5, macdonald:5, summit:5 },
-    { anthem:5, redrock:4, spanish:3, canyongate:3 },
-    { tpc:5, southern:3, summit:2 },
-    { ridges:5, macdonald:4, summit:4 }
+    { southern:5, macdonald:5, summit:5, lvcc:2, sevenHills:2 },
+    { anthem:5, redrock:4, spanish:3, canyongate:3, lvcc:4, sevenHills:4 },
+    { tpc:5, southern:3, summit:2, lvcc:4, sevenHills:2 },
+    { ridges:5, macdonald:4, summit:4, sevenHills:2, lvcc:1 }
   ],
   // Q5 — Views
   [
-    { redrock:5, ridges:4, tpc:3, summit:5 },
-    { macdonald:5, spanish:2, summit:2 },
+    { redrock:5, ridges:4, tpc:3, summit:5, sevenHills:4, lvcc:1 },
+    { macdonald:5, spanish:2, summit:2, lvcc:5, sevenHills:3 },
     { lakelv:5, southern:2 },
-    { spanish:5, canyongate:4, anthem:3, summit:3 }
+    { spanish:5, canyongate:4, anthem:3, summit:3, lvcc:4, sevenHills:4 }
   ],
   // Q6 — Location
   [
-    { macdonald:5, anthem:5, lakelv:5 },
+    { macdonald:5, anthem:5, lakelv:5, sevenHills:5 },
     { redrock:5, ridges:5, tpc:5, canyongate:5, summit:5 },
     { southern:5, spanish:5 },
-    { macdonald:1, southern:1, anthem:1, redrock:1, spanish:1, ridges:1, tpc:1, canyongate:1, lakelv:1, summit:1 }
+    { macdonald:1, southern:1, anthem:1, redrock:1, spanish:1, ridges:1, tpc:1, canyongate:1, lakelv:1, summit:1, sevenHills:1, lvcc:3 }
   ],
   // Q7 — Sealer
   [
-    { southern:4, ridges:4, redrock:3, tpc:3, lakelv:3, spanish:3, summit:5 },
-    { redrock:5, anthem:4, spanish:4, canyongate:3, summit:3 },
-    { macdonald:5, southern:5, ridges:4, summit:5 },
-    { macdonald:4, spanish:3 }
+    { southern:4, ridges:4, redrock:3, tpc:3, lakelv:3, spanish:3, summit:5, sevenHills:4, lvcc:3 },
+    { redrock:5, anthem:4, spanish:4, canyongate:3, summit:3, lvcc:4, sevenHills:3 },
+    { macdonald:5, southern:5, ridges:4, summit:5, sevenHills:3, lvcc:2 },
+    { macdonald:4, spanish:3, lvcc:5, sevenHills:2 }
   ]
 ];
 
