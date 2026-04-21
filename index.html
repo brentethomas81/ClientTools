@@ -983,6 +983,302 @@
     .check-grid { grid-template-columns: 1fr; }
   }
 
+  /* ═══════════════════ TOOL LANDING GRID ═══════════════════ */
+  .tool-landing-hero {
+    text-align: center;
+    padding: 6px 0 22px;
+  }
+  .tool-landing-hero h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--gold-light);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+  .tool-landing-hero p {
+    color: var(--text-light);
+    font-size: 0.88rem;
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+  .grid-cat-nav {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+  }
+  .grid-cat-btn {
+    padding: 8px 14px;
+    font-size: 0.68rem;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--text-light);
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .grid-cat-btn:hover,
+  .grid-cat-btn.active {
+    background: var(--gold);
+    color: #0f1a11;
+    border-color: var(--gold);
+  }
+  .tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .tool-card {
+    background: linear-gradient(135deg, var(--forest-mid) 0%, var(--forest-light) 100%);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 8px;
+    padding: 22px 18px 20px;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .tool-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold);
+    box-shadow: 0 8px 24px rgba(201,168,76,0.15);
+  }
+  .tool-card[hidden] { display: none !important; }
+  .tool-card .icon {
+    font-size: 1.9rem;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .tool-card .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.18rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+  }
+  .tool-card .desc {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    line-height: 1.45;
+  }
+  .tool-card .cat-chip {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.55rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 10px;
+  }
+  .tool-card.soon { opacity: 0.82; }
+  .tool-card.soon::after {
+    content: 'COMING SOON';
+    position: absolute;
+    top: 14px; right: -38px;
+    background: var(--gold-dim);
+    color: var(--cream);
+    font-size: 0.52rem;
+    letter-spacing: 1.5px;
+    padding: 3px 40px;
+    transform: rotate(35deg);
+    font-weight: 600;
+  }
+  .tool-card.external::before {
+    content: '↗';
+    position: absolute;
+    top: 14px; right: 14px;
+    color: var(--gold);
+    font-size: 1.05rem;
+    opacity: 0.85;
+  }
+
+  /* ── BACK TO TOOLS ── */
+  .back-to-tools {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 16px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .back-to-tools:hover {
+    background: rgba(201,168,76,0.1);
+    color: var(--gold-light);
+  }
+
+  /* ── COMING SOON HERO ── */
+  .soon-hero {
+    text-align: center;
+    padding: 42px 20px 48px;
+    background: linear-gradient(160deg, rgba(201,168,76,0.1) 0%, rgba(0,0,0,0.2) 100%);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  .soon-hero .soon-icon { font-size: 3rem; margin-bottom: 12px; display: block; }
+  .soon-hero h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.85rem;
+    color: var(--gold-light);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+  .soon-hero .soon-chip-lg {
+    display: inline-block;
+    background: var(--gold);
+    color: #0f1a11;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    padding: 4px 12px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .soon-hero p {
+    max-width: 520px;
+    margin: 0 auto 20px;
+    color: var(--cream-dim);
+    line-height: 1.55;
+    font-size: 0.92rem;
+  }
+  .soon-notify {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 18px 18px 20px;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 8px;
+    text-align: left;
+  }
+  .soon-notify label {
+    display: block;
+    color: var(--gold);
+    font-size: 0.65rem;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .soon-notify input[type="email"] { margin-bottom: 10px; }
+  .soon-notify .btn {
+    background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+    color: var(--forest);
+    border: none;
+  }
+  .soon-notify .btn:hover { filter: brightness(1.08); }
+
+  /* ── SIMPLE CALC RESULTS ── */
+  .calc-result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .calc-result-grid .res-card {
+    padding: 14px 14px;
+    background: rgba(0,0,0,0.28);
+    border: 1px solid rgba(201,168,76,0.22);
+    border-radius: 8px;
+    text-align: center;
+  }
+  .calc-result-grid .res-card.hero {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(201,168,76,0.04) 100%);
+    border-color: var(--gold);
+  }
+  .calc-result-grid .res-label {
+    font-size: 0.6rem;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .calc-result-grid .res-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    color: var(--gold-light);
+    font-weight: 600;
+    line-height: 1.1;
+  }
+  .calc-result-grid .res-card.hero .res-value { font-size: 1.8rem; }
+  .calc-result-grid .res-sub {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    margin-top: 3px;
+  }
+
+  /* ── INLINE NOTE (below tool title) ── */
+  .tool-note {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    font-style: italic;
+    text-align: center;
+    margin-top: 2px;
+    margin-bottom: 18px;
+  }
+
+  /* ── SITE FOOTER (copyright / legal) ── */
+  .site-footer {
+    text-align: center;
+    padding: 28px 20px 34px;
+    border-top: 1px solid rgba(201,168,76,0.15);
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.2) 100%);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    color: var(--text-light);
+    line-height: 1.65;
+    letter-spacing: 0.3px;
+  }
+  .site-footer .sf-copy {
+    color: var(--gold);
+    font-size: 0.72rem;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .site-footer .sf-brand {
+    color: var(--cream-dim);
+    font-size: 0.72rem;
+  }
+  .site-footer a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .site-footer a:hover { color: var(--gold-light); }
+  .site-footer .sf-legal {
+    font-size: 0.64rem;
+    margin-top: 10px;
+    opacity: 0.75;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.55;
+  }
+
 </style>
 </head>
 <body>
@@ -1027,23 +1323,145 @@
   <div class="header-badge" id="tabBadge">SFR ROI</div>
 </header>
 
-<nav class="tab-nav" role="tablist">
-  <button class="tab-btn active" data-tab="roi" role="tab" aria-selected="true">
-    <span class="tab-icon">📊</span> ROI Calculator
-  </button>
-  <button class="tab-btn" data-tab="buyer" role="tab" aria-selected="false">
-    <span class="tab-icon">🏡</span> Buyer Intake
-  </button>
-  <button class="tab-btn" data-tab="seller" role="tab" aria-selected="false">
-    <span class="tab-icon">🔑</span> Seller Intake
-  </button>
-</nav>
-
 <div class="container">
 
 <div class="toast" id="toast"></div>
 
-  <section class="tab-panel active" data-panel="roi" role="tabpanel">
+  <!-- ═══════════════════ TOOL LANDING ═══════════════════ -->
+  <section class="tab-panel active" data-panel="landing" role="tabpanel">
+    <div class="tool-landing-hero">
+      <h2>Your Las Vegas Real Estate Toolkit</h2>
+      <p>Run numbers, start a transaction, hunt for a home — everything Brent's clients need, under one roof. Pick a tool below.</p>
+    </div>
+
+    <div class="grid-cat-nav">
+      <button class="grid-cat-btn active" data-cat="all">All</button>
+      <button class="grid-cat-btn" data-cat="buy">Buy</button>
+      <button class="grid-cat-btn" data-cat="sell">Sell</button>
+      <button class="grid-cat-btn" data-cat="invest">Invest</button>
+      <button class="grid-cat-btn" data-cat="lifestyle">Lifestyle</button>
+    </div>
+
+    <div class="tool-grid">
+      <!-- 1. Property Search -->
+      <a class="tool-card external" href="https://key2tee.realgeeks.com/" target="_blank" rel="noopener" data-cat="buy">
+        <span class="icon">🔍</span>
+        <div class="name">Property Search</div>
+        <div class="desc">Live MLS across the Vegas Valley — Henderson, Summerlin, and every golf community in between.</div>
+        <span class="cat-chip">Buy</span>
+      </a>
+
+      <!-- 2. Home Valuation -->
+      <a class="tool-card external" href="https://key2tee.realgeeks.com/seller/homeestimate/default" target="_blank" rel="noopener" data-cat="sell">
+        <span class="icon">📈</span>
+        <div class="name">Free Home Valuation</div>
+        <div class="desc">Instant estimate on your home with real comps. Brent personally reviews every request.</div>
+        <span class="cat-chip">Sell</span>
+      </a>
+
+      <!-- 3. SFR ROI Calculator -->
+      <a class="tool-card" data-tool="roi" data-cat="invest">
+        <span class="icon">📊</span>
+        <div class="name">SFR ROI Calculator</div>
+        <div class="desc">Run the numbers before you run the deal. Single-family rental analysis.</div>
+        <span class="cat-chip">Invest</span>
+      </a>
+
+      <!-- 4. Buyer Intake -->
+      <a class="tool-card" data-tool="buyer" data-cat="buy">
+        <span class="icon">🏡</span>
+        <div class="name">Buyer Intake</div>
+        <div class="desc">Start your transaction in about 90 seconds. Send it straight to Brent.</div>
+        <span class="cat-chip">Buy</span>
+      </a>
+
+      <!-- 5. Seller Intake -->
+      <a class="tool-card" data-tool="seller" data-cat="sell">
+        <span class="icon">🔑</span>
+        <div class="name">Seller Intake</div>
+        <div class="desc">List with confidence — fully guided, under ten minutes.</div>
+        <span class="cat-chip">Sell</span>
+      </a>
+
+      <!-- 6. Mortgage Calculator -->
+      <a class="tool-card" data-tool="mortgage" data-cat="buy">
+        <span class="icon">🧮</span>
+        <div class="name">Mortgage Calculator</div>
+        <div class="desc">What can you actually afford before the offer?</div>
+        <span class="cat-chip">Buy</span>
+      </a>
+
+      <!-- 7. 1031 Exchange Calculator -->
+      <a class="tool-card" data-tool="exchange" data-cat="invest">
+        <span class="icon">🔄</span>
+        <div class="name">1031 Exchange Calculator</div>
+        <div class="desc">Defer the gains, roll into the next property. Timeline + boot calculator.</div>
+        <span class="cat-chip">Invest</span>
+      </a>
+
+      <!-- 8. Relocation Quiz -->
+      <a class="tool-card" data-tool="quiz" data-cat="lifestyle">
+        <span class="icon" style="line-height:1;">
+          <svg viewBox="0 0 48 48" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;">
+            <!-- Folded map -->
+            <path d="M4 12 L16 9 L32 14 L44 10 L44 38 L32 42 L16 37 L4 40 Z"
+                  stroke="#c9a84c" stroke-width="2" stroke-linejoin="round" fill="rgba(201,168,76,0.1)"/>
+            <path d="M16 9 L16 37" stroke="#c9a84c" stroke-width="1.4" opacity="0.55"/>
+            <path d="M32 14 L32 42" stroke="#c9a84c" stroke-width="1.4" opacity="0.55"/>
+            <!-- Golf flag pin on the map -->
+            <line x1="24" y1="15" x2="24" y2="33" stroke="#e2c47a" stroke-width="2"/>
+            <polygon points="24,15 34,18.5 24,22" fill="#c9a84c"/>
+            <circle cx="24" cy="33" r="2.2" fill="#c9a84c"/>
+          </svg>
+        </span>
+        <div class="name">Relocation Quiz</div>
+        <div class="desc">"Which Vegas neighborhood fits you?" — 60-second lifestyle match.</div>
+        <span class="cat-chip">Lifestyle</span>
+      </a>
+
+      <!-- 9. YouTube Channel -->
+      <a class="tool-card external" href="https://youtube.com/@moneygolfguy?si=PCnitplbR3dMLMQw" target="_blank" rel="noopener" data-cat="lifestyle">
+        <span class="icon" style="line-height:1;">
+          <svg viewBox="0 0 48 34" width="46" height="32" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;filter:drop-shadow(0 2px 6px rgba(255,0,0,0.25));">
+            <rect x="0" y="0" width="48" height="34" rx="7" ry="7" fill="#FF0000"/>
+            <polygon points="19,9 19,25 32,17" fill="#ffffff"/>
+          </svg>
+        </span>
+        <div class="name">YouTube Channel</div>
+        <div class="desc">Brent's fun golf content.</div>
+        <span class="cat-chip">Lifestyle</span>
+      </a>
+
+      <!-- 10. Closing Cost Estimator -->
+      <a class="tool-card" data-tool="closing" data-cat="sell">
+        <span class="icon">💰</span>
+        <div class="name">Closing Cost Estimator</div>
+        <div class="desc">Buyer + seller net sheets. Know what lands in your pocket at the table.</div>
+        <span class="cat-chip">Sell</span>
+      </a>
+
+      <!-- 11. Rent vs. Buy -->
+      <a class="tool-card" data-tool="rentbuy" data-cat="buy">
+        <span class="icon">⚖️</span>
+        <div class="name">Rent vs. Buy</div>
+        <div class="desc">The math transplants keep asking for. Break-even, equity, tax benefits.</div>
+        <span class="cat-chip">Buy</span>
+      </a>
+
+      <!-- 12. Golf Community Finder (Soon) -->
+      <a class="tool-card soon" data-tool="golf" data-cat="lifestyle">
+        <span class="icon">⛳</span>
+        <div class="name">Golf Community Finder</div>
+        <div class="desc">Filter Vegas & Henderson golf communities by HOA, course, and price band.</div>
+        <span class="cat-chip">Lifestyle</span>
+      </a>
+    </div>
+
+    <div class="tool-note">More tools coming each month. Something missing? Text Brent at <a href="tel:7023191432" style="color:var(--gold);">702-319-1432</a>.</div>
+  </section>
+
+  <section class="tab-panel" data-panel="roi" role="tabpanel">
+    <button class="back-to-tools" data-goto="landing">← All Tools</button>
 <div class="tagline">
     <h2>Run the Numbers Before You Run the Deal</h2>
     <p>Single-family residential investment analysis · Powered by Key2Tee Real Estate</p>
@@ -1272,6 +1690,7 @@
 
   <!-- ═══════════════════ BUYER INTAKE TAB ═══════════════════ -->
   <section class="tab-panel" data-panel="buyer" role="tabpanel">
+    <button class="back-to-tools" data-goto="landing">← All Tools</button>
 
     <div class="tagline">
       <h2>Buyer Transaction Intake</h2>
@@ -1614,6 +2033,7 @@
 
   <!-- ═══════════════════ SELLER INTAKE TAB ═══════════════════ -->
   <section class="tab-panel" data-panel="seller" role="tabpanel">
+    <button class="back-to-tools" data-goto="landing">← All Tools</button>
 
     <div class="tagline">
       <h2>Seller / Listing Intake</h2>
@@ -2088,7 +2508,762 @@
     </p>
   </section>
 
+  <!-- ═══════════════════ MORTGAGE CALCULATOR ═══════════════════ -->
+  <section class="tab-panel" data-panel="mortgage" role="tabpanel">
+    <button class="back-to-tools" data-goto="landing">← All Tools</button>
+
+    <div class="tagline">
+      <h2>Mortgage &amp; Affordability Calculator</h2>
+      <p>Principal, interest, taxes, insurance, HOA — the real monthly number, before anyone hands you keys.</p>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Purchase Price ($)</label>
+        <input type="number" id="m_price" value="650000" min="0">
+      </div>
+      <div class="field">
+        <label>Down Payment (%)</label>
+        <input type="number" id="m_downPct" value="20" min="0" max="100" step="0.1">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Interest Rate (%)</label>
+        <input type="number" id="m_rate" value="6.75" min="0" step="0.01">
+      </div>
+      <div class="field">
+        <label>Loan Term (years)</label>
+        <input type="number" id="m_term" value="30" min="1" max="40">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Property Tax (% / year)</label>
+        <input type="number" id="m_taxPct" value="0.65" min="0" step="0.01">
+        <div class="help-text">Nevada's statewide average is ~0.55%–0.75%.</div>
+      </div>
+      <div class="field">
+        <label>Home Insurance ($ / year)</label>
+        <input type="number" id="m_ins" value="1400" min="0">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>HOA ($ / month)</label>
+        <input type="number" id="m_hoa" value="0" min="0">
+      </div>
+      <div class="field">
+        <label>PMI (%, if &lt;20% down)</label>
+        <input type="number" id="m_pmi" value="0" min="0" step="0.01">
+      </div>
+    </div>
+
+    <div class="action-bar" style="margin-top: 18px;">
+      <button type="button" class="btn" onclick="calculateMortgage()" style="background:linear-gradient(135deg,var(--gold-dim),var(--gold));color:var(--forest);">
+        ⛳ Calculate Monthly Payment
+      </button>
+    </div>
+
+    <div id="m_results" style="display:none;">
+      <div class="calc-result-grid">
+        <div class="res-card hero">
+          <div class="res-label">Total Monthly (PITI + HOA)</div>
+          <div class="res-value" id="m_totalMonthly">$0</div>
+          <div class="res-sub" id="m_breakdownNote">Principal + Interest + Tax + Insurance + HOA</div>
+        </div>
+        <div class="res-card">
+          <div class="res-label">Principal &amp; Interest</div>
+          <div class="res-value" id="m_pAndI">$0</div>
+        </div>
+        <div class="res-card">
+          <div class="res-label">Taxes + Insurance</div>
+          <div class="res-value" id="m_ti">$0</div>
+        </div>
+        <div class="res-card">
+          <div class="res-label">Loan Amount</div>
+          <div class="res-value" id="m_loanAmt">$0</div>
+        </div>
+        <div class="res-card">
+          <div class="res-label">Total Interest (Life of Loan)</div>
+          <div class="res-value" id="m_totalInt">$0</div>
+        </div>
+      </div>
+      <p class="help-text" style="text-align:center;margin-top:14px;">
+        Estimate only. Your actual rate depends on credit, loan type, and whatever coffee your lender had that morning. Want real numbers? <a href="tel:7023191432" style="color:var(--gold);">Call Brent</a>.
+      </p>
+    </div>
+
+    <p class="disclaimer">
+      Key2Tee · Brent Thomas · Douglas Elliman Real Estate · License S.0186600<br>
+      <a href="tel:7023191432" style="color:var(--gold-dim);text-decoration:none;">702-319-1432</a> &nbsp;|&nbsp; Las Vegas, NV
+    </p>
+  </section>
+
+  <!-- ═══════════════════ COMING SOON STUBS ═══════════════════ -->
+  <!-- ═══════════════════ CLOSING COST ESTIMATOR ═══════════════════ -->
+  <section class="tab-panel" data-panel="closing" role="tabpanel">
+    <button class="back-to-tools" data-goto="landing">← All Tools</button>
+
+    <div class="tagline">
+      <h2>Closing Cost Estimator</h2>
+      <p>No surprises at the table. Pick your side — or run both — and see exactly what hits the wire.</p>
+    </div>
+
+    <!-- SIDE TOGGLE -->
+    <div style="display:flex;gap:6px;margin-bottom:18px;background:rgba(0,0,0,0.25);border:1px solid rgba(201,168,76,0.22);border-radius:10px;padding:4px;">
+      <button type="button" class="cc-side-btn active" data-side="buyer" style="flex:1;background:linear-gradient(135deg,var(--gold-dim),var(--gold));color:var(--forest);border:none;padding:12px;font-family:'Jost',sans-serif;font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;font-weight:600;border-radius:8px;cursor:pointer;">🏡 Buyer</button>
+      <button type="button" class="cc-side-btn" data-side="seller" style="flex:1;background:transparent;color:var(--cream-dim);border:none;padding:12px;font-family:'Jost',sans-serif;font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;font-weight:500;border-radius:8px;cursor:pointer;">🔑 Seller</button>
+    </div>
+
+    <!-- ────────── BUYER SIDE ────────── -->
+    <div class="cc-panel" data-side="buyer">
+      <div class="field-row">
+        <div class="field">
+          <label>Purchase Price ($)</label>
+          <input type="number" id="cb_price" value="650000" min="0">
+        </div>
+        <div class="field">
+          <label>Down Payment (%)</label>
+          <input type="number" id="cb_downPct" value="20" min="0" max="100" step="0.1">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Loan Type</label>
+          <select id="cb_loanType">
+            <option value="conventional">Conventional</option>
+            <option value="fha">FHA</option>
+            <option value="va">VA</option>
+            <option value="cash">Cash (no loan)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Interest Rate (%)</label>
+          <input type="number" id="cb_rate" value="6.75" min="0" step="0.01">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Loan Origination (% of loan)</label>
+          <input type="number" id="cb_origPct" value="1" min="0" step="0.05">
+          <div class="help-text">Typically 0.5%–1% of the loan amount.</div>
+        </div>
+        <div class="field">
+          <label>HOA Transfer ($)</label>
+          <input type="number" id="cb_hoaTransfer" value="0" min="0">
+        </div>
+      </div>
+
+      <div class="action-bar" style="margin-top: 18px;">
+        <button type="button" class="btn" onclick="calculateClosingBuyer()" style="background:linear-gradient(135deg,var(--gold-dim),var(--gold));color:var(--forest);">
+          ⛳ Run Buyer Closing Costs
+        </button>
+      </div>
+
+      <div id="cb_results" style="display:none;margin-top:20px;">
+        <div class="calc-result-grid">
+          <div class="res-card hero">
+            <div class="res-label">Cash to Close</div>
+            <div class="res-value" id="cb_total">$0</div>
+            <div class="res-sub" id="cb_totalSub">Down payment + all closing costs</div>
+          </div>
+          <div class="res-card">
+            <div class="res-label">Down Payment</div>
+            <div class="res-value" id="cb_down">$0</div>
+          </div>
+          <div class="res-card">
+            <div class="res-label">Total Closing Costs</div>
+            <div class="res-value" id="cb_closingTotal">$0</div>
+          </div>
+        </div>
+
+        <div class="section-wrap" style="margin-top:20px;">
+          <div class="section-header">
+            <span class="badge">$</span>
+            <div><h3>Line-Item Breakdown</h3><small>Estimated costs based on Nevada averages</small></div>
+          </div>
+          <div id="cb_breakdown" style="background:rgba(0,0,0,0.25);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:16px 18px;"></div>
+        </div>
+
+        <p class="help-text" style="text-align:center;margin-top:14px;">
+          Nevada averages. Your actual figures depend on lender, title company, and negotiation. Real numbers? <a href="tel:7023191432" style="color:var(--gold);">Call Brent</a>.
+        </p>
+      </div>
+    </div>
+
+    <!-- ────────── SELLER SIDE ────────── -->
+    <div class="cc-panel" data-side="seller" style="display:none;">
+      <div class="field-row">
+        <div class="field">
+          <label>Sale Price ($)</label>
+          <input type="number" id="cs_price" value="750000" min="0">
+        </div>
+        <div class="field">
+          <label>Mortgage Payoff ($)</label>
+          <input type="number" id="cs_mortgage" value="320000" min="0">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Total Commission (%)</label>
+          <input type="number" id="cs_commPct" value="5" min="0" max="10" step="0.1">
+          <div class="help-text">Total listing + buyer agent. Typically 4%–6%.</div>
+        </div>
+        <div class="field">
+          <label>Seller Concessions ($)</label>
+          <input type="number" id="cs_concessions" value="0" min="0">
+          <div class="help-text">Credits given to buyer at close.</div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Home Warranty ($)</label>
+          <input type="number" id="cs_warranty" value="500" min="0">
+        </div>
+        <div class="field">
+          <label>HOA Docs / Transfer ($)</label>
+          <input type="number" id="cs_hoa" value="0" min="0">
+        </div>
+      </div>
+
+      <div class="action-bar" style="margin-top: 18px;">
+        <button type="button" class="btn" onclick="calculateClosingSeller()" style="background:linear-gradient(135deg,var(--gold-dim),var(--gold));color:var(--forest);">
+          ⛳ Run Seller Net Sheet
+        </button>
+      </div>
+
+      <div id="cs_results" style="display:none;margin-top:20px;">
+        <div class="calc-result-grid">
+          <div class="res-card hero">
+            <div class="res-label">Estimated Net to Seller</div>
+            <div class="res-value" id="cs_net">$0</div>
+            <div class="res-sub" id="cs_netSub">What lands in your pocket after payoff and costs</div>
+          </div>
+          <div class="res-card">
+            <div class="res-label">Total Selling Costs</div>
+            <div class="res-value" id="cs_total">$0</div>
+          </div>
+          <div class="res-card">
+            <div class="res-label">Mortgage Payoff</div>
+            <div class="res-value" id="cs_payoff">$0</div>
+          </div>
+        </div>
+
+        <div class="section-wrap" style="margin-top:20px;">
+          <div class="section-header">
+            <span class="badge">$</span>
+            <div><h3>Line-Item Breakdown</h3><small>Estimated costs based on Nevada averages</small></div>
+          </div>
+          <div id="cs_breakdown" style="background:rgba(0,0,0,0.25);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:16px 18px;"></div>
+        </div>
+
+        <p class="help-text" style="text-align:center;margin-top:14px;">
+          Estimate only. Actual proceeds depend on closing date, prorations, and what the escrow officer finds in the couch cushions. <a href="tel:7023191432" style="color:var(--gold);">Call Brent</a> for a full listing presentation.
+        </p>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Key2Tee · Brent Thomas · Douglas Elliman Real Estate · License S.0186600<br>
+      <a href="tel:7023191432" style="color:var(--gold-dim);text-decoration:none;">702-319-1432</a> &nbsp;|&nbsp; Las Vegas, NV
+    </p>
+  </section>
+
+  <section class="tab-panel" data-panel="golf" role="tabpanel">
+    <button class="back-to-tools" data-goto="landing">← All Tools</button>
+    <div class="soon-hero">
+      <span class="soon-icon">⛳</span>
+      <span class="soon-chip-lg">Coming Soon</span>
+      <h2>Golf Community Finder</h2>
+      <p>Filter every golf community in Vegas &amp; Henderson by HOA dues, course type (private, resort, semi-private), price band, and proximity to the first tee. Because your slice shouldn't be a commute.</p>
+      <form class="soon-notify" data-soon-tool="Golf Community Finder">
+        <label>First in line when it launches</label>
+        <input type="email" placeholder="you@example.com" required>
+        <button type="submit" class="btn">Notify Me</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ RENT VS. BUY CALCULATOR ═══════════════════ -->
+  <section class="tab-panel" data-panel="rentbuy" role="tabpanel">
+    <button class="back-to-tools" data-goto="landing">← All Tools</button>
+
+    <div class="tagline">
+      <h2>Rent vs. Buy Calculator</h2>
+      <p>The math every transplant asks for. Break-even year, equity built, and the real winner over time.</p>
+    </div>
+
+    <div class="section-wrap" style="margin-top:6px;">
+      <div class="section-header">
+        <span class="badge">🏠</span>
+        <div><h3>The Home You're Buying</h3><small>Or thinking about</small></div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Home Price ($)</label>
+          <input type="number" id="rb_price" value="650000" min="0">
+        </div>
+        <div class="field">
+          <label>Down Payment (%)</label>
+          <input type="number" id="rb_downPct" value="20" min="0" max="100" step="0.1">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Interest Rate (%)</label>
+          <input type="number" id="rb_rate" value="6.75" min="0" step="0.01">
+        </div>
+        <div class="field">
+          <label>Loan Term (years)</label>
+          <input type="number" id="rb_term" value="30" min="1" max="40">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Property Tax (%/yr)</label>
+          <input type="number" id="rb_taxPct" value="0.65" min="0" step="0.01">
+        </div>
+        <div class="field">
+          <label>Insurance ($/yr)</label>
+          <input type="number" id="rb_ins" value="1400" min="0">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>HOA ($/mo)</label>
+          <input type="number" id="rb_hoa" value="0" min="0">
+        </div>
+        <div class="field">
+          <label>Maintenance (%/yr of value)</label>
+          <input type="number" id="rb_maintPct" value="1" min="0" step="0.1">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Closing Costs (% of price)</label>
+          <input type="number" id="rb_closingPct" value="2.5" min="0" step="0.1">
+        </div>
+        <div class="field">
+          <label>Home Appreciation (%/yr)</label>
+          <input type="number" id="rb_apprPct" value="3.5" min="-10" step="0.1">
+        </div>
+      </div>
+    </div>
+
+    <div class="section-wrap">
+      <div class="section-header">
+        <span class="badge">🏢</span>
+        <div><h3>Rent Scenario</h3><small>The alternative</small></div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Current Monthly Rent ($)</label>
+          <input type="number" id="rb_rent" value="2800" min="0">
+        </div>
+        <div class="field">
+          <label>Rent Increase (%/yr)</label>
+          <input type="number" id="rb_rentInc" value="4" min="0" step="0.1">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Renter's Insurance ($/mo)</label>
+          <input type="number" id="rb_renterIns" value="25" min="0">
+        </div>
+        <div class="field">
+          <label>Investment Return (%/yr)</label>
+          <input type="number" id="rb_invReturn" value="7" min="0" step="0.1">
+          <div class="help-text">What would the down payment earn if invested instead?</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-wrap">
+      <div class="section-header">
+        <span class="badge">📅</span>
+        <div><h3>Time Horizon</h3><small>How long are you staying?</small></div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Years to Compare</label>
+          <input type="number" id="rb_years" value="7" min="1" max="30">
+          <div class="help-text">Most buyers break even around year 5–7.</div>
+        </div>
+        <div class="field">
+          <label>Sale Costs When Selling (%)</label>
+          <input type="number" id="rb_saleCostPct" value="7" min="0" step="0.1">
+        </div>
+      </div>
+    </div>
+
+    <div class="action-bar" style="margin-top: 18px;">
+      <button type="button" class="btn" onclick="calculateRentBuy()" style="background:linear-gradient(135deg,var(--gold-dim),var(--gold));color:var(--forest);">
+        ⛳ Run the Comparison
+      </button>
+    </div>
+
+    <div id="rb_results" style="display:none;">
+      <div class="calc-result-grid">
+        <div class="res-card hero">
+          <div class="res-label">The Verdict</div>
+          <div class="res-value" id="rb_verdict">—</div>
+          <div class="res-sub" id="rb_verdictSub"></div>
+        </div>
+        <div class="res-card hero">
+          <div class="res-label">Break-Even Year</div>
+          <div class="res-value" id="rb_breakEven">—</div>
+          <div class="res-sub" id="rb_breakEvenSub">When buying overtakes renting</div>
+        </div>
+        <div class="res-card">
+          <div class="res-label">Buyer Net Position</div>
+          <div class="res-value" id="rb_buyerNet">$0</div>
+          <div class="res-sub" id="rb_buyerNetSub">At end of period</div>
+        </div>
+        <div class="res-card">
+          <div class="res-label">Renter Net Position</div>
+          <div class="res-value" id="rb_renterNet">$0</div>
+          <div class="res-sub" id="rb_renterNetSub">At end of period</div>
+        </div>
+        <div class="res-card">
+          <div class="res-label">Equity Built (Buy)</div>
+          <div class="res-value" id="rb_equity">$0</div>
+        </div>
+        <div class="res-card">
+          <div class="res-label">Home Value at Exit</div>
+          <div class="res-value" id="rb_homeValue">$0</div>
+        </div>
+        <div class="res-card">
+          <div class="res-label">Total Rent Paid</div>
+          <div class="res-value" id="rb_rentPaid">$0</div>
+        </div>
+        <div class="res-card">
+          <div class="res-label">Year 1 Monthly (Own)</div>
+          <div class="res-value" id="rb_monthlyOwn">$0</div>
+          <div class="res-sub" id="rb_monthlyOwnSub">vs. rent: —</div>
+        </div>
+      </div>
+      <p class="help-text" style="text-align:center;margin-top:14px;">
+        Excludes tax deductions, stuff your HOA breaks, and that couch that won't fit in the hallway. Want to pressure-test your actual numbers? <a href="tel:7023191432" style="color:var(--gold);">Call Brent</a>.
+      </p>
+    </div>
+
+    <p class="disclaimer">
+      Key2Tee · Brent Thomas · Douglas Elliman Real Estate · License S.0186600<br>
+      <a href="tel:7023191432" style="color:var(--gold-dim);text-decoration:none;">702-319-1432</a> &nbsp;|&nbsp; Las Vegas, NV
+    </p>
+  </section>
+
+  <!-- ═══════════════════ RELOCATION LIFESTYLE QUIZ ═══════════════════ -->
+  <section class="tab-panel" data-panel="quiz" role="tabpanel">
+    <button class="back-to-tools" data-goto="landing">← All Tools</button>
+
+    <div class="tagline">
+      <h2>Which Vegas Neighborhood Fits You?</h2>
+      <p>Six questions. Sixty seconds. One honest answer — so you stop taking real-estate advice from the guy at your gym.</p>
+    </div>
+
+    <div id="q_intake">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <div style="color:var(--gold);font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;">Question <span id="q_current">1</span> of 6</div>
+        <div style="flex:1;height:4px;background:rgba(201,168,76,0.15);border-radius:2px;overflow:hidden;">
+          <div id="q_bar" style="height:100%;width:16.66%;background:linear-gradient(90deg,var(--gold-dim),var(--gold));transition:width 0.3s;"></div>
+        </div>
+      </div>
+
+      <!-- Q1 -->
+      <div class="quiz-q" data-q="0" style="display:block;">
+        <div class="section-header" style="margin-top:6px;">
+          <span class="badge">1</span>
+          <div><h3>What's your budget?</h3><small>Ballpark is fine — we can refine later.</small></div>
+        </div>
+        <div class="radio-group" data-qidx="0">
+          <label class="radio-option"><input type="radio" name="q0" value="0"><span class="radio-dot"></span>Under $1.2M</label>
+          <label class="radio-option"><input type="radio" name="q0" value="1"><span class="radio-dot"></span>$1.2M – $2.5M</label>
+          <label class="radio-option"><input type="radio" name="q0" value="2"><span class="radio-dot"></span>$2.5M – $5M</label>
+          <label class="radio-option"><input type="radio" name="q0" value="3"><span class="radio-dot"></span>$5M and up</label>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="quiz-q" data-q="1" style="display:none;">
+        <div class="section-header" style="margin-top:6px;">
+          <span class="badge">2</span>
+          <div><h3>How do you spend your free time?</h3><small>The real answer, not the Instagram answer.</small></div>
+        </div>
+        <div class="radio-group" data-qidx="1">
+          <label class="radio-option"><input type="radio" name="q1" value="0"><span class="radio-dot"></span>Chasing tee times — golf first, everything else second</label>
+          <label class="radio-option"><input type="radio" name="q1" value="1"><span class="radio-dot"></span>Hiking, trails, red rocks, outdoors</label>
+          <label class="radio-option"><input type="radio" name="q1" value="2"><span class="radio-dot"></span>On or near the water — boats, lake, waterfront dinners</label>
+          <label class="radio-option"><input type="radio" name="q1" value="3"><span class="radio-dot"></span>Dining, fine wine, live shows, social calendar</label>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="quiz-q" data-q="2" style="display:none;">
+        <div class="section-header" style="margin-top:6px;">
+          <span class="badge">3</span>
+          <div><h3>Who's moving with you?</h3><small>Affects schools, space, and community fit.</small></div>
+        </div>
+        <div class="radio-group" data-qidx="2">
+          <label class="radio-option"><input type="radio" name="q2" value="0"><span class="radio-dot"></span>Young family with school-age kids</label>
+          <label class="radio-option"><input type="radio" name="q2" value="1"><span class="radio-dot"></span>Empty nesters or retired</label>
+          <label class="radio-option"><input type="radio" name="q2" value="2"><span class="radio-dot"></span>Just me and/or my partner — no kids</label>
+          <label class="radio-option"><input type="radio" name="q2" value="3"><span class="radio-dot"></span>Multi-generational household</label>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="quiz-q" data-q="3" style="display:none;">
+        <div class="section-header" style="margin-top:6px;">
+          <span class="badge">4</span>
+          <div><h3>What's your community vibe?</h3><small>How social do you actually want to be?</small></div>
+        </div>
+        <div class="radio-group" data-qidx="3">
+          <label class="radio-option"><input type="radio" name="q3" value="0"><span class="radio-dot"></span>Ultra-private, guarded gates, I know two neighbors by first name</label>
+          <label class="radio-option"><input type="radio" name="q3" value="1"><span class="radio-dot"></span>Country club with a real events calendar</label>
+          <label class="radio-option"><input type="radio" name="q3" value="2"><span class="radio-dot"></span>Master-planned — parks, trails, pools, options for everyone</label>
+          <label class="radio-option"><input type="radio" name="q3" value="3"><span class="radio-dot"></span>Resort-style — new faces, amenities, feels like a vacation</label>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="quiz-q" data-q="4" style="display:none;">
+        <div class="section-header" style="margin-top:6px;">
+          <span class="badge">5</span>
+          <div><h3>What's the view from the back patio?</h3><small>Because you'll stare at it every morning.</small></div>
+        </div>
+        <div class="radio-group" data-qidx="4">
+          <label class="radio-option"><input type="radio" name="q4" value="0"><span class="radio-dot"></span>Mountains + desert — red rock, big sky</label>
+          <label class="radio-option"><input type="radio" name="q4" value="1"><span class="radio-dot"></span>Water — lake, marina, or canal</label>
+          <label class="radio-option"><input type="radio" name="q4" value="2"><span class="radio-dot"></span>Golf course — fairways, flags, the works</label>
+          <label class="radio-option"><input type="radio" name="q4" value="3"><span class="radio-dot"></span>Strip skyline — lights of Vegas in the distance</label>
+        </div>
+      </div>
+
+      <!-- Q6 -->
+      <div class="quiz-q" data-q="5" style="display:none;">
+        <div class="section-header" style="margin-top:6px;">
+          <span class="badge">6</span>
+          <div><h3>How close to the Strip?</h3><small>The most underrated Vegas real-estate question.</small></div>
+        </div>
+        <div class="radio-group" data-qidx="5">
+          <label class="radio-option"><input type="radio" name="q5" value="0"><span class="radio-dot"></span>Want it close — 10 minutes or less</label>
+          <label class="radio-option"><input type="radio" name="q5" value="1"><span class="radio-dot"></span>15–20 minutes is perfect</label>
+          <label class="radio-option"><input type="radio" name="q5" value="2"><span class="radio-dot"></span>I want a retreat — the farther the better</label>
+          <label class="radio-option"><input type="radio" name="q5" value="3"><span class="radio-dot"></span>Doesn't matter, I'm barely on the Strip</label>
+        </div>
+      </div>
+
+      <div class="action-bar" style="margin-top: 22px;">
+        <button type="button" class="btn btn-secondary" id="q_prev" disabled>← Back</button>
+        <button type="button" class="btn" id="q_next" style="background:linear-gradient(135deg,var(--gold-dim),var(--gold));color:var(--forest);" disabled>Next →</button>
+      </div>
+    </div>
+
+    <div id="q_results" style="display:none;">
+      <div class="soon-hero" style="padding:34px 18px;">
+        <span class="soon-icon" id="q_topIcon">🏡</span>
+        <div style="font-size:0.65rem;letter-spacing:2.5px;color:var(--gold);text-transform:uppercase;margin-bottom:6px;">Your Best Fit</div>
+        <h2 id="q_topName" style="font-size:2rem;">—</h2>
+        <p id="q_topBlurb" style="max-width:560px;">—</p>
+        <div style="font-size:0.62rem;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-top:6px;" id="q_topMatch">Match: —</div>
+      </div>
+
+      <div class="section-header" style="margin-top:6px;">
+        <span class="badge">2</span>
+        <div><h3>Runner-Up</h3><small id="q_runnerMatch">Also worth a look</small></div>
+      </div>
+      <div style="background:rgba(0,0,0,0.25);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:16px 18px;margin-bottom:14px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold-light);margin-bottom:4px;" id="q_runnerName">—</div>
+        <div style="color:var(--cream-dim);font-size:0.88rem;line-height:1.5;" id="q_runnerBlurb">—</div>
+      </div>
+
+      <div class="submit-hero" style="margin-top: 22px;">
+        <h4>Ready to Tour?</h4>
+        <p>I know every one of these neighborhoods. Let's book a showing and see which one actually feels like home.</p>
+        <a href="https://calendly.com/key2teerealestate/30min" target="_blank" class="btn-hero" style="text-decoration:none;display:flex;">
+          <span class="big-icon">📅</span> Book a Call with Brent
+        </a>
+        <div class="recipients">
+          <strong>Prefer a text?</strong>
+          <a href="tel:7023191432" style="color:var(--gold);text-decoration:none;">702-319-1432</a>
+        </div>
+      </div>
+
+      <div class="action-bar" style="margin-top: 14px;">
+        <button type="button" class="btn btn-secondary" id="q_restart">↻ Retake the Quiz</button>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Key2Tee · Brent Thomas · Douglas Elliman Real Estate · License S.0186600<br>
+      <a href="tel:7023191432" style="color:var(--gold-dim);text-decoration:none;">702-319-1432</a> &nbsp;|&nbsp; Las Vegas, NV
+    </p>
+  </section>
+
+  <!-- ═══════════════════ 1031 EXCHANGE CALCULATOR ═══════════════════ -->
+  <section class="tab-panel" data-panel="exchange" role="tabpanel">
+    <button class="back-to-tools" data-goto="landing">← All Tools</button>
+
+    <div class="tagline">
+      <h2>1031 Exchange Calculator</h2>
+      <p>Defer the gains, roll into the next property, keep compounding. Timeline + tax deferral + boot analysis in one shot.</p>
+    </div>
+
+    <div class="section-wrap" style="margin-top:10px;">
+      <div class="section-header">
+        <span class="badge">1</span>
+        <div><h3>Relinquished Property</h3><small>The one you're selling</small></div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Sale Price ($)</label>
+          <input type="number" id="x_salePrice" value="850000" min="0">
+        </div>
+        <div class="field">
+          <label>Selling Costs ($)</label>
+          <input type="number" id="x_sellCosts" value="51000" min="0">
+          <div class="help-text">Commissions + closing costs. ~6% is a good default.</div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Mortgage Balance to Pay Off ($)</label>
+          <input type="number" id="x_mortgage" value="320000" min="0">
+        </div>
+        <div class="field">
+          <label>Sale / Close Date</label>
+          <input type="date" id="x_saleDate">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Original Purchase Price ($)</label>
+          <input type="number" id="x_origPrice" value="425000" min="0">
+        </div>
+        <div class="field">
+          <label>Accumulated Depreciation ($)</label>
+          <input type="number" id="x_deprec" value="72000" min="0">
+          <div class="help-text">Total depreciation claimed since purchase.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-wrap">
+      <div class="section-header">
+        <span class="badge">2</span>
+        <div><h3>Replacement Property</h3><small>The one you're rolling into</small></div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Replacement Purchase Price ($)</label>
+          <input type="number" id="x_replPrice" value="950000" min="0">
+        </div>
+        <div class="field">
+          <label>New Mortgage Amount ($)</label>
+          <input type="number" id="x_replMortgage" value="450000" min="0">
+        </div>
+      </div>
+    </div>
+
+    <div class="section-wrap">
+      <div class="section-header">
+        <span class="badge">3</span>
+        <div><h3>Tax Assumptions</h3><small>Adjust if your CPA gave you different numbers</small></div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Federal Capital Gains Rate (%)</label>
+          <input type="number" id="x_fedRate" value="20" min="0" step="0.1">
+        </div>
+        <div class="field">
+          <label>Depreciation Recapture Rate (%)</label>
+          <input type="number" id="x_recapRate" value="25" min="0" step="0.1">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>State Tax Rate (%)</label>
+          <input type="number" id="x_stateRate" value="0" min="0" step="0.1">
+          <div class="help-text">Nevada residents: 0%. Sip your coffee.</div>
+        </div>
+        <div class="field">
+          <label>Net Investment Income Tax (%)</label>
+          <input type="number" id="x_niitRate" value="3.8" min="0" step="0.1">
+        </div>
+      </div>
+    </div>
+
+    <div class="action-bar" style="margin-top: 18px;">
+      <button type="button" class="btn" onclick="calculateExchange()" style="background:linear-gradient(135deg,var(--gold-dim),var(--gold));color:var(--forest);">
+        ⛳ Run the Exchange
+      </button>
+    </div>
+
+    <div id="x_results" style="display:none;">
+      <div class="calc-result-grid">
+        <div class="res-card hero">
+          <div class="res-label">Total Tax Deferred</div>
+          <div class="res-value" id="x_totalTax">$0</div>
+          <div class="res-sub" id="x_taxSub">Money that stays in the deal instead of going to the IRS</div>
+        </div>
+        <div class="res-card hero">
+          <div class="res-label">Exchange Status</div>
+          <div class="res-value" id="x_status">—</div>
+          <div class="res-sub" id="x_statusSub"></div>
+        </div>
+        <div class="res-card">
+          <div class="res-label">Realized Capital Gain</div>
+          <div class="res-value" id="x_gain">$0</div>
+          <div class="res-sub">Sale − Adj. Basis − Selling Costs</div>
+        </div>
+        <div class="res-card">
+          <div class="res-label">Depreciation Recapture</div>
+          <div class="res-value" id="x_recap">$0</div>
+        </div>
+        <div class="res-card">
+          <div class="res-label">Net Sale Proceeds</div>
+          <div class="res-value" id="x_netProceeds">$0</div>
+          <div class="res-sub">After mortgage + selling costs</div>
+        </div>
+        <div class="res-card">
+          <div class="res-label">Boot Received</div>
+          <div class="res-value" id="x_boot">$0</div>
+          <div class="res-sub" id="x_bootSub">Cash left over (taxable)</div>
+        </div>
+        <div class="res-card">
+          <div class="res-label">Day 45 — ID Deadline</div>
+          <div class="res-value" id="x_day45" style="font-size:1.05rem;">—</div>
+          <div class="res-sub">Identify replacement properties</div>
+        </div>
+        <div class="res-card">
+          <div class="res-label">Day 180 — Close Deadline</div>
+          <div class="res-value" id="x_day180" style="font-size:1.05rem;">—</div>
+          <div class="res-sub">Complete the exchange</div>
+        </div>
+      </div>
+      <p class="help-text" style="text-align:center;margin-top:14px;">
+        Estimate only — the IRS is not known for accepting Google doc screenshots. Loop in a qualified intermediary and your CPA before listing. <a href="tel:7023191432" style="color:var(--gold);">Brent</a> can connect you with both.
+      </p>
+    </div>
+
+    <p class="disclaimer">
+      Key2Tee · Brent Thomas · Douglas Elliman Real Estate · License S.0186600<br>
+      <a href="tel:7023191432" style="color:var(--gold-dim);text-decoration:none;">702-319-1432</a> &nbsp;|&nbsp; Las Vegas, NV
+    </p>
+  </section>
+
 </div><!-- end .container -->
+
+<footer class="site-footer">
+  <div class="sf-copy">© 2026 Key2Tee Real Estate · All Rights Reserved</div>
+  <div class="sf-brand">Brent Thomas · REALTOR&#174; · Douglas Elliman Real Estate · License S.0186600</div>
+  <div class="sf-brand"><a href="tel:7023191432">702-319-1432</a> &nbsp;·&nbsp; <a href="mailto:brentethomas81@gmail.com">brentethomas81@gmail.com</a> &nbsp;·&nbsp; Las Vegas, NV</div>
+  <div class="sf-legal">
+    Site content, calculators, and code are proprietary to Key2Tee Real Estate. Unauthorized reproduction, redistribution, or commercial use is prohibited. Estimates provided are for informational purposes only and do not constitute financial, legal, or tax advice — always consult a licensed professional before transacting.
+  </div>
+</footer>
 
 <div id="roiStickyBtn"><div class="calc-btn-wrap">
   <button class="calc-btn" onclick="calculate()">⛳ Analyze This Deal</button>
@@ -2103,12 +3278,25 @@
   const OFFICE_EMAIL_CC = 'key2teerealestate@gmail.com';
 
   // ── TAB SWITCHING + HASH ROUTING ──
-  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabBtns = document.querySelectorAll('.tab-btn'); // legacy, may be empty
   const tabPanels = document.querySelectorAll('.tab-panel');
   const tabBadge = document.getElementById('tabBadge');
-  const badgeLabels = { roi: 'SFR ROI', buyer: 'BUYER FORM', seller: 'SELLER FORM' };
+  const VALID_TABS = ['landing','roi','buyer','seller','mortgage','closing','golf','rentbuy','quiz','exchange'];
+  const badgeLabels = {
+    landing: 'TOOLS',
+    roi: 'SFR ROI',
+    buyer: 'BUYER FORM',
+    seller: 'SELLER FORM',
+    mortgage: 'MORTGAGE',
+    closing: 'CLOSING COSTS',
+    golf: 'GOLF FINDER',
+    rentbuy: 'RENT VS BUY',
+    quiz: 'RELO QUIZ',
+    exchange: '1031 EXCHANGE'
+  };
 
   function switchTab(target, updateHash = true) {
+    if (!VALID_TABS.includes(target)) target = 'landing';
     tabBtns.forEach(b => {
       const active = b.dataset.tab === target;
       b.classList.toggle('active', active);
@@ -2116,19 +3304,48 @@
     });
     tabPanels.forEach(p => p.classList.toggle('active', p.dataset.panel === target));
     if (tabBadge && badgeLabels[target]) tabBadge.textContent = badgeLabels[target];
-    if (updateHash && target) {
-      history.replaceState(null, '', '#' + target);
+    if (updateHash) {
+      if (target === 'landing') {
+        history.replaceState(null, '', window.location.pathname);
+      } else {
+        history.replaceState(null, '', '#' + target);
+      }
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   tabBtns.forEach(btn => btn.addEventListener('click', () => switchTab(btn.dataset.tab)));
 
+  // ── LANDING CARD GRID: click → open tool ──
+  document.querySelectorAll('.tool-card[data-tool]').forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      const tool = card.dataset.tool;
+      if (tool) switchTab(tool);
+    });
+  });
+
+  // ── BACK-TO-TOOLS BUTTONS ──
+  document.querySelectorAll('.back-to-tools').forEach(btn => {
+    btn.addEventListener('click', () => switchTab(btn.dataset.goto || 'landing'));
+  });
+
+  // ── CATEGORY FILTER PILLS ──
+  document.querySelectorAll('.grid-cat-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cat = btn.dataset.cat;
+      document.querySelectorAll('.grid-cat-btn').forEach(b => b.classList.toggle('active', b === btn));
+      document.querySelectorAll('.tool-card[data-cat]').forEach(card => {
+        card.hidden = !(cat === 'all' || card.dataset.cat === cat);
+      });
+    });
+  });
+
   // On load: honour hash fragment, and pre-fill from ?data= param if present (smart-resume link)
   window.addEventListener('DOMContentLoaded', () => {
     // Handle both `#buyer` and `#buyer?data=...` formats
     const hash = (location.hash || '').replace('#', '').split('?')[0];
-    if (['roi', 'buyer', 'seller'].includes(hash)) switchTab(hash, false);
+    if (VALID_TABS.includes(hash)) switchTab(hash, false);
     hydrateFromURL();
   });
 
@@ -2150,7 +3367,7 @@
   // ── COPY LINK ──
   function copyLink() {
     // Share current URL plus the relevant tab hash
-    const activeTab = document.querySelector('.tab-btn.active')?.dataset.tab || 'buyer';
+    const activeTab = document.querySelector('.tab-panel.active')?.dataset.panel || 'buyer';
     const base = window.location.href.split('#')[0].split('?')[0];
     const url = `${base}#${activeTab}`;
     navigator.clipboard.writeText(url).then(
@@ -2818,15 +4035,640 @@ window.addEventListener('load', function() {
 });
 history.scrollRestoration = 'manual';
 
-// ── Toggle sticky ROI button visibility by active tab ──
+// ── Toggle sticky ROI button visibility by active panel ──
 function updateStickyVisibility() {
   const stickyEl = document.getElementById('roiStickyBtn');
   if (!stickyEl) return;
-  const activeTab = document.querySelector('.tab-btn.active')?.dataset.tab;
-  stickyEl.style.display = (activeTab === 'roi') ? '' : 'none';
+  const activePanel = document.querySelector('.tab-panel.active')?.dataset.panel;
+  stickyEl.style.display = (activePanel === 'roi') ? '' : 'none';
 }
-document.querySelectorAll('.tab-btn').forEach(b => b.addEventListener('click', () => setTimeout(updateStickyVisibility, 10)));
+// Observe panel changes (card click, back-to-tools, hash, etc.)
+(function observePanelSwitch(){
+  const panelsRoot = document.querySelector('.container');
+  if (!panelsRoot) return;
+  new MutationObserver(() => setTimeout(updateStickyVisibility, 0))
+    .observe(panelsRoot, { attributes: true, subtree: true, attributeFilter: ['class'] });
+})();
 window.addEventListener('DOMContentLoaded', updateStickyVisibility);
+
+// ═══════════════════════ MORTGAGE CALCULATOR ═══════════════════════
+function calculateMortgage() {
+  const v = (id) => parseFloat(document.getElementById(id).value) || 0;
+  const price   = v('m_price');
+  const downPct = v('m_downPct');
+  const rate    = v('m_rate') / 100;
+  const term    = v('m_term');
+  const taxPct  = v('m_taxPct') / 100;
+  const ins     = v('m_ins');
+  const hoa     = v('m_hoa');
+  const pmiPct  = v('m_pmi') / 100;
+
+  const downAmt  = price * (downPct / 100);
+  const loanAmt  = price - downAmt;
+  const n        = term * 12;
+  const r        = rate / 12;
+
+  let pi = 0;
+  if (loanAmt > 0 && r > 0 && n > 0) {
+    pi = loanAmt * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+  } else if (r === 0 && n > 0) {
+    pi = loanAmt / n;
+  }
+
+  const taxMonthly = (price * taxPct) / 12;
+  const insMonthly = ins / 12;
+  const pmiMonthly = (downPct < 20 && pmiPct > 0) ? (loanAmt * pmiPct) / 12 : 0;
+  const totalMonthly = pi + taxMonthly + insMonthly + hoa + pmiMonthly;
+  const totalInterest = (pi * n) - loanAmt;
+
+  const fmt = (n) => '$' + Math.round(n).toLocaleString();
+
+  document.getElementById('m_totalMonthly').textContent = fmt(totalMonthly);
+  document.getElementById('m_pAndI').textContent = fmt(pi);
+  document.getElementById('m_ti').textContent = fmt(taxMonthly + insMonthly);
+  document.getElementById('m_loanAmt').textContent = fmt(loanAmt);
+  document.getElementById('m_totalInt').textContent = fmt(totalInterest);
+
+  const noteParts = ['P&I ' + fmt(pi), 'Tax ' + fmt(taxMonthly), 'Ins ' + fmt(insMonthly)];
+  if (hoa > 0) noteParts.push('HOA ' + fmt(hoa));
+  if (pmiMonthly > 0) noteParts.push('PMI ' + fmt(pmiMonthly));
+  document.getElementById('m_breakdownNote').textContent = noteParts.join(' · ');
+
+  document.getElementById('m_results').style.display = 'block';
+  document.getElementById('m_results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ═══════════════════════ 1031 EXCHANGE CALCULATOR ═══════════════════════
+(function initExchangeDate() {
+  const el = document.getElementById('x_saleDate');
+  if (el && !el.value) el.value = new Date().toISOString().split('T')[0];
+})();
+
+function calculateExchange() {
+  const v = (id) => parseFloat(document.getElementById(id).value) || 0;
+  const salePrice    = v('x_salePrice');
+  const sellCosts    = v('x_sellCosts');
+  const mortgage     = v('x_mortgage');
+  const origPrice    = v('x_origPrice');
+  const deprec       = v('x_deprec');
+  const replPrice    = v('x_replPrice');
+  const replMortgage = v('x_replMortgage');
+  const fedRate      = v('x_fedRate') / 100;
+  const recapRate    = v('x_recapRate') / 100;
+  const stateRate    = v('x_stateRate') / 100;
+  const niitRate     = v('x_niitRate') / 100;
+  const saleDateStr  = document.getElementById('x_saleDate').value;
+
+  // Adjusted basis + realized gain
+  const adjBasis      = Math.max(0, origPrice - deprec);
+  const amountRealized = salePrice - sellCosts;
+  const totalGain     = Math.max(0, amountRealized - adjBasis);
+  const recapGain     = Math.min(deprec, totalGain);
+  const capitalGain   = Math.max(0, totalGain - recapGain);
+
+  // Tax that would be owed without the exchange
+  const capGainTax    = capitalGain * (fedRate + stateRate + niitRate);
+  const recapTax      = recapGain * (recapRate + stateRate);
+  const totalTax      = capGainTax + recapTax;
+
+  // Net proceeds available
+  const netProceeds = salePrice - mortgage - sellCosts;
+
+  // Boot & exchange status
+  // To fully defer: replacement price >= sale price AND replacement debt >= relinquished debt AND all cash reinvested
+  const valueGap    = Math.max(0, salePrice - replPrice);
+  const mortgageGap = Math.max(0, mortgage - replMortgage);
+  const boot        = valueGap + Math.max(0, mortgageGap - valueGap);
+  const fullyDeferred = (replPrice >= salePrice && replMortgage >= mortgage);
+
+  // Timeline
+  let day45 = '—', day180 = '—';
+  if (saleDateStr) {
+    const saleDate = new Date(saleDateStr + 'T00:00:00');
+    const d45 = new Date(saleDate); d45.setDate(d45.getDate() + 45);
+    const d180 = new Date(saleDate); d180.setDate(d180.getDate() + 180);
+    const opts = { month: 'short', day: 'numeric', year: 'numeric' };
+    day45  = d45.toLocaleDateString('en-US', opts);
+    day180 = d180.toLocaleDateString('en-US', opts);
+  }
+
+  const fmt = (n) => '$' + Math.round(n).toLocaleString();
+
+  document.getElementById('x_totalTax').textContent    = fmt(totalTax);
+  document.getElementById('x_gain').textContent        = fmt(capitalGain);
+  document.getElementById('x_recap').textContent       = fmt(recapGain);
+  document.getElementById('x_netProceeds').textContent = fmt(netProceeds);
+  document.getElementById('x_boot').textContent        = fmt(boot);
+  document.getElementById('x_day45').textContent       = day45;
+  document.getElementById('x_day180').textContent      = day180;
+
+  const statusEl = document.getElementById('x_status');
+  const statusSub = document.getElementById('x_statusSub');
+  const bootSub = document.getElementById('x_bootSub');
+  const taxSub  = document.getElementById('x_taxSub');
+
+  if (fullyDeferred && boot === 0) {
+    statusEl.textContent = '✓ Fully Deferred';
+    statusEl.style.color = '#27ae60';
+    statusSub.textContent = 'All gains rolled forward. Nice swing.';
+    bootSub.textContent = 'No boot — cleanest possible exchange.';
+    taxSub.textContent = 'This entire amount stays working in your next deal.';
+  } else if (boot > 0) {
+    statusEl.textContent = '⚠ Partial Exchange';
+    statusEl.style.color = 'var(--gold-light)';
+    statusSub.textContent = 'Boot will be taxed in the year of sale';
+    bootSub.textContent = 'Taxable at your capital-gains rate';
+    taxSub.textContent = 'Deferred portion (boot is taxed separately)';
+  } else {
+    statusEl.textContent = '⚠ Review Inputs';
+    statusEl.style.color = 'var(--gold-light)';
+    statusSub.textContent = 'Replacement should match or exceed sale value';
+    bootSub.textContent = '';
+    taxSub.textContent = 'Estimated savings if executed correctly';
+  }
+
+  document.getElementById('x_results').style.display = 'block';
+  document.getElementById('x_results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ═══════════════════════ RELOCATION LIFESTYLE QUIZ ═══════════════════════
+const QUIZ_SCORES = [
+  // Q1 — Budget
+  [
+    { summerlin:4, sevenHills:3, lakeLV:2, anthem:2 },
+    { sevenHills:4, anthem:4, ridges:3, lakeLV:3, queensridge:3 },
+    { ridges:4, anthem:3, queensridge:4, macdonald:3 },
+    { ridges:5, macdonald:5, queensridge:3 }
+  ],
+  // Q2 — Free time
+  [
+    { ridges:4, macdonald:4, sevenHills:4, anthem:4, lakeLV:3 },
+    { summerlin:4, ridges:3, macdonald:2 },
+    { lakeLV:5 },
+    { queensridge:4, macdonald:3, anthem:2 }
+  ],
+  // Q3 — Household
+  [
+    { summerlin:5, sevenHills:4, anthem:2 },
+    { macdonald:3, anthem:4, lakeLV:4, queensridge:3 },
+    { ridges:3, queensridge:4, macdonald:3, lakeLV:3 },
+    { ridges:3, macdonald:4, summerlin:3 }
+  ],
+  // Q4 — Community vibe
+  [
+    { ridges:5, macdonald:5 },
+    { anthem:5, sevenHills:4, queensridge:3 },
+    { summerlin:5, sevenHills:3 },
+    { lakeLV:5 }
+  ],
+  // Q5 — View
+  [
+    { ridges:4, macdonald:4, summerlin:3 },
+    { lakeLV:5 },
+    { sevenHills:4, anthem:4, macdonald:3, queensridge:3 },
+    { queensridge:4, macdonald:4, ridges:2 }
+  ],
+  // Q6 — Strip proximity
+  [
+    { queensridge:5, ridges:2 },
+    { summerlin:4, sevenHills:3, ridges:3, macdonald:2 },
+    { lakeLV:4, anthem:4, macdonald:4 },
+    { summerlin:3, sevenHills:2, anthem:2, lakeLV:2, queensridge:2, ridges:2, macdonald:2 }
+  ]
+];
+
+const NEIGHBORHOODS = {
+  summerlin:   { name: 'Summerlin',               icon: '🌳', blurb: 'Master-planned, 230+ parks, top-rated schools, and endless trails. The kind of place where you can hike at dawn, hit a course by ten, and grab dinner without getting on a freeway.' },
+  ridges:      { name: 'The Ridges',              icon: '⛰️', blurb: 'Summerlin\'s top tier. Guard-gated, Bear\'s Best golf, Red Rock views that don\'t quit. Where Vegas\'s quiet money tends to land — and doesn\'t brag about it.' },
+  macdonald:   { name: 'MacDonald Highlands',     icon: '💎', blurb: 'Henderson\'s ultra-luxury gated community. DragonRidge Country Club, panoramic valley + Strip views, and homes that go toe-to-toe with anywhere in the country.' },
+  sevenHills:  { name: 'Seven Hills',             icon: '🏞️', blurb: 'Henderson-gated luxury anchored by Rio Secco Golf Club. Strong schools, a classic country-club vibe, and just enough elevation to keep it cooler in summer.' },
+  anthem:      { name: 'Anthem Country Club',     icon: '⛳', blurb: 'Henderson country-club living at its most social. Revere Golf Club, tennis, pools, a legit events calendar, and an active retiree + second-home crowd.' },
+  lakeLV:      { name: 'Lake Las Vegas',          icon: '🚤', blurb: 'A 320-acre private lake in the middle of the desert. Waterfront homes, marina access, resort amenities, two golf courses, and that "weekend away" feeling every day.' },
+  queensridge: { name: 'Queensridge',             icon: '🌆', blurb: 'Established luxury sitting right on TPC Las Vegas. Short drive to the Strip, established trees, big lots — the kind of neighborhood you grow into and never need to leave.' }
+};
+
+const quizState = { current: 0, answers: new Array(6).fill(null) };
+
+function quizShow(idx) {
+  document.querySelectorAll('.quiz-q').forEach(q => {
+    q.style.display = (parseInt(q.dataset.q) === idx) ? 'block' : 'none';
+  });
+  document.getElementById('q_current').textContent = idx + 1;
+  document.getElementById('q_bar').style.width = (((idx + 1) / 6) * 100) + '%';
+  document.getElementById('q_prev').disabled = (idx === 0);
+  const nextBtn = document.getElementById('q_next');
+  nextBtn.textContent = (idx === 5) ? 'See My Match →' : 'Next →';
+  nextBtn.disabled = (quizState.answers[idx] === null);
+}
+
+function quizScore() {
+  const totals = { summerlin:0, ridges:0, macdonald:0, sevenHills:0, anthem:0, lakeLV:0, queensridge:0 };
+  quizState.answers.forEach((ans, q) => {
+    if (ans === null) return;
+    const scoreMap = QUIZ_SCORES[q][ans] || {};
+    Object.entries(scoreMap).forEach(([k, v]) => { totals[k] = (totals[k] || 0) + v; });
+  });
+  const maxTotal = Math.max(...Object.values(totals));
+  const ranked = Object.entries(totals).sort((a, b) => b[1] - a[1]);
+  const top = ranked[0];
+  const runner = ranked[1];
+  return {
+    top:    { key: top[0],    score: top[1],    pct: maxTotal ? Math.round((top[1] / maxTotal) * 100) : 0 },
+    runner: { key: runner[0], score: runner[1], pct: maxTotal ? Math.round((runner[1] / maxTotal) * 100) : 0 }
+  };
+}
+
+function quizShowResults() {
+  const { top, runner } = quizScore();
+  const topN    = NEIGHBORHOODS[top.key];
+  const runnerN = NEIGHBORHOODS[runner.key];
+
+  document.getElementById('q_topIcon').textContent  = topN.icon;
+  document.getElementById('q_topName').textContent  = topN.name;
+  document.getElementById('q_topBlurb').textContent = topN.blurb;
+  document.getElementById('q_topMatch').textContent = 'Match Strength: ' + top.pct + '%';
+
+  document.getElementById('q_runnerName').textContent  = runnerN.name + '  ' + runnerN.icon;
+  document.getElementById('q_runnerBlurb').textContent = runnerN.blurb;
+  document.getElementById('q_runnerMatch').textContent = 'Match Strength: ' + runner.pct + '%';
+
+  document.getElementById('q_intake').style.display = 'none';
+  document.getElementById('q_results').style.display = 'block';
+  document.getElementById('q_results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function quizInit() {
+  document.querySelectorAll('.radio-group[data-qidx] input[type="radio"]').forEach(r => {
+    r.addEventListener('change', () => {
+      const qIdx = parseInt(r.closest('.radio-group').dataset.qidx);
+      quizState.answers[qIdx] = parseInt(r.value);
+      document.getElementById('q_next').disabled = false;
+    });
+  });
+
+  document.getElementById('q_prev').addEventListener('click', () => {
+    if (quizState.current > 0) {
+      quizState.current--;
+      quizShow(quizState.current);
+    }
+  });
+
+  document.getElementById('q_next').addEventListener('click', () => {
+    if (quizState.answers[quizState.current] === null) return;
+    if (quizState.current < 5) {
+      quizState.current++;
+      quizShow(quizState.current);
+    } else {
+      quizShowResults();
+    }
+  });
+
+  document.getElementById('q_restart').addEventListener('click', () => {
+    quizState.current = 0;
+    quizState.answers = new Array(6).fill(null);
+    document.querySelectorAll('.quiz-q input[type="radio"]').forEach(r => { r.checked = false; });
+    document.getElementById('q_results').style.display = 'none';
+    document.getElementById('q_intake').style.display = 'block';
+    quizShow(0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+quizInit();
+
+// ═══════════════════════ CLOSING COST ESTIMATOR ═══════════════════════
+// Nevada / Clark County conventions:
+//   SELLER typically pays: commission, owner's title insurance, transfer tax, half escrow
+//   BUYER typically pays: loan origination, appraisal, inspection, lender's title, half escrow, prepaids
+
+document.querySelectorAll('.cc-side-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const side = btn.dataset.side;
+    document.querySelectorAll('.cc-side-btn').forEach(b => {
+      const on = b === btn;
+      b.classList.toggle('active', on);
+      if (on) {
+        b.style.background = 'linear-gradient(135deg,var(--gold-dim),var(--gold))';
+        b.style.color = 'var(--forest)';
+        b.style.fontWeight = '600';
+      } else {
+        b.style.background = 'transparent';
+        b.style.color = 'var(--cream-dim)';
+        b.style.fontWeight = '500';
+      }
+    });
+    document.querySelectorAll('.cc-panel').forEach(p => {
+      p.style.display = (p.dataset.side === side) ? 'block' : 'none';
+    });
+  });
+});
+
+function renderBreakdown(containerId, items) {
+  const el = document.getElementById(containerId);
+  const fmt = (n) => '$' + Math.round(n).toLocaleString();
+  el.innerHTML = items.map(it => `
+    <div style="display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(201,168,76,0.08);font-size:0.88rem;">
+      <span style="color:var(--cream-dim);">${it.label}</span>
+      <span style="color:var(--gold-light);font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;">${fmt(it.amount)}</span>
+    </div>
+  `).join('');
+}
+
+function calculateClosingBuyer() {
+  const v = (id) => parseFloat(document.getElementById(id).value) || 0;
+  const price    = v('cb_price');
+  const downPct  = v('cb_downPct') / 100;
+  const loanType = document.getElementById('cb_loanType').value;
+  const rate     = v('cb_rate') / 100;
+  const origPct  = v('cb_origPct') / 100;
+  const hoaTr    = v('cb_hoaTransfer');
+
+  const downAmt = price * downPct;
+  const loanAmt = (loanType === 'cash') ? 0 : price - downAmt;
+
+  // Line items
+  const origination   = loanAmt * origPct;
+  const appraisal     = (loanType === 'cash') ? 0 : 600;
+  const creditReport  = (loanType === 'cash') ? 0 : 50;
+  const inspection    = 500;
+  const lenderTitle   = (loanType === 'cash') ? 0 : loanAmt * 0.002; // 0.2% of loan
+  const escrowHalf    = 500; // buyer's half of escrow fee
+  const recording     = 300;
+  const prepaidInt    = (loanType === 'cash') ? 0 : (loanAmt * rate / 360) * 15; // 15 days
+  const prepaidTax    = (price * 0.0065 / 12) * 2;  // 2 months property tax (NV avg)
+  const prepaidIns    = (1400 / 12) * 2 + 1400; // 2 months + 12 months paid at close
+  const recordFees    = 150;
+  const processing    = (loanType === 'cash') ? 0 : 400;
+
+  // FHA/VA funding fees
+  let fundingFee = 0;
+  if (loanType === 'fha') fundingFee = loanAmt * 0.0175;
+  if (loanType === 'va')  fundingFee = loanAmt * 0.023;
+
+  const items = [
+    { label: 'Loan Origination',        amount: origination },
+    { label: 'Appraisal',               amount: appraisal },
+    { label: 'Credit Report',           amount: creditReport },
+    { label: 'Home Inspection',         amount: inspection },
+    { label: "Lender's Title Insurance", amount: lenderTitle },
+    { label: 'Escrow Fee (buyer half)', amount: escrowHalf },
+    { label: 'Loan Processing',         amount: processing },
+    { label: 'Recording Fees',          amount: recordFees + recording },
+    { label: 'Prepaid Interest (15 days)', amount: prepaidInt },
+    { label: 'Prepaid Property Tax (2 mo)', amount: prepaidTax },
+    { label: 'Prepaid Insurance (14 mo)', amount: prepaidIns },
+    { label: 'HOA Transfer',            amount: hoaTr }
+  ];
+  if (fundingFee > 0) {
+    items.splice(1, 0, { label: loanType.toUpperCase() + ' Funding Fee', amount: fundingFee });
+  }
+
+  const totalClosing = items.reduce((s, it) => s + it.amount, 0);
+  const cashToClose  = downAmt + totalClosing;
+
+  const fmt = (n) => '$' + Math.round(n).toLocaleString();
+  document.getElementById('cb_total').textContent        = fmt(cashToClose);
+  document.getElementById('cb_down').textContent         = fmt(downAmt);
+  document.getElementById('cb_closingTotal').textContent = fmt(totalClosing);
+  document.getElementById('cb_totalSub').textContent     = 'Down ' + fmt(downAmt) + ' + Closing ' + fmt(totalClosing);
+  renderBreakdown('cb_breakdown', items);
+
+  document.getElementById('cb_results').style.display = 'block';
+  document.getElementById('cb_results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function calculateClosingSeller() {
+  const v = (id) => parseFloat(document.getElementById(id).value) || 0;
+  const price       = v('cs_price');
+  const mortgage    = v('cs_mortgage');
+  const commPct     = v('cs_commPct') / 100;
+  const concessions = v('cs_concessions');
+  const warranty    = v('cs_warranty');
+  const hoaDocs     = v('cs_hoa');
+
+  // NV seller-side line items
+  const commission    = price * commPct;
+  const ownerTitle    = price * 0.0035; // 0.35% of sale
+  const transferTax   = price * 0.0051; // Clark County RPTT ~$5.10/$1000
+  const escrowHalf    = 500;            // seller's half
+  const recording     = 200;
+  const attorneyFee   = 0;              // optional, can be added
+  const payoffFee     = 100;            // lender reconveyance / recording
+
+  const items = [
+    { label: 'Real Estate Commission',   amount: commission },
+    { label: "Owner's Title Insurance",  amount: ownerTitle },
+    { label: 'Transfer Tax (RPTT)',      amount: transferTax },
+    { label: 'Escrow Fee (seller half)', amount: escrowHalf },
+    { label: 'Recording Fees',           amount: recording },
+    { label: 'Loan Payoff Processing',   amount: payoffFee },
+    { label: 'Home Warranty',            amount: warranty },
+    { label: 'HOA Docs / Transfer',      amount: hoaDocs },
+    { label: 'Seller Concessions',       amount: concessions }
+  ].filter(it => it.amount > 0 || ['Real Estate Commission','Transfer Tax (RPTT)',"Owner's Title Insurance"].includes(it.label));
+
+  const totalCosts = items.reduce((s, it) => s + it.amount, 0);
+  const netToSeller = price - mortgage - totalCosts;
+
+  const fmt = (n) => (n < 0 ? '-$' : '$') + Math.abs(Math.round(n)).toLocaleString();
+  document.getElementById('cs_net').textContent    = fmt(netToSeller);
+  document.getElementById('cs_total').textContent  = fmt(totalCosts);
+  document.getElementById('cs_payoff').textContent = fmt(mortgage);
+  document.getElementById('cs_netSub').textContent = 'Sale ' + fmt(price) + ' − Payoff ' + fmt(mortgage) + ' − Costs ' + fmt(totalCosts);
+
+  const netEl = document.getElementById('cs_net');
+  netEl.style.color = netToSeller >= 0 ? 'var(--gold-light)' : '#c0392b';
+
+  renderBreakdown('cs_breakdown', items);
+
+  document.getElementById('cs_results').style.display = 'block';
+  document.getElementById('cs_results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ═══════════════════════ RENT VS BUY CALCULATOR ═══════════════════════
+function calculateRentBuy() {
+  const v = (id) => parseFloat(document.getElementById(id).value) || 0;
+  const price       = v('rb_price');
+  const downPct     = v('rb_downPct') / 100;
+  const rate        = v('rb_rate') / 100;
+  const term        = v('rb_term');
+  const taxPct      = v('rb_taxPct') / 100;
+  const insAnn      = v('rb_ins');
+  const hoaMo       = v('rb_hoa');
+  const maintPct    = v('rb_maintPct') / 100;
+  const closingPct  = v('rb_closingPct') / 100;
+  const apprPct     = v('rb_apprPct') / 100;
+  const rent        = v('rb_rent');
+  const rentInc     = v('rb_rentInc') / 100;
+  const renterIns   = v('rb_renterIns');
+  const invReturn   = v('rb_invReturn') / 100;
+  const years       = Math.max(1, Math.round(v('rb_years')));
+  const saleCostPct = v('rb_saleCostPct') / 100;
+
+  // Mortgage setup
+  const downAmt       = price * downPct;
+  const closingAmt    = price * closingPct;
+  const loanAmt       = price - downAmt;
+  const upfrontBuyer  = downAmt + closingAmt;
+  const n             = term * 12;
+  const r             = rate / 12;
+  let pi = 0;
+  if (loanAmt > 0 && r > 0 && n > 0) {
+    pi = loanAmt * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+  } else if (r === 0 && n > 0) {
+    pi = loanAmt / n;
+  }
+
+  // Year-by-year simulation
+  let balance = loanAmt;
+  let homeValue = price;
+  let currRent = rent;
+  let ownCumulative = upfrontBuyer;  // include upfront in buyer cost
+  let rentCumulative = 0;
+  let breakEven = null;
+
+  let year1OwnMonthly = 0;
+
+  // Track annual cumulative net position at each year
+  for (let y = 1; y <= years; y++) {
+    // Buyer annual costs
+    let yearPI = 0;
+    for (let m = 0; m < 12; m++) {
+      const interestM = balance * r;
+      const principalM = Math.max(0, pi - interestM);
+      balance = Math.max(0, balance - principalM);
+      yearPI += pi;
+    }
+    const yearTax   = homeValue * taxPct;
+    const yearIns   = insAnn;
+    const yearHOA   = hoaMo * 12;
+    const yearMaint = homeValue * maintPct;
+    const yearOwnCost = yearPI + yearTax + yearIns + yearHOA + yearMaint;
+    if (y === 1) year1OwnMonthly = yearOwnCost / 12;
+    ownCumulative += yearOwnCost;
+    homeValue *= (1 + apprPct);
+
+    // Renter annual costs
+    const yearRent = currRent * 12 + renterIns * 12;
+    rentCumulative += yearRent;
+    currRent *= (1 + rentInc);
+
+    // Net position comparison at end of year y:
+    // Buyer: could sell home, net = homeValue × (1 - saleCost) - balance - ownCumulative + upfront
+    //   Actually total buyer outlay = ownCumulative, assets = sale proceeds
+    //   Net position (if sold now) = saleProceeds - ownCumulative
+    const saleProceeds = homeValue * (1 - saleCostPct) - balance;
+    const buyerNet = saleProceeds - ownCumulative;
+
+    // Renter: portfolio grew by invReturn compounded each year
+    //   Initial invest = upfrontBuyer (money they didn't spend)
+    const yearsElapsed = y;
+    const portfolioValue = upfrontBuyer * Math.pow(1 + invReturn, yearsElapsed);
+    const renterNet = portfolioValue - rentCumulative - upfrontBuyer;
+    //   renter "net" = portfolio gain minus rent paid
+    //   (upfrontBuyer was already cash on hand, so gain = portfolio - initial)
+
+    if (breakEven === null && buyerNet >= renterNet) {
+      breakEven = y;
+    }
+  }
+
+  // Final values at year = years
+  const finalHomeValue = homeValue;
+  const finalSaleProceeds = finalHomeValue * (1 - saleCostPct) - balance;
+  const finalBuyerNet = finalSaleProceeds - ownCumulative;
+  const equity = finalHomeValue - balance;
+
+  const finalPortfolio = upfrontBuyer * Math.pow(1 + invReturn, years);
+  const finalRenterNet = finalPortfolio - rentCumulative - upfrontBuyer;
+
+  // Display
+  const fmt = (n) => (n < 0 ? '-$' : '$') + Math.abs(Math.round(n)).toLocaleString();
+
+  const verdictEl = document.getElementById('rb_verdict');
+  const verdictSub = document.getElementById('rb_verdictSub');
+
+  if (finalBuyerNet > finalRenterNet) {
+    verdictEl.textContent = '🏡 Buy Wins';
+    verdictEl.style.color = '#27ae60';
+    verdictSub.textContent = 'By ' + fmt(finalBuyerNet - finalRenterNet) + ' over ' + years + ' years';
+  } else if (finalRenterNet > finalBuyerNet) {
+    verdictEl.textContent = '🏢 Rent Wins';
+    verdictEl.style.color = 'var(--gold-light)';
+    verdictSub.textContent = 'By ' + fmt(finalRenterNet - finalBuyerNet) + ' over ' + years + ' years';
+  } else {
+    verdictEl.textContent = '⚖️ It\'s a Wash';
+    verdictEl.style.color = 'var(--gold-light)';
+    verdictSub.textContent = 'Essentially even at year ' + years;
+  }
+
+  const beEl = document.getElementById('rb_breakEven');
+  const beSub = document.getElementById('rb_breakEvenSub');
+  if (breakEven !== null && breakEven <= years) {
+    beEl.textContent = 'Year ' + breakEven;
+    beSub.textContent = 'Buying pulls ahead';
+  } else if (finalBuyerNet >= finalRenterNet) {
+    beEl.textContent = 'Year 1';
+    beSub.textContent = 'Buying wins from the start';
+  } else {
+    beEl.textContent = '> ' + years + ' yrs';
+    beSub.textContent = 'Not reached in this window';
+  }
+
+  document.getElementById('rb_buyerNet').textContent  = fmt(finalBuyerNet);
+  document.getElementById('rb_renterNet').textContent = fmt(finalRenterNet);
+  document.getElementById('rb_buyerNetSub').textContent  = 'If sold at year ' + years;
+  document.getElementById('rb_renterNetSub').textContent = 'Portfolio minus rent paid';
+  document.getElementById('rb_equity').textContent    = fmt(equity);
+  document.getElementById('rb_homeValue').textContent = fmt(finalHomeValue);
+  document.getElementById('rb_rentPaid').textContent  = fmt(rentCumulative);
+  document.getElementById('rb_monthlyOwn').textContent = fmt(year1OwnMonthly);
+  document.getElementById('rb_monthlyOwnSub').textContent = 'vs. rent: ' + fmt(rent + renterIns);
+
+  // Color code
+  document.getElementById('rb_buyerNet').style.color  = finalBuyerNet  >= 0 ? '#27ae60' : '#c0392b';
+  document.getElementById('rb_renterNet').style.color = finalRenterNet >= 0 ? '#27ae60' : '#c0392b';
+
+  document.getElementById('rb_results').style.display = 'block';
+  document.getElementById('rb_results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ═══════════════════════ COMING SOON — "NOTIFY ME" FORMS ═══════════════════════
+document.querySelectorAll('form.soon-notify').forEach(form => {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = form.querySelector('input[type="email"]').value.trim();
+    const tool  = form.dataset.soonTool || 'a Key2Tee tool';
+    if (!email) return;
+
+    const btn = form.querySelector('button');
+    const original = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    try {
+      const fd = new FormData();
+      fd.append('access_key', WEB3FORMS_KEY);
+      fd.append('subject', 'Key2Tee Notify Request — ' + tool);
+      fd.append('from_name', 'Key2Tee Site');
+      fd.append('email', email);
+      fd.append('tool', tool);
+      fd.append('message', 'New "Notify Me" request for: ' + tool + '\nEmail: ' + email);
+      fd.append('cc', OFFICE_EMAIL_CC);
+
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd });
+      if (res.ok) {
+        form.innerHTML = '<div style="text-align:center;color:var(--gold-light);padding:10px 0;">⛳ You\'re on the list — we\'ll ping you the moment it drops.</div>';
+        toast('✓ Added to notify list');
+      } else {
+        throw new Error('submit failed');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = original;
+      toast('Couldn\'t send — email brentethomas81@gmail.com', 4000);
+    }
+  });
+});
 </script>
 
 </body>
