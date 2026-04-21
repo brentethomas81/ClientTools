@@ -1448,11 +1448,11 @@
         <span class="cat-chip">Buy</span>
       </a>
 
-      <!-- 12. Golf Community Finder (Soon) -->
-      <a class="tool-card soon" data-tool="golf" data-cat="lifestyle">
+      <!-- 12. Golf Community Finder -->
+      <a class="tool-card" data-tool="golf" data-cat="lifestyle">
         <span class="icon">⛳</span>
         <div class="name">Golf Community Finder</div>
-        <div class="desc">Filter Vegas & Henderson golf communities by HOA, course, and price band.</div>
+        <div class="desc">Answer 7 questions — we'll match you to your ideal Vegas golf community.</div>
         <span class="cat-chip">Lifestyle</span>
       </a>
     </div>
@@ -2770,19 +2770,194 @@
     </p>
   </section>
 
+  <!-- ═══════════════════ GOLF COMMUNITY FINDER (QUIZ) ═══════════════════ -->
   <section class="tab-panel" data-panel="golf" role="tabpanel">
     <button class="back-to-tools" data-goto="landing">← All Tools</button>
-    <div class="soon-hero">
-      <span class="soon-icon">⛳</span>
-      <span class="soon-chip-lg">Coming Soon</span>
-      <h2>Golf Community Finder</h2>
-      <p>Filter every golf community in Vegas &amp; Henderson by HOA dues, course type (private, resort, semi-private), price band, and proximity to the first tee. Because your slice shouldn't be a commute.</p>
-      <form class="soon-notify" data-soon-tool="Golf Community Finder">
-        <label>First in line when it launches</label>
-        <input type="email" placeholder="you@example.com" required>
-        <button type="submit" class="btn">Notify Me</button>
-      </form>
+
+    <div class="tagline">
+      <h2>Find Your Golf Community</h2>
+      <p>Seven questions. Sixty seconds. The course &amp; club that actually fits your game, your budget, and your lifestyle.</p>
     </div>
+
+    <div id="g_intake">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <div style="color:var(--gold);font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;">Question <span id="g_current">1</span> of 7</div>
+        <div style="flex:1;height:4px;background:rgba(201,168,76,0.15);border-radius:2px;overflow:hidden;">
+          <div id="g_bar" style="height:100%;width:14.28%;background:linear-gradient(90deg,var(--gold-dim),var(--gold));transition:width 0.3s;"></div>
+        </div>
+      </div>
+
+      <!-- Q1 — Course Style -->
+      <div class="quiz-q" data-gq="0" style="display:block;">
+        <div class="section-header" style="margin-top:6px;">
+          <span class="badge">1</span>
+          <div><h3>What's your ideal course style?</h3><small>How you want the course to feel under your feet.</small></div>
+        </div>
+        <div class="radio-group" data-gqidx="0">
+          <label class="radio-option"><input type="radio" name="gq0" value="0"><span class="radio-dot"></span>Mountain/desert championship — dramatic elevation, red-rock backdrop</label>
+          <label class="radio-option"><input type="radio" name="gq0" value="1"><span class="radio-dot"></span>Championship pedigree — the kind of course pros have played</label>
+          <label class="radio-option"><input type="radio" name="gq0" value="2"><span class="radio-dot"></span>Established parkland — mature trees, classic country-club feel</label>
+          <label class="radio-option"><input type="radio" name="gq0" value="3"><span class="radio-dot"></span>Resort-style with big views — water, lakes, or Strip skyline</label>
+        </div>
+      </div>
+
+      <!-- Q2 — Budget -->
+      <div class="quiz-q" data-gq="1" style="display:none;">
+        <div class="section-header" style="margin-top:6px;">
+          <span class="badge">2</span>
+          <div><h3>What's your home budget?</h3><small>Range is fine. Each community has entry and estate-level homes.</small></div>
+        </div>
+        <div class="radio-group" data-gqidx="1">
+          <label class="radio-option"><input type="radio" name="gq1" value="0"><span class="radio-dot"></span>Under $1.5M</label>
+          <label class="radio-option"><input type="radio" name="gq1" value="1"><span class="radio-dot"></span>$1.5M – $3M</label>
+          <label class="radio-option"><input type="radio" name="gq1" value="2"><span class="radio-dot"></span>$3M – $6M</label>
+          <label class="radio-option"><input type="radio" name="gq1" value="3"><span class="radio-dot"></span>$6M and up</label>
+        </div>
+      </div>
+
+      <!-- Q3 — Membership -->
+      <div class="quiz-q" data-gq="2" style="display:none;">
+        <div class="section-header" style="margin-top:6px;">
+          <span class="badge">3</span>
+          <div><h3>What kind of membership do you want?</h3><small>How private, how social, how flexible.</small></div>
+        </div>
+        <div class="radio-group" data-gqidx="2">
+          <label class="radio-option"><input type="radio" name="gq2" value="0"><span class="radio-dot"></span>Exclusive private equity — members only, waiting list territory</label>
+          <label class="radio-option"><input type="radio" name="gq2" value="1"><span class="radio-dot"></span>Private with strong social amenities — club dining, tennis, events</label>
+          <label class="radio-option"><input type="radio" name="gq2" value="2"><span class="radio-dot"></span>Semi-private — some public tee times still available</label>
+          <label class="radio-option"><input type="radio" name="gq2" value="3"><span class="radio-dot"></span>Resort-style / flexible — daily-fee access, no membership headaches</label>
+        </div>
+      </div>
+
+      <!-- Q4 — Community Vibe -->
+      <div class="quiz-q" data-gq="3" style="display:none;">
+        <div class="section-header" style="margin-top:6px;">
+          <span class="badge">4</span>
+          <div><h3>What's the community vibe?</h3><small>How much you want your neighbors to notice.</small></div>
+        </div>
+        <div class="radio-group" data-gqidx="3">
+          <label class="radio-option"><input type="radio" name="gq3" value="0"><span class="radio-dot"></span>Ultra-private, celebrity-quiet — you won't see paparazzi here</label>
+          <label class="radio-option"><input type="radio" name="gq3" value="1"><span class="radio-dot"></span>Active social scene — events, tennis teams, friendly clubhouse</label>
+          <label class="radio-option"><input type="radio" name="gq3" value="2"><span class="radio-dot"></span>Tournament pedigree — I want to play where the pros play</label>
+          <label class="radio-option"><input type="radio" name="gq3" value="3"><span class="radio-dot"></span>Ultra-modern luxury — contemporary estates, new money</label>
+        </div>
+      </div>
+
+      <!-- Q5 — Views -->
+      <div class="quiz-q" data-gq="4" style="display:none;">
+        <div class="section-header" style="margin-top:6px;">
+          <span class="badge">5</span>
+          <div><h3>What view do you want from the back patio?</h3><small>Because you'll stare at it every morning.</small></div>
+        </div>
+        <div class="radio-group" data-gqidx="4">
+          <label class="radio-option"><input type="radio" name="gq4" value="0"><span class="radio-dot"></span>Red Rock Canyon or mountains</label>
+          <label class="radio-option"><input type="radio" name="gq4" value="1"><span class="radio-dot"></span>Strip skyline — Vegas lights in the distance</label>
+          <label class="radio-option"><input type="radio" name="gq4" value="2"><span class="radio-dot"></span>Water — lake, marina, or shoreline</label>
+          <label class="radio-option"><input type="radio" name="gq4" value="3"><span class="radio-dot"></span>Lush fairways — mature trees, manicured greens</label>
+        </div>
+      </div>
+
+      <!-- Q6 — Location -->
+      <div class="quiz-q" data-gq="5" style="display:none;">
+        <div class="section-header" style="margin-top:6px;">
+          <span class="badge">6</span>
+          <div><h3>Which side of the valley?</h3><small>Summerlin, Henderson, or Southwest?</small></div>
+        </div>
+        <div class="radio-group" data-gqidx="5">
+          <label class="radio-option"><input type="radio" name="gq5" value="0"><span class="radio-dot"></span>Henderson (east valley) — Green Valley, Anthem, MacDonald Ridge</label>
+          <label class="radio-option"><input type="radio" name="gq5" value="1"><span class="radio-dot"></span>Summerlin (west valley) — Red Rock views, master-planned</label>
+          <label class="radio-option"><input type="radio" name="gq5" value="2"><span class="radio-dot"></span>Southwest Vegas — Southern Highlands, Spanish Trail area</label>
+          <label class="radio-option"><input type="radio" name="gq5" value="3"><span class="radio-dot"></span>No preference — wherever fits best</label>
+        </div>
+      </div>
+
+      <!-- Q7 — Sealer -->
+      <div class="quiz-q" data-gq="6" style="display:none;">
+        <div class="section-header" style="margin-top:6px;">
+          <span class="badge">7</span>
+          <div><h3>What seals the deal for you?</h3><small>The thing you can't compromise on.</small></div>
+        </div>
+        <div class="radio-group" data-gqidx="6">
+          <label class="radio-option"><input type="radio" name="gq6" value="0"><span class="radio-dot"></span>Architect pedigree — Nicklaus, Palmer, RTJ, PGA-designed</label>
+          <label class="radio-option"><input type="radio" name="gq6" value="1"><span class="radio-dot"></span>Full amenities — clubhouse, spa, tennis, dining, fitness</label>
+          <label class="radio-option"><input type="radio" name="gq6" value="2"><span class="radio-dot"></span>Privacy &amp; security — guarded gates, minimal through-traffic</label>
+          <label class="radio-option"><input type="radio" name="gq6" value="3"><span class="radio-dot"></span>Strip lifestyle access — close to dining, shows, airport</label>
+        </div>
+      </div>
+
+      <div class="action-bar" style="margin-top: 22px;">
+        <button type="button" class="btn btn-secondary" id="g_prev" disabled>← Back</button>
+        <button type="button" class="btn" id="g_next" style="background:linear-gradient(135deg,var(--gold-dim),var(--gold));color:var(--forest);" disabled>Next →</button>
+      </div>
+    </div>
+
+    <div id="g_results" style="display:none;">
+      <div class="soon-hero" style="padding:34px 18px 26px;">
+        <span class="soon-icon">⛳</span>
+        <div style="font-size:0.65rem;letter-spacing:2.5px;color:var(--gold);text-transform:uppercase;margin-bottom:6px;">Your Best Course Fit</div>
+        <h2 id="g_topName" style="font-size:2rem;">—</h2>
+        <div id="g_topCourse" style="font-family:'Jost',sans-serif;font-size:0.95rem;color:var(--cream-dim);margin-top:-4px;margin-bottom:14px;letter-spacing:0.5px;">—</div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:520px;margin:6px auto 18px;">
+          <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(201,168,76,0.2);border-radius:6px;padding:10px 8px;">
+            <div style="font-size:0.58rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;margin-bottom:3px;">Architect</div>
+            <div id="g_topArchitect" style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:var(--gold-light);">—</div>
+          </div>
+          <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(201,168,76,0.2);border-radius:6px;padding:10px 8px;">
+            <div style="font-size:0.58rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;margin-bottom:3px;">HOA Range</div>
+            <div id="g_topHoa" style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:var(--gold-light);">—</div>
+          </div>
+          <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(201,168,76,0.2);border-radius:6px;padding:10px 8px;">
+            <div style="font-size:0.58rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;margin-bottom:3px;">Home Prices</div>
+            <div id="g_topPrice" style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:var(--gold-light);">—</div>
+          </div>
+          <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(201,168,76,0.2);border-radius:6px;padding:10px 8px;">
+            <div style="font-size:0.58rem;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;margin-bottom:3px;">Membership</div>
+            <div id="g_topMember" style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:var(--gold-light);">—</div>
+          </div>
+        </div>
+
+        <p id="g_topBlurb" style="max-width:560px;">—</p>
+        <div style="font-family:'Jost',sans-serif;font-size:0.72rem;color:var(--gold);letter-spacing:1.5px;margin-top:10px;"><strong>Signature:</strong> <span id="g_topSignature" style="color:var(--cream-dim);font-weight:400;letter-spacing:0.3px;">—</span></div>
+        <div style="font-size:0.62rem;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-top:14px;" id="g_topMatch">Match: —</div>
+
+        <a id="g_topHomes" href="https://key2tee.realgeeks.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:18px;background:var(--gold);color:var(--forest);text-decoration:none;font-weight:600;font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;padding:12px 22px;border-radius:6px;">
+          🔍 View Homes in This Community →
+        </a>
+      </div>
+
+      <div class="section-header" style="margin-top:6px;">
+        <span class="badge">2</span>
+        <div><h3>Runner-Up</h3><small id="g_runnerMatch">Also worth a look</small></div>
+      </div>
+      <div style="background:rgba(0,0,0,0.25);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:16px 18px;margin-bottom:14px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold-light);margin-bottom:2px;" id="g_runnerName">—</div>
+        <div style="font-size:0.85rem;color:var(--gold);letter-spacing:0.5px;margin-bottom:8px;" id="g_runnerCourse">—</div>
+        <div style="color:var(--cream-dim);font-size:0.88rem;line-height:1.5;margin-bottom:10px;" id="g_runnerBlurb">—</div>
+        <a id="g_runnerHomes" href="https://key2tee.realgeeks.com/" target="_blank" rel="noopener" style="color:var(--gold);font-size:0.72rem;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;">🔍 View Homes →</a>
+      </div>
+
+      <div class="submit-hero" style="margin-top: 22px;">
+        <h4>Ready to Tour?</h4>
+        <p>I've walked every one of these fairways and know every clubhouse. Let's book a showing and see which one feels like home.</p>
+        <a href="https://calendly.com/key2teerealestate/30min" target="_blank" class="btn-hero" style="text-decoration:none;display:flex;">
+          <span class="big-icon">📅</span> Book a Call with Brent
+        </a>
+        <div class="recipients">
+          <strong>Prefer a text?</strong>
+          <a href="tel:7023191432" style="color:var(--gold);text-decoration:none;">702-319-1432</a>
+        </div>
+      </div>
+
+      <div class="action-bar" style="margin-top: 14px;">
+        <button type="button" class="btn btn-secondary" id="g_restart">↻ Retake the Quiz</button>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Key2Tee · Brent Thomas · Douglas Elliman Real Estate · License S.0186600<br>
+      <a href="tel:7023191432" style="color:var(--gold-dim);text-decoration:none;">702-319-1432</a> &nbsp;|&nbsp; Las Vegas, NV
+    </p>
   </section>
 
   <!-- ═══════════════════ RENT VS. BUY CALCULATOR ═══════════════════ -->
@@ -4334,6 +4509,259 @@ function quizInit() {
   });
 }
 quizInit();
+
+// ═══════════════════════ GOLF COMMUNITY FINDER (QUIZ) ═══════════════════════
+// NOTE: Each community's "homes" URL points to the main RealGeeks site as a placeholder.
+// Replace with neighborhood-filtered deep links once Brent has those URLs.
+
+const GOLF_COMMUNITIES = {
+  macdonald: {
+    name: 'MacDonald Highlands',
+    course: 'DragonRidge Country Club',
+    architect: 'Jay Morrish & David Druzisky · 2000',
+    hoa: '$350–$550 /mo',
+    price: '$2M–$20M+',
+    member: 'Private w/ equity + non-equity',
+    signature: 'Panoramic Strip + Red Rock views, 7,200-yard championship layout.',
+    blurb: "Henderson's ultra-luxury crown. A gated estate community where DragonRidge plays right into your back patio and the Strip glitters in the distance. Celebrity-level privacy, modern architecture, and some of the most dramatic sunsets in the valley.",
+    homes: 'https://key2tee.realgeeks.com/'
+  },
+  southern: {
+    name: 'Southern Highlands',
+    course: 'Southern Highlands Golf Club',
+    architect: 'Robert Trent Jones Sr. & Jr. · 2000',
+    hoa: '$450–$650 /mo',
+    price: '$2M–$15M+',
+    member: 'Private equity — invite-only feel',
+    signature: "One of the most exclusive private clubs in the Southwest — members only, no exceptions.",
+    blurb: "The discreet old-money play. Southern Highlands is where Vegas's quiet wealth lives — RTJ-designed course, mature landscaping, and a membership list that reads like a Forbes 400. If you want the most private golf experience in the valley, this is it.",
+    homes: 'https://key2tee.realgeeks.com/'
+  },
+  anthem: {
+    name: 'Anthem Country Club',
+    course: 'Anthem CC Course',
+    architect: 'Hale Irwin · 1999',
+    hoa: '$150–$250 /mo + CC dues',
+    price: '$800K–$3M',
+    member: 'Private w/ equity + social tiers',
+    signature: "Hale Irwin's early design genius — strategic, playable, and actually fun for mid-handicappers.",
+    blurb: "Henderson's most active social club. Full amenities — tennis, pool, dining, fitness — and an event calendar that keeps the clubhouse humming. Strong mix of active retirees, young families, and snowbirds. Great golf without the $5M entry price.",
+    homes: 'https://key2tee.realgeeks.com/'
+  },
+  redrock: {
+    name: 'Red Rock Country Club (Summerlin)',
+    course: 'Arroyo + Mountain Courses',
+    architect: 'Arnold Palmer Design · 2003',
+    hoa: '$250–$400 /mo + CC dues',
+    price: '$1M–$5M+',
+    member: 'Private equity',
+    signature: 'Two championship 18s with Red Rock Canyon as the backdrop. 36 holes in one club.',
+    blurb: "Summerlin's flagship golf address. Two distinct Palmer courses — the Mountain goes bold and desert-rugged, the Arroyo plays tree-lined and strategic. Strong family vibe, stellar clubhouse, and the best canyon views in residential Vegas.",
+    homes: 'https://key2tee.realgeeks.com/'
+  },
+  spanish: {
+    name: 'Spanish Trail Country Club',
+    course: 'Spanish Trail CC · 27 holes',
+    architect: 'Robert Trent Jones Jr. · 1985',
+    hoa: '$200–$350 /mo + CC dues',
+    price: '$700K–$4M',
+    member: 'Private equity',
+    signature: "Vegas's original RTJ Jr. course — four decades of mature trees and established routing.",
+    blurb: "The classic country club play. Spanish Trail is where established Vegas families live — the trees are grown in, the traditions are set, and the vibe is old-school private club. 27 holes, three distinct nines, and a clubhouse that feels like Palm Springs circa 1989 (in the best way).",
+    homes: 'https://key2tee.realgeeks.com/'
+  },
+  ridges: {
+    name: 'The Ridges (Summerlin)',
+    course: "Bear's Best Las Vegas",
+    architect: 'Jack Nicklaus · 2001',
+    hoa: '$300–$500 /mo',
+    price: '$1.5M–$15M+',
+    member: 'Semi-private / resort access',
+    signature: "18 holes recreated from Nicklaus's greatest global designs — play Muirfield one day, Castle Pines the next.",
+    blurb: "Summerlin's quietest luxury. Guard-gated, contemporary estates, and a Nicklaus course that's basically a greatest-hits tour of his career. If you want privacy, Red Rock views, and a course that never gets old, this is the sweet spot.",
+    homes: 'https://key2tee.realgeeks.com/'
+  },
+  tpc: {
+    name: 'TPC Summerlin',
+    course: 'TPC Summerlin (PGA Tour Host)',
+    architect: 'Bobby Weed + Fuzzy Zoeller · 1991',
+    hoa: '$150–$300 /mo + CC dues',
+    price: '$1M–$4M',
+    member: 'Private equity',
+    signature: 'Hosts the Shriners Children\'s Open every year — play where the PGA Tour plays.',
+    blurb: "Serious golf. TPC Summerlin is a PGA Tour host track — immaculate conditioning, strategic design, and the kind of pedigree that makes your buddies go quiet on the first tee. Less social calendar, more scorecard. Perfect if golf is the reason you're moving, not just a bonus.",
+    homes: 'https://key2tee.realgeeks.com/'
+  },
+  canyongate: {
+    name: 'Canyon Gate Country Club',
+    course: 'Canyon Gate CC',
+    architect: 'Ted Robinson · 1989',
+    hoa: '$200–$300 /mo + CC dues',
+    price: '$700K–$2.5M',
+    member: 'Private equity',
+    signature: "Mature trees, water features on 10 holes, and one of west Vegas's original gated communities.",
+    blurb: "The value luxury play. Canyon Gate was one of Summerlin's first private golf communities — established trees, a friendly membership, and entry pricing that makes a gated golf lifestyle actually attainable. Great starter country club or downsize destination.",
+    homes: 'https://key2tee.realgeeks.com/'
+  },
+  lakelv: {
+    name: 'Lake Las Vegas',
+    course: 'Reflection Bay Golf Club',
+    architect: 'Jack Nicklaus · 1998',
+    hoa: '$200–$500 /mo',
+    price: '$600K–$10M+',
+    member: 'Resort / flexible daily-fee',
+    signature: "The only Nicklaus Signature course built on a private lake in the Southwest — 1.5 miles of shoreline.",
+    blurb: "The resort-at-home play. A 320-acre private lake, Mediterranean village feel, marina access, and a Nicklaus course that plays right along the water. If you want the feel of a permanent vacation — boat in the morning, golf in the afternoon, waterfront dining at night — this is it.",
+    homes: 'https://key2tee.realgeeks.com/'
+  }
+};
+
+const GOLF_SCORES = [
+  // Q1 — Course Style
+  [
+    { macdonald:4, ridges:4, redrock:3 },
+    { southern:5, tpc:5, redrock:2 },
+    { spanish:5, canyongate:4, anthem:3 },
+    { lakelv:5, macdonald:3, ridges:2 }
+  ],
+  // Q2 — Budget
+  [
+    { anthem:4, canyongate:4, spanish:3, lakelv:3, tpc:2 },
+    { redrock:4, spanish:4, tpc:4, anthem:3, ridges:3, lakelv:3, canyongate:2 },
+    { macdonald:4, southern:3, ridges:4, redrock:4, lakelv:3 },
+    { macdonald:5, southern:5, ridges:5 }
+  ],
+  // Q3 — Membership
+  [
+    { southern:5, tpc:4, spanish:3 },
+    { redrock:4, anthem:4, canyongate:4, spanish:4 },
+    { ridges:4, lakelv:2 },
+    { lakelv:5, ridges:2, macdonald:2 }
+  ],
+  // Q4 — Community Vibe
+  [
+    { southern:5, macdonald:5 },
+    { anthem:5, redrock:4, spanish:3, canyongate:3 },
+    { tpc:5, southern:3 },
+    { ridges:5, macdonald:4 }
+  ],
+  // Q5 — Views
+  [
+    { redrock:5, ridges:4, tpc:3 },
+    { macdonald:5, spanish:2 },
+    { lakelv:5, southern:2 },
+    { spanish:5, canyongate:4, anthem:3 }
+  ],
+  // Q6 — Location
+  [
+    { macdonald:5, anthem:5, lakelv:5 },
+    { redrock:5, ridges:5, tpc:5, canyongate:5 },
+    { southern:5, spanish:5 },
+    { macdonald:1, southern:1, anthem:1, redrock:1, spanish:1, ridges:1, tpc:1, canyongate:1, lakelv:1 }
+  ],
+  // Q7 — Sealer
+  [
+    { southern:4, ridges:4, redrock:3, tpc:3, lakelv:3, spanish:3 },
+    { redrock:5, anthem:4, spanish:4, canyongate:3 },
+    { macdonald:5, southern:5, ridges:4 },
+    { macdonald:4, spanish:3 }
+  ]
+];
+
+const golfState = { current: 0, answers: new Array(7).fill(null) };
+
+function golfShow(idx) {
+  document.querySelectorAll('.quiz-q[data-gq]').forEach(q => {
+    q.style.display = (parseInt(q.dataset.gq) === idx) ? 'block' : 'none';
+  });
+  document.getElementById('g_current').textContent = idx + 1;
+  document.getElementById('g_bar').style.width = (((idx + 1) / 7) * 100) + '%';
+  document.getElementById('g_prev').disabled = (idx === 0);
+  const nextBtn = document.getElementById('g_next');
+  nextBtn.textContent = (idx === 6) ? 'See My Match →' : 'Next →';
+  nextBtn.disabled = (golfState.answers[idx] === null);
+}
+
+function golfScore() {
+  const totals = {};
+  Object.keys(GOLF_COMMUNITIES).forEach(k => { totals[k] = 0; });
+  golfState.answers.forEach((ans, q) => {
+    if (ans === null) return;
+    const scoreMap = GOLF_SCORES[q][ans] || {};
+    Object.entries(scoreMap).forEach(([k, v]) => { totals[k] = (totals[k] || 0) + v; });
+  });
+  const maxTotal = Math.max(...Object.values(totals));
+  const ranked = Object.entries(totals).sort((a, b) => b[1] - a[1]);
+  return {
+    top:    { key: ranked[0][0], score: ranked[0][1], pct: maxTotal ? Math.round((ranked[0][1] / maxTotal) * 100) : 0 },
+    runner: { key: ranked[1][0], score: ranked[1][1], pct: maxTotal ? Math.round((ranked[1][1] / maxTotal) * 100) : 0 }
+  };
+}
+
+function golfShowResults() {
+  const { top, runner } = golfScore();
+  const topC    = GOLF_COMMUNITIES[top.key];
+  const runnerC = GOLF_COMMUNITIES[runner.key];
+
+  document.getElementById('g_topName').textContent       = topC.name;
+  document.getElementById('g_topCourse').textContent     = topC.course;
+  document.getElementById('g_topArchitect').textContent  = topC.architect;
+  document.getElementById('g_topHoa').textContent        = topC.hoa;
+  document.getElementById('g_topPrice').textContent      = topC.price;
+  document.getElementById('g_topMember').textContent     = topC.member;
+  document.getElementById('g_topBlurb').textContent      = topC.blurb;
+  document.getElementById('g_topSignature').textContent  = topC.signature;
+  document.getElementById('g_topMatch').textContent      = 'Match Strength: ' + top.pct + '%';
+  document.getElementById('g_topHomes').href             = topC.homes;
+
+  document.getElementById('g_runnerName').textContent    = runnerC.name;
+  document.getElementById('g_runnerCourse').textContent  = runnerC.course + ' · ' + runnerC.architect;
+  document.getElementById('g_runnerBlurb').textContent   = runnerC.blurb;
+  document.getElementById('g_runnerMatch').textContent   = 'Match Strength: ' + runner.pct + '%';
+  document.getElementById('g_runnerHomes').href          = runnerC.homes;
+
+  document.getElementById('g_intake').style.display = 'none';
+  document.getElementById('g_results').style.display = 'block';
+  document.getElementById('g_results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function golfInit() {
+  document.querySelectorAll('.radio-group[data-gqidx] input[type="radio"]').forEach(r => {
+    r.addEventListener('change', () => {
+      const qIdx = parseInt(r.closest('.radio-group').dataset.gqidx);
+      golfState.answers[qIdx] = parseInt(r.value);
+      document.getElementById('g_next').disabled = false;
+    });
+  });
+
+  document.getElementById('g_prev').addEventListener('click', () => {
+    if (golfState.current > 0) {
+      golfState.current--;
+      golfShow(golfState.current);
+    }
+  });
+
+  document.getElementById('g_next').addEventListener('click', () => {
+    if (golfState.answers[golfState.current] === null) return;
+    if (golfState.current < 6) {
+      golfState.current++;
+      golfShow(golfState.current);
+    } else {
+      golfShowResults();
+    }
+  });
+
+  document.getElementById('g_restart').addEventListener('click', () => {
+    golfState.current = 0;
+    golfState.answers = new Array(7).fill(null);
+    document.querySelectorAll('.quiz-q[data-gq] input[type="radio"]').forEach(r => { r.checked = false; });
+    document.getElementById('g_results').style.display = 'none';
+    document.getElementById('g_intake').style.display = 'block';
+    golfShow(0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+golfInit();
 
 // ═══════════════════════ CLOSING COST ESTIMATOR ═══════════════════════
 // Nevada / Clark County conventions:
