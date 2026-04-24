@@ -163,6 +163,47 @@
     .brand-name { font-size: 19px; }
   }
 
+  /* ── ≤640px: aggressive vertical compression for ROI + all calculators ── */
+  @media (max-width: 640px) {
+    .calc-layout { padding: 8px 12px 18px; gap: 8px; }
+    .input-card { padding: 12px 12px; }
+    .input-card + .input-card { margin-top: 0; }
+    .input-card-title { font-size: 15px; margin-bottom: 0; }
+    .input-card-sub { margin-bottom: 8px; font-size: 8px; }
+    .field { margin-bottom: 6px; }
+    .field-row { gap: 8px; margin-bottom: 6px; }
+    .field-row .field label { min-height: 0; }
+    .field label { margin-bottom: 3px; font-size: 8px; }
+    .field input[type="number"],
+    .field input[type="text"],
+    .field select { padding: 7px 10px; font-size: 13px; }
+    .input-wrap.has-prefix input { padding-left: 26px; }
+    .input-wrap.has-suffix input { padding-right: 28px; }
+    .slider-field { margin-bottom: 8px; }
+    .section-divider { margin: 14px 0 12px; }
+    .collapsible-toggle { padding: 10px 0; }
+    .collapsible-body .adv-inner { padding: 14px 0 2px; }
+    .calc-btn { padding: 10px 18px; margin-top: 8px; font-size: 9.5px; }
+    .results-module, .results-card { padding: 14px 12px; }
+    .results-title { font-size: 15px; }
+    .results-sub { margin-bottom: 10px; font-size: 8px; }
+    .metric { padding: 8px 6px; }
+    .metric-value { font-size: 15px; margin-bottom: 2px; }
+    .metric-label { font-size: 7.5px; margin-bottom: 3px; letter-spacing: 0.14em; }
+    .metric-sub { font-size: 9px; line-height: 1.35; }
+    .metrics-grid { margin-bottom: 10px; }
+    .verdict { padding: 10px 12px; gap: 8px; margin-bottom: 10px; }
+    .verdict-text strong { font-size: 13px; margin-bottom: 4px; line-height: 1.2; }
+    .verdict-text { font-size: 11.5px; line-height: 1.5; }
+    .year-table-label { font-size: 8px; margin-bottom: 6px; }
+    .year-table-wrap table { font-size: 10px; min-width: 540px; }
+    .year-table-wrap th,
+    .year-table-wrap td { padding: 5px 7px; }
+    .year-table-wrap th:first-child,
+    .year-table-wrap td:first-child { font-size: 10.5px; }
+    .year-table-wrap th { font-size: 7.5px; letter-spacing: 0.14em; }
+  }
+
   /* ── Small phones (≤520px) — tighten right side, keep Elliman big ── */
   @media (max-width: 520px) {
     .site-nav { padding: 12px 16px 10px; }
