@@ -1931,6 +1931,22 @@
     </div>
   </a>
 
+  <a href="#analyze" class="tool-tile" data-category="invest buy sell lifestyle">
+    <div class="tool-tile-img" style="background-image: url('https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1200');"></div>
+    <div class="tool-tile-overlay"></div>
+    <div class="tool-tile-content">
+      <div class="tool-tile-top">
+        <div class="tool-tile-category">AI Tool</div>
+        <div class="tool-tile-icon">◈</div>
+      </div>
+      <div class="tool-tile-bottom">
+        <h3>AI Property Analysis</h3>
+        <p>Full multi-agent report tailored to your goal — ownership fit, rental yield, flip math, or short-term rental. Graded A+ to F.</p>
+        <div class="tool-tile-cta">Request Report</div>
+      </div>
+    </div>
+  </a>
+
   <a href="#roi" class="tool-tile" data-category="invest buy">
     <div class="tool-tile-img" style="background-image: url('https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=1200');"></div>
     <div class="tool-tile-overlay"></div>
@@ -2087,22 +2103,6 @@
         <h3>Seller Intake</h3>
         <p>List with confidence — fully guided, under ten minutes. Every detail captured from day one.</p>
         <div class="tool-tile-cta">List with Brent</div>
-      </div>
-    </div>
-  </a>
-
-  <a href="mailto:brentethomas81@gmail.com,key2teerealestate@gmail.com?subject=AI%20Property%20Analysis%20Request&body=Please%20provide%20a%20full%20AI%20property%20analysis%20for%20the%20following%20address%3A%0A%0AAddress%3A%20%0A" class="tool-tile" data-category="invest buy sell">
-    <div class="tool-tile-img" style="background-image: url('https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1200');"></div>
-    <div class="tool-tile-overlay"></div>
-    <div class="tool-tile-content">
-      <div class="tool-tile-top">
-        <div class="tool-tile-category">Invest</div>
-        <div class="tool-tile-icon">◈</div>
-      </div>
-      <div class="tool-tile-bottom">
-        <h3>AI Property Analysis</h3>
-        <p>Full multi-agent report: comps, rental yield, neighborhood, investment strategy, and market score — graded A+ to F.</p>
-        <div class="tool-tile-cta">Request Report</div>
       </div>
     </div>
   </a>
@@ -3957,6 +3957,104 @@
 </section>
 
 
+<section class="tab-panel" data-panel="analyze" role="tabpanel" aria-label="AI Property Analysis">
+  <button class="back-link back-to-tools" data-goto="landing">All Tools</button>
+
+  <header class="tool-header">
+    <div class="tool-eyebrow">Invest &middot; AI Multi-Agent Analyst</div>
+    <h1 class="tool-title">AI Property <em>Analysis</em></h1>
+    <p class="tool-tagline">Tell me which property you want analyzed and I&rsquo;ll run a full investment report &mdash; comps, rental yield, neighborhood, strategy, market &mdash; graded A+ to F. Delivered to your inbox within 24 hours, free.</p>
+  </header>
+
+  <div class="calc-single-col">
+
+    <form id="analyzeForm" onsubmit="submitAnalyzeRequest(event)" novalidate>
+
+      <div class="input-card">
+        <div class="input-card-title">Your Contact</div>
+        <div class="input-card-sub">&mdash; So I can send you the report</div>
+        <div class="field-row">
+          <div class="field">
+            <label>First Name</label>
+            <input type="text" id="a_firstName" required>
+          </div>
+          <div class="field">
+            <label>Last Name</label>
+            <input type="text" id="a_lastName" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Email</label>
+            <input type="email" id="a_email" required>
+          </div>
+          <div class="field">
+            <label>Phone</label>
+            <input type="text" id="a_phone" inputmode="tel">
+          </div>
+        </div>
+      </div>
+
+      <div class="input-card">
+        <div class="input-card-title">Property to Analyze</div>
+        <div class="input-card-sub">&mdash; Full address &amp; what you want to know</div>
+        <div class="field">
+          <label>Property Address</label>
+          <input type="text" id="a_address" placeholder="e.g. 123 Oak St, Las Vegas, NV 89135" required>
+          <div class="help-text">Include street, city, state, and ZIP for best results.</div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Investor Strategy Focus</label>
+            <select id="a_strategy">
+              <option value="balanced" selected>Balanced &mdash; all strategies</option>
+              <option value="buyhold">Buy &amp; Hold (long-term rental)</option>
+              <option value="brrrr">BRRRR</option>
+              <option value="flip">Fix &amp; Flip</option>
+              <option value="str">Short-Term Rental / Airbnb</option>
+              <option value="primary">Primary Residence Fit</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Your Role</label>
+            <select id="a_role">
+              <option selected>Investor</option>
+              <option>Primary home buyer</option>
+              <option>Seller / current owner</option>
+              <option>Just curious</option>
+              <option>Other agent</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Anything specific you want covered? (optional)</label>
+          <textarea id="a_notes" rows="3" style="width:100%; padding:14px 16px; font-family:'Inter',sans-serif; font-size:15px; color:var(--ink); background:var(--bg); border:1px solid var(--line); resize:vertical;" placeholder="e.g. compare rent vs short-term, focus on school district, flood risk, etc."></textarea>
+        </div>
+      </div>
+
+      <div class="input-card">
+        <div class="input-card-title">Send Request</div>
+        <div class="input-card-sub">&mdash; Free &middot; Delivered within 24 hours</div>
+        <p style="font-size: 14px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 24px;">Submit and I&rsquo;ll run the full multi-agent analysis personally and email you the complete report &mdash; comps, cash flow projections, neighborhood scoring, three investment strategies, market conditions, and a final BUY / WATCH / PASS recommendation. No cost, no obligation.</p>
+        <button type="submit" class="calc-btn">Request My Analysis</button>
+        <div style="display:flex; gap:14px; justify-content:center; margin-top:18px; flex-wrap: wrap;">
+          <a href="https://calendly.com/key2teerealestate/30min" target="_blank" rel="noopener" style="font-size:10px; font-weight:600; letter-spacing:0.25em; text-transform:uppercase; color:var(--ink); text-decoration:none; border-bottom: 1px solid var(--line); padding-bottom: 3px;">Book a 30-Minute Call &rarr;</a>
+          <a href="tel:7023191432" style="font-size:10px; font-weight:600; letter-spacing:0.25em; text-transform:uppercase; color:var(--ink); text-decoration:none; border-bottom: 1px solid var(--line); padding-bottom: 3px;">Call 702.319.1432</a>
+        </div>
+        <div id="a_submitStatus" style="text-align:center; margin-top: 20px; font-size: 13px; color: var(--ink-soft);"></div>
+      </div>
+
+    </form>
+
+  </div>
+
+  <div class="tool-disclaimer">
+    For educational and research purposes only. The AI-generated report is a starting point &mdash; not financial, legal, or investment advice. Always verify with licensed real estate, legal, and tax professionals before transacting. Information submitted here is used solely to prepare and deliver your analysis.<br><br>
+    <span class="brokerage-block">© 2026 DOUGLAS ELLIMAN REAL ESTATE &middot; EQUAL HOUSING OPPORTUNITY &middot; 1700 S Pavilion Center Drive, Suite 150, Las Vegas, NV 89135 &middot; 702.616.1910 &middot; LIC.# B.0059797</span><br>
+    Brent Thomas &middot; Agent License S.0186600 &middot; <a href="tel:7023191432">702.319.1432</a>
+  </div>
+</section>
+
 </main>
 
 <footer class="site-footer">
@@ -3978,7 +4076,7 @@
 
 <script>
   // ── ROUTER: TAB / VIEW SWITCHING VIA HASH ───────────────────
-  const VALID_TABS = ['landing','roi','buyer','seller','mortgage','closing','golf','clubs','communities','rentbuy','quiz','exchange'];
+  const VALID_TABS = ['landing','roi','buyer','seller','mortgage','closing','golf','clubs','communities','rentbuy','quiz','exchange','analyze'];
   const panels = document.querySelectorAll('.tab-panel');
 
   function switchTab(target, updateHash = true) {
@@ -5230,6 +5328,179 @@ window.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+</script>
+
+<script>
+  // ── AI PROPERTY ANALYSIS — LEAD CAPTURE ─────────────────────
+  function submitAnalyzeRequest(ev) {
+    ev.preventDefault();
+    const v = (id) => (document.getElementById(id) || {}).value || '';
+    const fullName = (v('a_firstName') + ' ' + v('a_lastName')).trim();
+    const address  = v('a_address');
+    const email    = v('a_email');
+    const phone    = v('a_phone');
+    const role     = v('a_role');
+    const strategy = v('a_strategy');
+    const notes    = v('a_notes') || '(none)';
+
+    // Map dropdown values to friendly strategy labels
+    const STRATEGY_LABELS = {
+      balanced: 'Balanced — all strategies',
+      buyhold:  'Buy & Hold (long-term rental)',
+      brrrr:    'BRRRR',
+      flip:     'Fix & Flip',
+      str:      'Short-Term Rental / Airbnb',
+      primary:  'Primary Residence Fit (ownership / lifestyle)'
+    };
+    const strategyLabel = STRATEGY_LABELS[strategy] || strategy;
+
+    // Build a self-contained Claude prompt that runs the realestate-analyze skill
+    const claudePrompt = [
+      'Run my realestate-analyze skill on the following property and save the styled HTML + markdown report to my Desktop.',
+      '',
+      'PROPERTY: ' + address,
+      '',
+      'LEAD CONTEXT (personalize the report for this lead):',
+      '- Name: ' + fullName,
+      '- Email: ' + email,
+      '- Phone: ' + phone,
+      '- Role: ' + role,
+      '- Strategy Focus: ' + strategyLabel,
+      '- Specific Questions: ' + notes,
+      '',
+      'IMPORTANT:',
+      '1. Tailor the entire report to the Strategy Focus above. If it is Primary Residence Fit, focus on ownership/lifestyle: schools, commute, total cost of ownership, family fit, neighborhood — NOT investment metrics. If Buy & Hold, focus on long-term rental yield. If BRRRR / Flip / STR, lean accordingly.',
+      '2. Use a positive, truthful, encouraging tone throughout. Lead with strengths. Frame concerns as "considerations to watch", not "red flags" or "catastrophic". End with a confident, optimistic recommendation aimed at moving the lead forward.',
+      '3. Follow the SKILL.md output template exactly: Phase 0 lead context, 5 parallel agents, composite Property Score, grade A+ to F, signal BUY/WATCH/PASS biased positive where the data supports it.',
+      '4. Save BOTH files to my Desktop: PROPERTY-ANALYSIS-[Address].md and PROPERTY-ANALYSIS-[Address].html. Use the Key2Tee + Douglas Elliman brand styling (teal #6ec9d9 accents, embedded DE logo, Playfair Display headings).'
+    ].join('\n');
+
+    const claudeUrl = 'https://claude.ai/new?q=' + encodeURIComponent(claudePrompt);
+
+    const subject = encodeURIComponent('Key2Tee AI Property Analysis Request — ' + (address || fullName));
+    const body = encodeURIComponent([
+      'AI PROPERTY ANALYSIS REQUEST',
+      '',
+      'Name: ' + fullName,
+      'Email: ' + email,
+      'Phone: ' + phone,
+      'Role: ' + role,
+      '',
+      'Property Address: ' + address,
+      'Strategy Focus: ' + strategyLabel,
+      '',
+      'Specific Questions / Focus:',
+      notes,
+      '',
+      '──────────────────────────────────────────',
+      '▶ ONE-CLICK RUN (opens Claude with the address + lead context pre-filled — just press Enter):',
+      '',
+      claudeUrl,
+      '',
+      '──────────────────────────────────────────',
+      'OR run in Claude Code terminal — paste this command:',
+      '',
+      '/realestate-analyze ' + address + ' — Lead: ' + fullName + ' (' + email + ', ' + phone + '), role: ' + role + ', focus: ' + strategyLabel + ', questions: ' + notes,
+      '',
+      '──────────────────────────────────────────',
+      'After the report runs:',
+      '1. Open the HTML file from your Desktop',
+      '2. Print to PDF (Cmd+P → Save as PDF)',
+      '3. Reply to ' + email + ' with the PDF attached'
+    ].join('\n'));
+
+    const mailto = 'mailto:brentethomas81@gmail.com,key2teerealestate@gmail.com?subject=' + subject + '&body=' + body;
+    document.getElementById('a_submitStatus').textContent = 'Opening your email client…';
+    window.location.href = mailto;
+  }
+</script>
+
+<!-- ============ GOOGLE PLACES AUTOCOMPLETE ============ -->
+<style>
+  /* Match Google's autocomplete dropdown to the Key2Tee aesthetic */
+  .pac-container {
+    font-family: 'Inter', sans-serif;
+    border: 1px solid var(--line);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    margin-top: 4px;
+    border-radius: 0;
+  }
+  .pac-item {
+    padding: 10px 14px;
+    border-top: 1px solid var(--line-soft);
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .pac-item:first-child { border-top: none; }
+  .pac-item:hover, .pac-item-selected { background: var(--bg-soft); }
+  .pac-item-query {
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .pac-matched { font-weight: 700; color: var(--ink); }
+  .pac-icon { display: none; }
+  .pac-logo:after { /* hide "powered by Google" image gracefully */
+    background-position: right 8px center;
+    background-size: auto 14px;
+    height: 22px;
+  }
+</style>
+<script>
+  // Google Maps JS API loader (recommended async pattern)
+  (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+    key: "AIzaSyAgnMRAw790_zRbAkkItYWekYZzbf5AZ_M",
+    v: "weekly"
+  });
+
+  async function initAddressAutocomplete() {
+    try {
+      const { Autocomplete } = await google.maps.importLibrary("places");
+      const input = document.getElementById('a_address');
+      if (!input) return;
+
+      // Bias suggestions toward the Las Vegas / Henderson metro
+      const vegasBounds = {
+        north: 36.45,
+        south: 35.85,
+        east:  -114.85,
+        west:  -115.45
+      };
+
+      const autocomplete = new Autocomplete(input, {
+        bounds: vegasBounds,
+        componentRestrictions: { country: 'us' },
+        fields: ['formatted_address', 'address_components', 'geometry'],
+        types: ['address']
+      });
+
+      autocomplete.addListener('place_changed', () => {
+        const place = autocomplete.getPlace();
+        if (place && place.formatted_address) {
+          input.value = place.formatted_address;
+        }
+      });
+
+      // Prevent the form from submitting when the user hits Enter while
+      // selecting a dropdown suggestion. Google's autocomplete handles
+      // Enter on its own; we just stop the form-submit fallback.
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && document.querySelector('.pac-container:not([style*="display: none"])')) {
+          e.preventDefault();
+        }
+      });
+    } catch (err) {
+      console.warn('Address autocomplete failed to initialize:', err);
+    }
+  }
+
+  // Initialize once the DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAddressAutocomplete);
+  } else {
+    initAddressAutocomplete();
+  }
 </script>
 
 </body>
