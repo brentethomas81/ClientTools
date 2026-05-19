@@ -5354,12 +5354,6 @@ window.addEventListener('DOMContentLoaded', () => {
     };
     const strategyLabel = STRATEGY_LABELS[strategy] || strategy;
 
-    // Claude Code terminal command — uses the realestate-analyze skill
-    const cliCommand = '/realestate-analyze ' + address +
-      ' — Lead: ' + fullName + ' (' + email + ', ' + phone +
-      '), role: ' + role + ', focus: ' + strategyLabel +
-      (notes && notes !== '(none)' ? ', notes: ' + notes : '');
-
     const subject = encodeURIComponent('Key2Tee AI Property Analysis — ' + (address || fullName));
     const body = encodeURIComponent([
       'NEW LEAD — AI PROPERTY ANALYSIS REQUEST',
@@ -5373,24 +5367,7 @@ window.addEventListener('DOMContentLoaded', () => {
       'PROPERTY',
       '   Address: ' + address,
       '   Focus:   ' + strategyLabel,
-      '   Notes:   ' + notes,
-      '',
-      '─────────────────────────────────',
-      'TO RUN THE REPORT',
-      '─────────────────────────────────',
-      '',
-      '1. Open Claude Code',
-      '2. Paste the line below and press Enter',
-      '3. Wait ~2–3 minutes — both .md and .html files save to your Desktop',
-      '',
-      cliCommand,
-      '',
-      '─────────────────────────────────',
-      'WHEN DONE',
-      '─────────────────────────────────',
-      '   • Open the .html file from your Desktop',
-      '   • File → Print → Save as PDF',
-      '   • Reply to ' + email + ' with the PDF attached'
+      '   Notes:   ' + notes
     ].join('\n'));
 
     const mailto = 'mailto:brentethomas81@gmail.com,key2teerealestate@gmail.com?subject=' + subject + '&body=' + body;
