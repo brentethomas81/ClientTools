@@ -5358,6 +5358,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const notesLine = (notes && notes !== '(none)') ? notes : '';
 
+    // Pre-built command for Brent's Claude Code workflow (appears at the bottom)
+    const cliCommand = '/realestate-analyze ' + address;
+
     const bodyLines = [
       'Hi Brent,',
       '',
@@ -5381,6 +5384,9 @@ window.addEventListener('DOMContentLoaded', () => {
     bodyLines.push(fullName);
     bodyLines.push(email);
     bodyLines.push(phone);
+    bodyLines.push('');
+    bodyLines.push('— — —');
+    bodyLines.push(cliCommand);
 
     const body = encodeURIComponent(bodyLines.join('\n'));
 
