@@ -5354,21 +5354,35 @@ window.addEventListener('DOMContentLoaded', () => {
     };
     const strategyLabel = STRATEGY_LABELS[strategy] || strategy;
 
-    const subject = encodeURIComponent('Key2Tee AI Property Analysis — ' + (address || fullName));
-    const body = encodeURIComponent([
-      'NEW LEAD — AI PROPERTY ANALYSIS REQUEST',
+    const subject = encodeURIComponent('AI Property Analysis Request — ' + (address || fullName));
+
+    const notesLine = (notes && notes !== '(none)') ? notes : '';
+
+    const bodyLines = [
+      'Hi Brent,',
       '',
-      'LEAD',
-      '   Name:    ' + fullName,
-      '   Email:   ' + email,
-      '   Phone:   ' + phone,
-      '   Role:    ' + role,
+      'I\'d like to request a property analysis through your site. Here are the details:',
       '',
-      'PROPERTY',
-      '   Address: ' + address,
-      '   Focus:   ' + strategyLabel,
-      '   Notes:   ' + notes
-    ].join('\n'));
+      '    Property:   ' + address,
+      '    Focus:      ' + strategyLabel,
+      '    My role:    ' + role
+    ];
+
+    if (notesLine) {
+      bodyLines.push('');
+      bodyLines.push('A few specifics I\'d love covered:');
+      bodyLines.push('    ' + notesLine);
+    }
+
+    bodyLines.push('');
+    bodyLines.push('Thanks so much — looking forward to the report.');
+    bodyLines.push('');
+    bodyLines.push('Best,');
+    bodyLines.push(fullName);
+    bodyLines.push(email);
+    bodyLines.push(phone);
+
+    const body = encodeURIComponent(bodyLines.join('\n'));
 
     const mailto = 'mailto:brentethomas81@gmail.com,key2teerealestate@gmail.com?subject=' + subject + '&body=' + body;
     document.getElementById('a_submitStatus').textContent = 'Opening your email client…';
