@@ -5354,59 +5354,43 @@ window.addEventListener('DOMContentLoaded', () => {
     };
     const strategyLabel = STRATEGY_LABELS[strategy] || strategy;
 
-    // Build a self-contained Claude prompt that runs the realestate-analyze skill
-    const claudePrompt = [
-      'Run my realestate-analyze skill on the following property and save the styled HTML + markdown report to my Desktop.',
-      '',
-      'PROPERTY: ' + address,
-      '',
-      'LEAD CONTEXT (personalize the report for this lead):',
-      '- Name: ' + fullName,
-      '- Email: ' + email,
-      '- Phone: ' + phone,
-      '- Role: ' + role,
-      '- Strategy Focus: ' + strategyLabel,
-      '- Specific Questions: ' + notes,
-      '',
-      'IMPORTANT:',
-      '1. Tailor the entire report to the Strategy Focus above. If it is Primary Residence Fit, focus on ownership/lifestyle: schools, commute, total cost of ownership, family fit, neighborhood — NOT investment metrics. If Buy & Hold, focus on long-term rental yield. If BRRRR / Flip / STR, lean accordingly.',
-      '2. Use a positive, truthful, encouraging tone throughout. Lead with strengths. Frame concerns as "considerations to watch", not "red flags" or "catastrophic". End with a confident, optimistic recommendation aimed at moving the lead forward.',
-      '3. Follow the SKILL.md output template exactly: Phase 0 lead context, 5 parallel agents, composite Property Score, grade A+ to F, signal BUY/WATCH/PASS biased positive where the data supports it.',
-      '4. Save BOTH files to my Desktop: PROPERTY-ANALYSIS-[Address].md and PROPERTY-ANALYSIS-[Address].html. Use the Key2Tee + Douglas Elliman brand styling (teal #6ec9d9 accents, embedded DE logo, Playfair Display headings).'
-    ].join('\n');
+    // Claude Code terminal command — uses the realestate-analyze skill
+    const cliCommand = '/realestate-analyze ' + address +
+      ' — Lead: ' + fullName + ' (' + email + ', ' + phone +
+      '), role: ' + role + ', focus: ' + strategyLabel +
+      (notes && notes !== '(none)' ? ', notes: ' + notes : '');
 
-    const claudeUrl = 'https://claude.ai/new?q=' + encodeURIComponent(claudePrompt);
-
-    const subject = encodeURIComponent('Key2Tee AI Property Analysis Request — ' + (address || fullName));
+    const subject = encodeURIComponent('Key2Tee AI Property Analysis — ' + (address || fullName));
     const body = encodeURIComponent([
-      'AI PROPERTY ANALYSIS REQUEST',
+      'NEW LEAD — AI PROPERTY ANALYSIS REQUEST',
       '',
-      'Name: ' + fullName,
-      'Email: ' + email,
-      'Phone: ' + phone,
-      'Role: ' + role,
+      'LEAD',
+      '   Name:    ' + fullName,
+      '   Email:   ' + email,
+      '   Phone:   ' + phone,
+      '   Role:    ' + role,
       '',
-      'Property Address: ' + address,
-      'Strategy Focus: ' + strategyLabel,
+      'PROPERTY',
+      '   Address: ' + address,
+      '   Focus:   ' + strategyLabel,
+      '   Notes:   ' + notes,
       '',
-      'Specific Questions / Focus:',
-      notes,
+      '─────────────────────────────────',
+      'TO RUN THE REPORT',
+      '─────────────────────────────────',
       '',
-      '──────────────────────────────────────────',
-      '▶ ONE-CLICK RUN (opens Claude with the address + lead context pre-filled — just press Enter):',
+      '1. Open Claude Code',
+      '2. Paste the line below and press Enter',
+      '3. Wait ~2–3 minutes — both .md and .html files save to your Desktop',
       '',
-      claudeUrl,
+      cliCommand,
       '',
-      '──────────────────────────────────────────',
-      'OR run in Claude Code terminal — paste this command:',
-      '',
-      '/realestate-analyze ' + address + ' — Lead: ' + fullName + ' (' + email + ', ' + phone + '), role: ' + role + ', focus: ' + strategyLabel + ', questions: ' + notes,
-      '',
-      '──────────────────────────────────────────',
-      'After the report runs:',
-      '1. Open the HTML file from your Desktop',
-      '2. Print to PDF (Cmd+P → Save as PDF)',
-      '3. Reply to ' + email + ' with the PDF attached'
+      '─────────────────────────────────',
+      'WHEN DONE',
+      '─────────────────────────────────',
+      '   • Open the .html file from your Desktop',
+      '   • File → Print → Save as PDF',
+      '   • Reply to ' + email + ' with the PDF attached'
     ].join('\n'));
 
     const mailto = 'mailto:brentethomas81@gmail.com,key2teerealestate@gmail.com?subject=' + subject + '&body=' + body;
