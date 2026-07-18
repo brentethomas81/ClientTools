@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lucille — Dashboard Concepts (5 layouts · Web + Mobile)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root{
+  --accent:#F0623E; --accent-hi:#D94A28; --accent-soft:rgba(240,98,62,.10); --accent-line:rgba(240,98,62,.30);
+  --bg:#FBF7F1; --canvas-2:#F5ECE0; --sand:#EDE2D2;
+  --surface-1:#FFFFFF; --surface-2:#F5ECE0; --surface-3:#EDE2D2;
+  --text:#1B1216; --text-muted:#5A4F54; --text-dim:#8B7F84; --text-faint:rgba(27,18,22,.34);
+  --border:rgba(27,18,22,.10); --border-soft:rgba(27,18,22,.06);
+  --iris:#6D5CF0; --rose:#E0457B; --honey:#F7B24A; --green:#2F9E6B; --amber:#D98A1F;
+  --green-soft:rgba(47,158,107,.12); --blue-soft:rgba(109,92,240,.10); --amber-soft:rgba(217,138,31,.12); --red-soft:rgba(217,74,40,.10);
+  --dawn:linear-gradient(100deg,#6D5CF0 0%,#E0457B 38%,#F0623E 68%,#F7B24A 100%);
+  --sun:radial-gradient(circle at 38% 34%,#FBD9A0 0%,#F7B24A 32%,#F0623E 64%,#E0457B 100%);
+  --elev-1:0 1px 2px rgba(27,18,22,.05),0 6px 18px rgba(27,18,22,.06);
+  --elev-2:0 24px 50px -24px rgba(27,18,22,.28);
+  --r-sm:10px; --r-md:16px; --r-lg:24px; --r-pill:999px;
+  --sans:'Inter',-apple-system,system-ui,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+
+/* ============ EXPLORER CHROME ============ */
+.chrome{position:sticky;top:0;z-index:100;background:rgba(251,247,241,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:14px 28px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.chrome .logo{width:34px;height:34px;border-radius:50%;background:var(--sun);flex:none}
+.chrome h1{font-family:var(--serif);font-size:19px;font-weight:600}
+.chrome h1 span{color:var(--text-dim);font-family:var(--sans);font-size:12.5px;font-weight:500;margin-left:10px}
+.tabs{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+.tabs button{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--text-muted);background:transparent;border:1px solid transparent;border-radius:var(--r-pill);padding:8px 15px;cursor:pointer;transition:.15s}
+.tabs button:hover{background:var(--surface-2)}
+.tabs button.on{background:var(--text);color:#FBF7F1}
+.seg{display:flex;background:var(--surface-2);border-radius:var(--r-pill);padding:3px}
+.seg button{font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--text-muted);background:transparent;border:none;border-radius:var(--r-pill);padding:7px 16px;cursor:pointer}
+.seg button.on{background:#fff;color:var(--text);box-shadow:var(--elev-1)}
+
+.concept{display:none;max-width:1440px;margin:0 auto;padding:26px 28px 80px}
+.concept.show{display:block}
+.c-head{margin:6px 4px 20px}
+.c-head .kicker{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.c-head h2{font-family:var(--serif);font-size:30px;font-weight:600;margin:4px 0 6px}
+.c-head p{font-size:14.5px;color:var(--text-muted);max-width:860px;line-height:1.55}
+.view{display:none}
+.view.show{display:block}
+
+/* notes strip */
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:22px}
+.note{background:var(--surface-1);border:1px solid var(--border-soft);border-radius:var(--r-md);padding:14px 16px;box-shadow:var(--elev-1)}
+.note b{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:6px}
+.note div{font-size:13px;color:var(--text-muted);line-height:1.55}
+.note .path{font-family:var(--mono);font-size:12px;color:var(--text)}
+
+/* ============ SHARED MOCK PIECES ============ */
+.mock{background:var(--bg);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:var(--elev-2);display:flex;min-height:760px}
+.sb{width:228px;flex:none;background:var(--bg);border-right:1px solid var(--border-soft);display:flex;flex-direction:column;padding:16px 12px 12px}
+.sb .brand{display:flex;align-items:center;gap:10px;padding:2px 6px 12px}
+.sb .orb{width:30px;height:30px;border-radius:50%;background:var(--sun)}
+.sb .bn{font-family:var(--serif);font-size:17px;font-weight:600;line-height:1}
+.sb .bs{font-size:10.5px;color:var(--text-dim);margin-top:2px}
+.sb .search{display:flex;align-items:center;gap:7px;background:var(--surface-2);border-radius:var(--r-sm);padding:8px 10px;font-size:12px;color:var(--text-dim);margin-bottom:10px}
+.sb .search kbd{margin-left:auto;font-family:var(--mono);font-size:10px;background:#fff;border:1px solid var(--border-soft);border-radius:5px;padding:1px 5px}
+.sb .sec{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);font-weight:700;padding:12px 8px 5px}
+.sb a{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--text-muted);text-decoration:none;padding:6.5px 8px;border-radius:8px;font-weight:500}
+.sb a:hover{background:var(--surface-2)}
+.sb a.on{background:var(--accent-soft);color:var(--accent-hi);font-weight:600}
+.sb a .ico{width:15px;text-align:center;opacity:.75;font-size:12px}
+.sb a .tag{margin-left:auto;font-family:var(--mono);font-size:9.5px;padding:2px 6px;border-radius:5px;background:var(--dawn);color:#fff}
+.sb .me{margin-top:auto;display:flex;align-items:center;gap:9px;padding:10px 8px 2px;border-top:1px solid var(--border-soft)}
+.sb .av{width:26px;height:26px;border-radius:50%;background:var(--surface-3);display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--text-muted)}
+.sb .me small{font-size:10.5px;color:var(--text-dim);display:block}
+.main{flex:1;padding:26px 30px;overflow:hidden}
+.topline{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px}
+.greet h3{font-family:var(--serif);font-size:27px;font-weight:600}
+.greet small{font-size:12.5px;color:var(--text-dim)}
+.topline .right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.timeseg{display:flex;background:#fff;border:1px solid var(--border-soft);border-radius:var(--r-pill);padding:3px}
+.timeseg span{font-size:12px;font-weight:600;color:var(--text-muted);padding:6px 13px;border-radius:var(--r-pill);cursor:default}
+.timeseg span.on{background:var(--surface-2);color:var(--text)}
+.ask{display:inline-flex;align-items:center;gap:7px;background:var(--accent);color:#fff;font-size:13px;font-weight:600;border-radius:var(--r-pill);padding:9px 16px;box-shadow:0 8px 22px rgba(240,98,62,.32);cursor:default}
+.card{background:var(--surface-1);border:1px solid var(--border-soft);border-radius:var(--r-lg);box-shadow:var(--elev-1);padding:20px 22px}
+.card h4{font-size:13.5px;font-weight:600;display:flex;align-items:center;gap:8px}
+.card h4 .go{margin-left:auto;font-size:12px;color:var(--text-dim);font-weight:500}
+.big{font-family:var(--serif);font-weight:600;letter-spacing:-.01em}
+.chip{display:inline-block;font-family:var(--mono);font-size:10.5px;color:var(--text-muted);background:var(--surface-2);border-radius:6px;padding:3px 8px}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block}
+.bar{height:7px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent-hi),var(--accent))}
+.xlinks{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.xlinks span{font-size:11px;color:var(--text-muted);background:var(--surface-2);border-radius:var(--r-pill);padding:4px 10px;cursor:default}
+.xlinks span:hover{background:var(--sand)}
+.xlinks b{font-size:10px;color:var(--text-faint);font-weight:600;letter-spacing:.06em;text-transform:uppercase;align-self:center;margin-right:2px}
+
+/* phone frame */
+.phones{display:flex;gap:34px;justify-content:center;align-items:flex-start;flex-wrap:wrap}
+.phone-wrap{text-align:center}
+.phone-wrap .cap{font-size:12px;color:var(--text-dim);margin-top:12px;font-weight:500}
+.phone{width:375px;height:768px;background:var(--bg);border:8px solid #1B1216;border-radius:44px;overflow:hidden;position:relative;box-shadow:var(--elev-2);text-align:left;display:flex;flex-direction:column}
+.notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:110px;height:24px;background:#1B1216;border-radius:99px;z-index:5}
+.pbody{flex:1;overflow:hidden;display:flex;flex-direction:column;padding-top:40px}
+.pnav{flex:none;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-top:1px solid var(--border-soft);display:flex;justify-content:space-around;align-items:flex-end;padding:8px 6px 14px;position:relative}
+.pnav .it{text-align:center;font-size:9.5px;color:var(--text-dim);font-weight:600;width:58px}
+.pnav .it .i{font-size:17px;display:block;margin-bottom:2px;opacity:.8}
+.pnav .it.on{color:var(--accent-hi)}
+.pnav .corb{width:52px;height:52px;border-radius:50%;background:var(--sun);margin:-26px auto 2px;box-shadow:0 8px 22px rgba(240,98,62,.4);border:3px solid #fff}
+.sparkline{display:block}
+
+/* ============ CONCEPT 5 · CONSTELLATION ============ */
+.sb-dark{background:rgba(251,247,241,.03);border-right:1px solid rgba(251,247,241,.08)}
+.sb-dark .bn{color:#FBF7F1}.sb-dark .bs{color:rgba(251,247,241,.4)}
+.sb-dark .search{background:rgba(251,247,241,.07);color:rgba(251,247,241,.45)}
+.sb-dark .search kbd{background:rgba(251,247,241,.1);border-color:transparent;color:rgba(251,247,241,.55)}
+.sb-dark .sec{color:rgba(251,247,241,.35)}
+.sb-dark a{color:rgba(251,247,241,.72)}
+.sb-dark a:hover{background:rgba(251,247,241,.06)}
+.sb-dark a.on{background:rgba(240,98,62,.16);color:#F7B24A}
+.sb-dark .me{border-top:1px solid rgba(251,247,241,.08)}
+.sb-dark .av{background:rgba(251,247,241,.12);color:#F5ECE0}
+.sb-dark .me small{color:rgba(251,247,241,.4)}
+.galaxy{flex:1;position:relative;overflow:hidden;background:
+  radial-gradient(900px 560px at 56% 42%,rgba(240,98,62,.13),transparent 60%),
+  radial-gradient(560px 400px at 16% 12%,rgba(109,92,240,.12),transparent 60%),
+  radial-gradient(500px 360px at 88% 82%,rgba(224,69,123,.10),transparent 60%),#160C11}
+.glines{position:absolute;inset:0;width:100%;height:100%}
+.glines line{stroke:rgba(251,247,241,.13);stroke-width:1}
+.glines line.xlink{stroke:rgba(240,98,62,.4);stroke-dasharray:3 5}
+.gnode{position:absolute;transform:translate(-50%,-50%);text-align:center;z-index:3;cursor:default}
+.gorb{width:84px;height:84px;border-radius:50%;background:var(--sun);box-shadow:0 0 60px rgba(240,98,62,.55),0 0 140px rgba(240,98,62,.25);margin:0 auto 8px;position:relative}
+.gorb::after{content:'';position:absolute;inset:-16px;border-radius:50%;border:1px solid rgba(251,247,241,.18)}
+.gorb::before{content:'';position:absolute;inset:-32px;border-radius:50%;border:1px solid rgba(251,247,241,.08)}
+.gdot{width:22px;height:22px;border-radius:50%;margin:0 auto 7px}
+.gdot.sm{width:11px;height:11px;margin-bottom:5px}
+.glabel{display:block;font-size:12px;font-weight:600;color:rgba(251,247,241,.88);line-height:1.3}
+.glabel b{display:block;font-family:var(--mono);font-size:10px;font-weight:400;color:rgba(251,247,241,.48);margin-top:2px}
+.gnode.sm .glabel{font-size:10.5px;color:rgba(251,247,241,.6);font-weight:500}
+@keyframes float1{0%,100%{margin-top:0}50%{margin-top:-9px}}
+@keyframes float2{0%,100%{margin-top:0}50%{margin-top:8px}}
+@keyframes float3{0%,100%{margin-top:0}50%{margin-top:-6px}}
+.gnode.f1{animation:float1 7s ease-in-out infinite}
+.gnode.f2{animation:float2 8.5s ease-in-out infinite}
+.gnode.f3{animation:float3 6.2s ease-in-out infinite}
+.gnode.sun{animation:float3 9s ease-in-out infinite}
+.hudwrap{position:absolute;left:0;right:0;bottom:18px;display:flex;flex-direction:column;align-items:center;gap:10px;z-index:5}
+.hud{display:flex;align-items:center;gap:10px;width:min(560px,86%);background:rgba(27,18,22,.72);border:1px solid rgba(251,247,241,.14);border-radius:999px;padding:9px 10px 9px 20px;backdrop-filter:blur(10px);box-shadow:0 24px 50px -24px rgba(0,0,0,.6)}
+.hudchip{font-family:var(--mono);font-size:10.5px;color:rgba(251,247,241,.65);background:rgba(251,247,241,.08);border:1px solid rgba(251,247,241,.1);border-radius:999px;padding:5px 11px}
+.hudchip.on{background:var(--accent);color:#fff;border-color:transparent}
+.inspector{width:min(380px,80%);background:rgba(27,18,22,.78);border:1px solid rgba(251,247,241,.14);border-left:2px solid var(--rose);border-radius:14px;padding:12px 15px;backdrop-filter:blur(10px);text-align:left}
+
+</style>
+</head>
+<body>
+
+<div class="chrome">
+  <div class="logo"></div>
+  <h1>Lucille — Dashboard Concepts<span>5 layouts · current Dawn branding · Web + Mobile</span></h1>
+  <div class="tabs" id="tabs">
+    <button data-c="c1" class="on">1 · Owner's Five</button>
+    <button data-c="c2">2 · The Mast</button>
+    <button data-c="c3">3 · Pulse</button>
+    <button data-c="c4">4 · Canvas</button>
+    <button data-c="c5">5 · Constellation</button>
+  </div>
+  <div class="seg" id="seg">
+    <button data-v="web" class="on">Web</button>
+    <button data-v="mob">Mobile</button>
+  </div>
+</div>
+
+<!-- ================= CONCEPT 1 · OWNER'S FIVE ================= -->
+<section class="concept show" id="c1">
+  <div class="c-head">
+    <div class="kicker">Concept 1 · Current shell, new contents</div>
+    <h2>Owner's Five</h2>
+    <p>Identical chrome to today's Lucille — same sidebar, header, greeting, card language. The change is what's ON it: the 20-item flat sidebar collapses into the five things an owner actually thinks in — <b>Money · People · Metrics · Operations · Lucille</b>. Every dashboard card is one of those domains with its headline number and 3 drill links. Zero retraining cost.</p>
+  </div>
+
+  <div class="view web show">
+    <div class="mock">
+      <div class="sb">
+        <div class="brand"><div class="orb"></div><div><div class="bn">Lucille</div><div class="bs">Bariatric Rewrite</div></div></div>
+        <div class="search">⌕ Search or jump to… <kbd>⌘K</kbd></div>
+        <div class="sec">Pinned</div>
+        <a class="on"><span class="ico">⌂</span>Home</a>
+        <a><span class="ico">💬</span>Chat with Lucille</a>
+        <div class="sec">Money</div>
+        <a><span class="ico">$</span>Revenue</a>
+        <a><span class="ico">◫</span>Pipeline</a>
+        <a><span class="ico">＋</span>Commissions</a>
+        <a><span class="ico">◍</span>Recovery <span class="tag">$14k</span></a>
+        <div class="sec">People</div>
+        <a><span class="ico">◉</span>Team &amp; Departments</a>
+        <a><span class="ico">🏆</span>Leaderboard</a>
+        <a><span class="ico">✎</span>Hiring</a>
+        <div class="sec">Metrics</div>
+        <a><span class="ico">↗</span>Sales funnel</a>
+        <a><span class="ico">▤</span>Sales by rep</a>
+        <a><span class="ico">◔</span>Analytics</a>
+        <div class="sec">Operations</div>
+        <a><span class="ico">✦</span>Content Studio</a>
+        <a><span class="ico">⚙</span>Integrations</a>
+        <a><span class="ico">●</span>System status</a>
+        <div class="me"><div class="av">B</div><div style="font-size:12px;font-weight:600">Brent<small>Admin</small></div></div>
+      </div>
+      <div class="main">
+        <div class="topline">
+          <div class="greet"><h3>Good evening, Brent</h3><small>Saturday, July 18 · 1 follow-up needs you</small></div>
+          <div class="right">
+            <div class="timeseg"><span>Today</span><span>Week</span><span class="on">Month</span><span>Quarter</span></div>
+            <div class="ask">💬 Ask Lucille</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="card">
+            <h4><span class="dot" style="background:var(--accent)"></span>Money<span class="go">Open →</span></h4>
+            <div class="big" style="font-size:38px;margin:10px 0 2px">$109,629</div>
+            <div style="font-size:12px;color:var(--text-dim)">revenue · month-to-date · <span class="chip">112 txns</span></div>
+            <svg class="sparkline" width="100%" height="34" viewBox="0 0 300 34" preserveAspectRatio="none" style="margin-top:10px"><path d="M0 28 L30 26 L60 27 L90 22 L120 23 L150 18 L180 19 L210 14 L240 12 L270 8 L300 4" fill="none" stroke="#F0623E" stroke-width="2"/></svg>
+            <div class="xlinks"><b>Drill</b><span>Today $566</span><span>Week $40,372</span><span>Pipeline value</span><span>Commissions</span></div>
+          </div>
+          <div class="card">
+            <h4><span class="dot" style="background:var(--iris)"></span>People<span class="go">Open →</span></h4>
+            <div class="big" style="font-size:38px;margin:10px 0 2px">12 <span style="font-size:16px;color:var(--text-dim);font-family:var(--sans);font-weight:500">on team · 2 need coaching</span></div>
+            <div style="display:flex;gap:14px;margin-top:12px;font-size:12px;color:var(--text-muted)">
+              <div>Sales <b>6</b></div><div>Coaching <b>3</b></div><div>Media <b>2</b></div><div>Admin <b>1</b></div>
+            </div>
+            <div style="margin-top:12px"><div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--text-dim);margin-bottom:4px"><span>Team close rate vs goal</span><span>18% / 22%</span></div><div class="bar"><i style="width:74%"></i></div></div>
+            <div class="xlinks"><b>Drill</b><span>Departments</span><span>Sarah K · 31%</span><span>Leaderboard</span><span>Hiring (2 open)</span></div>
+          </div>
+          <div class="card">
+            <h4><span class="dot" style="background:var(--honey)"></span>Metrics<span class="go">Open →</span></h4>
+            <div style="display:flex;gap:26px;margin:12px 0 4px">
+              <div><div class="big" style="font-size:28px">18%</div><div style="font-size:11px;color:var(--text-dim)">close rate MTD</div></div>
+              <div><div class="big" style="font-size:28px">374</div><div style="font-size:11px;color:var(--text-dim)">calls</div></div>
+              <div><div class="big" style="font-size:28px">35</div><div style="font-size:11px;color:var(--text-dim)">enrolled</div></div>
+            </div>
+            <div style="display:grid;gap:6px;margin-top:10px">
+              <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text-muted)"><span style="width:74px">Applications</span><div class="bar" style="flex:1"><i style="width:85%"></i></div><b>319</b></div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text-muted)"><span style="width:74px">Bookings</span><div class="bar" style="flex:1"><i style="width:73%"></i></div><b>273</b></div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text-muted)"><span style="width:74px">Enrolled</span><div class="bar" style="flex:1"><i style="width:10%"></i></div><b>35</b></div>
+            </div>
+            <div class="xlinks"><b>Drill</b><span>Full funnel</span><span>Sales by rep</span><span>Game Film</span></div>
+          </div>
+          <div class="card">
+            <h4><span class="dot" style="background:var(--green)"></span>Operations<span class="go">Open →</span></h4>
+            <div style="display:flex;gap:8px;align-items:center;margin:12px 0 4px"><span class="dot" style="background:var(--green);width:10px;height:10px"></span><span class="big" style="font-size:22px">All systems go</span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:10px;font-size:12px;color:var(--text-muted)">
+              <div><span class="dot" style="background:var(--green)"></span> WhatsApp Bridge</div>
+              <div><span class="dot" style="background:var(--green)"></span> GHL Sync</div>
+              <div><span class="dot" style="background:var(--accent-hi)"></span> Zoom auto-debrief</div>
+              <div><span class="dot" style="background:var(--green)"></span> Payments Sync</div>
+            </div>
+            <div style="margin-top:10px;font-size:12px;color:var(--text-muted)">AI cost this month <span class="chip">$179.54 · 34.1M tok</span></div>
+            <div class="xlinks"><b>Drill</b><span>Integrations</span><span>Content Studio</span><span>Media Library</span></div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:16px;display:flex;align-items:center;gap:14px;background:var(--surface-2);border:1px dashed var(--accent-line);box-shadow:none">
+          <div class="orb" style="width:34px;height:34px;border-radius:50%;background:var(--sun);flex:none"></div>
+          <div style="flex:1;font-size:13.5px;color:var(--text-muted)"><b style="color:var(--text)">1 thing needs you:</b> follow-up promised to lead by 2026-07-03 · <span style="color:var(--accent-hi);font-weight:600">Send now</span> · <span style="color:var(--text-dim)">Ask Lucille to draft it</span></div>
+          <span class="chip">Lucille strip</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="view mob">
+    <div class="phones">
+      <div class="phone-wrap">
+        <div class="phone"><div class="notch"></div>
+          <div class="pbody">
+            <div style="padding:10px 18px 4px;display:flex;align-items:center;gap:10px"><div class="orb" style="width:26px;height:26px;border-radius:50%;background:var(--sun)"></div><div style="font-family:var(--serif);font-weight:600;font-size:16px">Good evening, Brent</div><div style="margin-left:auto" class="chip">Month</div></div>
+            <div style="padding:2px 18px 8px;font-size:11px;color:var(--text-dim)">Sat, July 18 · 1 follow-up needs you</div>
+            <div style="flex:1;overflow:hidden;padding:6px 14px;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:min-content;gap:10px">
+              <div class="card" style="grid-column:1/3;padding:16px 18px">
+                <h4><span class="dot" style="background:var(--accent)"></span>Money</h4>
+                <div class="big" style="font-size:30px;margin-top:6px">$109,629</div>
+                <div style="font-size:11px;color:var(--text-dim)">MTD · today $566 · week $40.4k</div>
+                <svg width="100%" height="26" viewBox="0 0 300 26" preserveAspectRatio="none" style="margin-top:6px"><path d="M0 22 L40 20 L80 21 L120 15 L160 16 L200 11 L240 8 L300 3" fill="none" stroke="#F0623E" stroke-width="2"/></svg>
+              </div>
+              <div class="card" style="padding:14px 16px"><h4><span class="dot" style="background:var(--iris)"></span>People</h4><div class="big" style="font-size:22px;margin-top:6px">12</div><div style="font-size:10.5px;color:var(--text-dim)">2 need coaching</div></div>
+              <div class="card" style="padding:14px 16px"><h4><span class="dot" style="background:var(--honey)"></span>Metrics</h4><div class="big" style="font-size:22px;margin-top:6px">18%</div><div style="font-size:10.5px;color:var(--text-dim)">close rate MTD</div></div>
+              <div class="card" style="grid-column:1/3;padding:14px 16px;display:flex;align-items:center;gap:10px"><span class="dot" style="background:var(--green);width:9px;height:9px"></span><div style="font-size:12.5px;font-weight:600">Operations — all systems go</div><span class="chip" style="margin-left:auto">1 warn</span></div>
+              <div class="card" style="grid-column:1/3;padding:13px 16px;background:var(--surface-2);box-shadow:none;border:1px dashed var(--accent-line);font-size:12px;color:var(--text-muted)"><b style="color:var(--text)">Needs you:</b> follow-up due · <span style="color:var(--accent-hi);font-weight:600">Send</span></div>
+            </div>
+            <div class="pnav">
+              <div class="it on"><span class="i">⌂</span>Home</div>
+              <div class="it"><span class="i">$</span>Money</div>
+              <div class="it"><div class="corb"></div>Lucille</div>
+              <div class="it"><span class="i">◉</span>People</div>
+              <div class="it"><span class="i">⚙</span>Ops</div>
+            </div>
+          </div>
+        </div>
+        <div class="cap">Same mental model, thumb-first · Lucille is the center tab</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes">
+    <div class="note"><b>Path to any number</b><div class="path">Open app → domain card → drill link<br>= 2 taps to any core metric</div></div>
+    <div class="note"><b>Why it works</b><div>Zero relearning — it IS today's UI. The five domains match how an owner already chunks the business, so scanning is pre-attentive: each card answers "am I OK?" before a single click.</div></div>
+    <div class="note"><b>Cross-over nav</b><div>The "Drill" chips on every card are cross-domain (People card links to Sales-by-rep; Money links to Pipeline). Folders lead into each other — not a rigid tree.</div></div>
+    <div class="note"><b>Trade-off</b><div>Lucille is still a button, not the front door. The organic "talk first" journey lives one tap away, not zero.</div></div>
+  </div>
+</section>
+
+<!-- ================= CONCEPT 2 · THE MAST ================= -->
+<section class="concept" id="c2">
+  <div class="c-head">
+    <div class="kicker">Concept 2 · Master Builder style (Jarvis / Albert) + current Lucille side menu</div>
+    <h2>The Mast</h2>
+    <p>Your Albert front door, in Dawn light. Lucille IS the entry: she greets you center-stage — <i>"Hey Brent. How are we dominating today?"</i> — talk or type, and the four domains float beneath as live constellation tiles. The current Lucille sidebar stays exactly where it is for manual navigation, and a Dashboard button drops you into the classic grid. Voice-first, never voice-only.</p>
+  </div>
+
+  <div class="view web show">
+    <div class="mock">
+      <div class="sb">
+        <div class="brand"><div class="orb"></div><div><div class="bn">Lucille</div><div class="bs">Bariatric Rewrite</div></div></div>
+        <div class="search">⌕ Search or jump to… <kbd>⌘K</kbd></div>
+        <div class="sec">Pinned</div>
+        <a class="on"><span class="ico">✦</span>Lucille</a>
+        <a><span class="ico">⌂</span>Dashboard</a>
+        <div class="sec">Learn</div>
+        <a><span class="ico">🎓</span>Sales Academy</a>
+        <a><span class="ico">🎙</span>Roleplay Dojo</a>
+        <a><span class="ico">⚡</span>Objection Gauntlet</a>
+        <a><span class="ico">🎬</span>Film Room</a>
+        <a><span class="ico">🏆</span>Leaderboard</a>
+        <div class="sec">Work</div>
+        <a><span class="ico">$</span>Revenue</a>
+        <a><span class="ico">↗</span>Sales funnel</a>
+        <a><span class="ico">▤</span>Sales by rep</a>
+        <a><span class="ico">◍</span>Recovery <span class="tag">$14k</span></a>
+        <a><span class="ico">◫</span>Pipeline</a>
+        <a><span class="ico">◉</span>Team</a>
+        <div class="sec">Growth</div>
+        <a><span class="ico">✎</span>Content Studio</a>
+        <a><span class="ico">◔</span>Analytics</a>
+        <div class="me"><div class="av">B</div><div style="font-size:12px;font-weight:600">Brent<small>Admin</small></div></div>
+      </div>
+      <div class="main" style="display:flex;flex-direction:column;position:relative;background:radial-gradient(1000px 520px at 50% -8%,rgba(247,178,74,.14),transparent 60%),var(--bg)">
+        <div style="display:flex;justify-content:flex-end;gap:10px"><div class="timeseg"><span class="on">Today</span><span>Week</span><span>Month</span></div><div class="ask" style="background:#fff;color:var(--text);border:1px solid var(--border);box-shadow:var(--elev-1)">⌂ Dashboard</div></div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;margin-top:-16px">
+          <div style="width:88px;height:88px;border-radius:50%;background:var(--sun);box-shadow:0 18px 50px rgba(240,98,62,.38);position:relative">
+            <div style="position:absolute;inset:-14px;border-radius:50%;border:1.5px solid var(--accent-line);opacity:.5"></div>
+            <div style="position:absolute;inset:-28px;border-radius:50%;border:1px solid var(--border);opacity:.6"></div>
+          </div>
+          <h3 class="big" style="font-size:34px;margin-top:26px">Hey Brent. How are we dominating today?</h3>
+          <div style="font-size:13px;color:var(--text-dim);margin-top:6px">Saturday, July 18 · revenue is pacing +12% · 1 follow-up needs you</div>
+          <div style="margin-top:26px;width:min(640px,92%);display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);border-radius:var(--r-pill);padding:10px 12px 10px 22px;box-shadow:var(--elev-2)">
+            <span style="color:var(--text-faint);font-size:14.5px;flex:1;text-align:left">Talk to Lucille, or ask anything…</span>
+            <span class="chip">⏎</span>
+            <div style="width:42px;height:42px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:#fff;font-size:16px;box-shadow:0 8px 22px rgba(240,98,62,.32)">🎙</div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;justify-content:center">
+            <span class="chip" style="font-family:var(--sans);font-size:12px;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid var(--border-soft)">How's money today?</span>
+            <span class="chip" style="font-family:var(--sans);font-size:12px;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid var(--border-soft)">Who needs coaching?</span>
+            <span class="chip" style="font-family:var(--sans);font-size:12px;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid var(--border-soft)">What needs me?</span>
+            <span class="chip" style="font-family:var(--sans);font-size:12px;padding:7px 14px;border-radius:999px;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent-hi)">Open dashboard →</span>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px">
+          <div class="card" style="padding:14px 16px"><h4 style="font-size:11.5px;color:var(--text-dim)"><span class="dot" style="background:var(--accent)"></span>MONEY</h4><div class="big" style="font-size:21px;margin-top:5px">$109.6k</div><div style="font-size:10.5px;color:var(--text-dim)">MTD · pacing +12%</div></div>
+          <div class="card" style="padding:14px 16px"><h4 style="font-size:11.5px;color:var(--text-dim)"><span class="dot" style="background:var(--iris)"></span>PEOPLE</h4><div class="big" style="font-size:21px;margin-top:5px">12 · 2⚠</div><div style="font-size:10.5px;color:var(--text-dim)">2 reps need coaching</div></div>
+          <div class="card" style="padding:14px 16px"><h4 style="font-size:11.5px;color:var(--text-dim)"><span class="dot" style="background:var(--honey)"></span>METRICS</h4><div class="big" style="font-size:21px;margin-top:5px">18%</div><div style="font-size:10.5px;color:var(--text-dim)">close rate · goal 22%</div></div>
+          <div class="card" style="padding:14px 16px"><h4 style="font-size:11.5px;color:var(--text-dim)"><span class="dot" style="background:var(--green)"></span>OPS</h4><div class="big" style="font-size:21px;margin-top:5px">● Go</div><div style="font-size:10.5px;color:var(--text-dim)">1 warning · Zoom debrief</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="view mob">
+    <div class="phones">
+      <div class="phone-wrap">
+        <div class="phone"><div class="notch"></div>
+          <div class="pbody" style="background:radial-gradient(420px 340px at 50% 6%,rgba(247,178,74,.16),transparent 65%),var(--bg)">
+            <div style="display:flex;justify-content:space-between;padding:6px 18px"><span class="chip">☰</span><span class="chip">⌂ Dashboard</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 26px">
+              <div style="width:96px;height:96px;border-radius:50%;background:var(--sun);box-shadow:0 18px 50px rgba(240,98,62,.4)"></div>
+              <div class="big" style="font-size:26px;margin-top:24px;line-height:1.2">Hey Brent.<br>How are we dominating today?</div>
+              <div style="font-size:11.5px;color:var(--text-dim);margin-top:8px">Revenue pacing +12% · 1 follow-up needs you</div>
+              <div style="display:flex;gap:7px;margin-top:20px;flex-wrap:wrap;justify-content:center">
+                <span style="font-size:11px;padding:6px 12px;border-radius:999px;background:#fff;border:1px solid var(--border-soft);color:var(--text-muted)">Money today</span>
+                <span style="font-size:11px;padding:6px 12px;border-radius:999px;background:#fff;border:1px solid var(--border-soft);color:var(--text-muted)">Who needs me?</span>
+                <span style="font-size:11px;padding:6px 12px;border-radius:999px;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent-hi)">Dashboard →</span>
+              </div>
+            </div>
+            <div style="padding:0 16px 8px">
+              <div style="display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--border);border-radius:999px;padding:8px 8px 8px 18px;box-shadow:var(--elev-2)">
+                <span style="color:var(--text-faint);font-size:12.5px;flex:1">Talk or type…</span>
+                <div style="width:38px;height:38px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:#fff;font-size:14px">🎙</div>
+              </div>
+              <div style="text-align:center;font-size:10px;color:var(--text-faint);margin-top:8px">swipe up for dashboard ⌃</div>
+            </div>
+          </div>
+        </div>
+        <div class="cap">Entry = conversation · dashboard is one swipe / one word away</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes">
+    <div class="note"><b>Path to any number</b><div class="path">Open app → say it<br>= 0 taps ("How's money?")<br>Manual: chip tap or sidebar = 1</div></div>
+    <div class="note"><b>Why it works</b><div>Fastest possible retrieval for a busy owner: speech skips the whole tree. The constellation tiles keep ambient awareness so silence still informs — glance answers "am I OK?" without asking.</div></div>
+    <div class="note"><b>Sidebar unchanged</b><div>The exact current side menu stays — manual nav never regresses, so power users and Lucille-skeptics lose nothing. Answers arrive as cards with an "Open full view →" so voice and UI stay one system.</div></div>
+    <div class="note"><b>Trade-off</b><div>Needs strong intent-routing behind the input (Lucille must resolve "how's Sarah doing" to the right page). Empty-state risk if the client hasn't connected data yet — chips must degrade gracefully.</div></div>
+  </div>
+</section>
+
+<!-- ================= CONCEPT 3 · PULSE ================= -->
+<section class="concept" id="c3">
+  <div class="c-head">
+    <div class="kicker">Concept 3 · Original — attention-first</div>
+    <h2>Pulse</h2>
+    <p>Flips the model: instead of you hunting for information, Lucille triages the business and puts <b>"What needs you"</b> front and center, ranked by money-at-stake. Domains become lenses (tabs), not folders. A slim icon rail replaces the sidebar; a right rail keeps live tickers and — key to the organic feel — a <b>Related</b> trail that follows your attention across domains the way your brain actually hops.</p>
+  </div>
+
+  <div class="view web show">
+    <div class="mock" style="flex-direction:column;min-height:740px">
+      <div style="display:flex;align-items:center;gap:14px;padding:14px 22px;border-bottom:1px solid var(--border-soft)">
+        <div class="orb" style="width:30px;height:30px;border-radius:50%;background:var(--sun)"></div>
+        <div style="display:flex;gap:4px;background:var(--surface-2);border-radius:999px;padding:3px">
+          <span style="font-size:12.5px;font-weight:600;padding:7px 15px;border-radius:999px;background:#fff;box-shadow:var(--elev-1)">Today</span>
+          <span style="font-size:12.5px;font-weight:600;padding:7px 15px;color:var(--text-muted)">Money</span>
+          <span style="font-size:12.5px;font-weight:600;padding:7px 15px;color:var(--text-muted)">People</span>
+          <span style="font-size:12.5px;font-weight:600;padding:7px 15px;color:var(--text-muted)">Metrics</span>
+          <span style="font-size:12.5px;font-weight:600;padding:7px 15px;color:var(--text-muted)">Ops</span>
+        </div>
+        <div style="flex:1;max-width:430px;margin:0 auto;display:flex;align-items:center;gap:8px;background:var(--surface-2);border-radius:999px;padding:8px 16px;font-size:12.5px;color:var(--text-dim)">✦ Ask Lucille or jump anywhere… <kbd style="margin-left:auto;font-family:var(--mono);font-size:10px;background:#fff;border:1px solid var(--border-soft);border-radius:5px;padding:1px 5px">⌘K</kbd></div>
+        <div class="av" style="width:30px;height:30px;border-radius:50%;background:var(--surface-3);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--text-muted)">B</div>
+      </div>
+      <div style="flex:1;display:flex;gap:0">
+        <div style="flex:1;padding:24px 26px">
+          <h3 class="big" style="font-size:24px">What needs you <span style="color:var(--accent-hi)">· 3</span></h3>
+          <div style="font-size:12.5px;color:var(--text-dim);margin-bottom:16px">Ranked by money at stake · Saturday, July 18</div>
+          <div style="display:grid;gap:12px">
+            <div class="card" style="border-left:3px solid var(--accent);display:flex;gap:14px;align-items:center">
+              <div><div style="font-size:13.5px;font-weight:600">Follow-up you promised is overdue — lead from 07-03</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:3px">Why it matters: booked lead, ~$3.1k enrollment value · went quiet after "I'll text you within…"</div></div>
+              <div style="margin-left:auto;display:flex;gap:8px;flex:none"><span class="chip" style="background:var(--accent);color:#fff;font-family:var(--sans);font-weight:600;padding:7px 14px;border-radius:999px">Draft &amp; send</span><span class="chip" style="font-family:var(--sans);padding:7px 12px;border-radius:999px">Open lead</span></div>
+            </div>
+            <div class="card" style="border-left:3px solid var(--amber);display:flex;gap:14px;align-items:center">
+              <div><div style="font-size:13.5px;font-weight:600">2 reps below pace — Marcus 9%, Jenna 11% close rate</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:3px">Team at 18% vs 22% goal · Game Film has 3 graded calls flagged "objection handling"</div></div>
+              <div style="margin-left:auto;display:flex;gap:8px;flex:none"><span class="chip" style="font-family:var(--sans);padding:7px 12px;border-radius:999px">Coach with Lucille</span><span class="chip" style="font-family:var(--sans);padding:7px 12px;border-radius:999px">Sales by rep</span></div>
+            </div>
+            <div class="card" style="border-left:3px solid var(--amber);display:flex;gap:14px;align-items:center">
+              <div><div style="font-size:13.5px;font-weight:600">4 Zoom calls missing debriefs this week</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:3px">Auto-debrief caught 9 of 13 · upload the 4 recordings to keep coaching data complete</div></div>
+              <div style="margin-left:auto;display:flex;gap:8px;flex:none"><span class="chip" style="font-family:var(--sans);padding:7px 12px;border-radius:999px">Upload</span></div>
+            </div>
+          </div>
+          <h3 class="big" style="font-size:19px;margin-top:26px">Pulse</h3>
+          <div style="display:grid;gap:8px;margin-top:10px">
+            <div style="display:flex;gap:12px;align-items:center;font-size:12.5px;color:var(--text-muted)"><span class="dot" style="background:var(--green)"></span><b style="color:var(--text)">Win:</b> Sarah K closed $8.4k — best week on team (31%)<span style="margin-left:auto" class="chip">2h ago · People</span></div>
+            <div style="display:flex;gap:12px;align-items:center;font-size:12.5px;color:var(--text-muted)"><span class="dot" style="background:var(--accent)"></span><b style="color:var(--text)">Money:</b> $566 collected today · 2 txns · pacing +12% MTD<span style="margin-left:auto" class="chip">live · Money</span></div>
+            <div style="display:flex;gap:12px;align-items:center;font-size:12.5px;color:var(--text-muted)"><span class="dot" style="background:var(--iris)"></span><b style="color:var(--text)">Anomaly:</b> booking→call show rate dipped 8pts this week<span style="margin-left:auto" class="chip">today · Metrics</span></div>
+            <div style="display:flex;gap:12px;align-items:center;font-size:12.5px;color:var(--text-muted)"><span class="dot" style="background:var(--green)"></span><b style="color:var(--text)">Recovery:</b> $14k re-engaged pipeline · 3 replies pending<span style="margin-left:auto" class="chip">this week · Money</span></div>
+          </div>
+        </div>
+        <div style="width:270px;flex:none;border-left:1px solid var(--border-soft);padding:24px 20px;background:rgba(245,236,224,.4)">
+          <div style="font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);font-weight:700;margin-bottom:10px">Live</div>
+          <div class="card" style="padding:14px 16px;margin-bottom:10px"><div style="font-size:11px;color:var(--text-dim)">Revenue MTD</div><div class="big" style="font-size:24px">$109,629</div><svg width="100%" height="22" viewBox="0 0 200 22" preserveAspectRatio="none"><path d="M0 18 L30 17 L60 13 L90 14 L120 10 L150 7 L200 3" fill="none" stroke="#F0623E" stroke-width="2"/></svg></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div class="card" style="padding:11px 13px"><div style="font-size:10px;color:var(--text-dim)">Today</div><div class="big" style="font-size:16px">$566</div></div>
+            <div class="card" style="padding:11px 13px"><div style="font-size:10px;color:var(--text-dim)">Close</div><div class="big" style="font-size:16px">18%</div></div>
+          </div>
+          <div style="font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);font-weight:700;margin:18px 0 10px">Related to what you're reading</div>
+          <div style="display:grid;gap:6px;font-size:12px;color:var(--text-muted)">
+            <span style="background:#fff;border:1px solid var(--border-soft);border-radius:8px;padding:8px 11px">↳ Marcus — last 3 graded calls</span>
+            <span style="background:#fff;border:1px solid var(--border-soft);border-radius:8px;padding:8px 11px">↳ Objection Gauntlet · price stalls</span>
+            <span style="background:#fff;border:1px solid var(--border-soft);border-radius:8px;padding:8px 11px">↳ Commissions impact if pace holds</span>
+            <span style="background:#fff;border:1px solid var(--border-soft);border-radius:8px;padding:8px 11px">↳ Hiring — 2 open sales seats</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="view mob">
+    <div class="phones">
+      <div class="phone-wrap">
+        <div class="phone"><div class="notch"></div>
+          <div class="pbody">
+            <div style="padding:8px 16px 10px;border-bottom:1px solid var(--border-soft)">
+              <div style="display:flex;gap:8px;overflow:hidden">
+                <span class="chip" style="font-family:var(--sans);font-weight:600;background:var(--text);color:#fff;border-radius:999px;padding:5px 12px">Today</span>
+                <span class="chip" style="font-family:var(--sans);border-radius:999px;padding:5px 12px">Money</span>
+                <span class="chip" style="font-family:var(--sans);border-radius:999px;padding:5px 12px">People</span>
+                <span class="chip" style="font-family:var(--sans);border-radius:999px;padding:5px 12px">Metrics</span>
+                <span class="chip" style="font-family:var(--sans);border-radius:999px;padding:5px 12px">Ops</span>
+              </div>
+              <div style="display:flex;gap:10px;margin-top:10px">
+                <div style="flex:1;background:var(--surface-2);border-radius:10px;padding:7px 10px"><div style="font-size:9px;color:var(--text-dim)">MTD</div><div class="big" style="font-size:15px">$109.6k</div></div>
+                <div style="flex:1;background:var(--surface-2);border-radius:10px;padding:7px 10px"><div style="font-size:9px;color:var(--text-dim)">Today</div><div class="big" style="font-size:15px">$566</div></div>
+                <div style="flex:1;background:var(--surface-2);border-radius:10px;padding:7px 10px"><div style="font-size:9px;color:var(--text-dim)">Close</div><div class="big" style="font-size:15px">18%</div></div>
+              </div>
+            </div>
+            <div style="flex:1;overflow:hidden;padding:12px 14px;display:grid;gap:9px;grid-auto-rows:min-content">
+              <div style="font-size:14px;font-weight:700">Needs you · 3</div>
+              <div class="card" style="padding:13px 15px;border-left:3px solid var(--accent)"><div style="font-size:12.5px;font-weight:600">Overdue follow-up — $3.1k lead</div><div style="font-size:11px;color:var(--text-muted);margin-top:2px">Promised 07-03 · <b style="color:var(--accent-hi)">Draft &amp; send</b></div></div>
+              <div class="card" style="padding:13px 15px;border-left:3px solid var(--amber)"><div style="font-size:12.5px;font-weight:600">Marcus &amp; Jenna below pace</div><div style="font-size:11px;color:var(--text-muted);margin-top:2px">Team 18% vs 22% · Coach with Lucille</div></div>
+              <div class="card" style="padding:13px 15px;border-left:3px solid var(--amber)"><div style="font-size:12.5px;font-weight:600">4 Zoom debriefs missing</div><div style="font-size:11px;color:var(--text-muted);margin-top:2px">Upload to keep coaching complete</div></div>
+              <div style="font-size:13px;font-weight:700;margin-top:4px">Pulse</div>
+              <div style="font-size:11.5px;color:var(--text-muted)"><span class="dot" style="background:var(--green)"></span> Sarah closed $8.4k — best week (31%)</div>
+              <div style="font-size:11.5px;color:var(--text-muted)"><span class="dot" style="background:var(--iris)"></span> Show rate dipped 8pts this week</div>
+              <div style="font-size:11.5px;color:var(--text-muted)"><span class="dot" style="background:var(--green)"></span> Recovery: $14k re-engaged · 3 replies</div>
+            </div>
+            <div class="pnav">
+              <div class="it on"><span class="i">◈</span>Pulse</div>
+              <div class="it"><span class="i">$</span>Money</div>
+              <div class="it"><div class="corb"></div>Lucille</div>
+              <div class="it"><span class="i">◉</span>People</div>
+              <div class="it"><span class="i">⚙</span>Ops</div>
+            </div>
+          </div>
+        </div>
+        <div class="cap">Triage feed + sticky tickers · domains are filters, not folders</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes">
+    <div class="note"><b>Path to any number</b><div class="path">Urgent things: 0 taps (they come to you)<br>Any metric: lens tab or ⌘K = 1–2</div></div>
+    <div class="note"><b>Why it works</b><div>Matches how owners actually operate: exception-driven. The scarce resource is attention, so the UI spends it only where money is at stake, with a "why it matters" line on every card — Lucille's judgment made visible.</div></div>
+    <div class="note"><b>Cross-over nav</b><div>The Related rail is the associative brain: reading about Marcus surfaces his calls, the Gauntlet drill, the commission impact — three domains, zero backtracking.</div></div>
+    <div class="note"><b>Trade-off</b><div>Biggest departure from today's UI; trust depends on ranking quality. Bad triage in week one kills it — ship with conservative rules (money + explicit promises only), let the learning loop expand.</div></div>
+  </div>
+</section>
+
+<!-- ================= CONCEPT 4 · CANVAS ================= -->
+<section class="concept" id="c4">
+  <div class="c-head">
+    <div class="kicker">Concept 4 · Original — command-first bento</div>
+    <h2>Canvas</h2>
+    <p>No sidebar at all. One command bar is the whole navigation — type, talk, or hit ⌘K from anywhere — over a bento canvas where every card is itself conversational: hover any tile and "Ask Lucille about this" appears in place. Cards resize to what the client's stack actually feeds (plugin/API-aware): rich stack → dense canvas; two integrations → four big tiles. The layout IS the onboarding meter.</p>
+  </div>
+
+  <div class="view web show">
+    <div class="mock" style="flex-direction:column;min-height:740px">
+      <div style="display:flex;align-items:center;gap:16px;padding:14px 24px">
+        <div style="display:flex;align-items:center;gap:9px"><div class="orb" style="width:28px;height:28px;border-radius:50%;background:var(--sun)"></div><span style="font-family:var(--serif);font-weight:600;font-size:16px">Lucille</span></div>
+        <div style="flex:1;max-width:560px;margin:0 auto;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);border-radius:999px;padding:10px 18px;box-shadow:var(--elev-1);font-size:13.5px;color:var(--text-faint)">✦ Ask, or jump anywhere — "Sarah's calls", "revenue vs June", "pipeline"… <kbd style="margin-left:auto;font-family:var(--mono);font-size:10px;background:var(--surface-2);border-radius:5px;padding:2px 6px">⌘K</kbd> <span style="width:30px;height:30px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:#fff;font-size:12px;flex:none">🎙</span></div>
+        <div style="display:flex;align-items:center;gap:10px"><span class="chip">Month</span><div class="av" style="width:30px;height:30px;border-radius:50%;background:var(--surface-3);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--text-muted)">B</div></div>
+      </div>
+      <div style="flex:1;padding:10px 24px 24px;display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:112px;gap:13px">
+        <div class="card" style="grid-column:span 3;grid-row:span 2;position:relative">
+          <h4><span class="dot" style="background:var(--accent)"></span>Money<span class="go">Ask ✦ · Open →</span></h4>
+          <div class="big" style="font-size:36px;margin:8px 0 0">$109,629 <span style="font-size:13px;color:var(--green);font-family:var(--sans);font-weight:600">▲ +12% pace</span></div>
+          <div style="font-size:11.5px;color:var(--text-dim)">month-to-date · 112 transactions</div>
+          <svg width="100%" height="52" viewBox="0 0 400 52" preserveAspectRatio="none" style="margin-top:8px"><defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0623E" stop-opacity=".22"/><stop offset="1" stop-color="#F0623E" stop-opacity="0"/></linearGradient></defs><path d="M0 44 L40 41 L80 42 L120 33 L160 35 L200 26 L240 28 L280 19 L320 15 L360 10 L400 5 L400 52 L0 52 Z" fill="url(#g1)"/><path d="M0 44 L40 41 L80 42 L120 33 L160 35 L200 26 L240 28 L280 19 L320 15 L360 10 L400 5" fill="none" stroke="#F0623E" stroke-width="2"/></svg>
+          <div class="xlinks"><b>Related</b><span>Pipeline $84k open</span><span>Commissions</span><span>Recovery $14k</span></div>
+        </div>
+        <div class="card" style="grid-column:span 2;grid-row:span 2">
+          <h4><span class="dot" style="background:var(--iris)"></span>People<span class="go">Ask ✦</span></h4>
+          <div style="display:flex;gap:6px;margin:10px 0 8px">
+            <div class="av" style="width:30px;height:30px;border-radius:50%;background:var(--green-soft);display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--green)">SK</div>
+            <div class="av" style="width:30px;height:30px;border-radius:50%;background:var(--surface-2);display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--text-muted)">TJ</div>
+            <div class="av" style="width:30px;height:30px;border-radius:50%;background:var(--red-soft);display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--accent-hi)">MB</div>
+            <div class="av" style="width:30px;height:30px;border-radius:50%;background:var(--red-soft);display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--accent-hi)">JD</div>
+            <div class="av" style="width:30px;height:30px;border-radius:50%;background:var(--surface-2);display:grid;place-items:center;font-size:10px;font-weight:700;color:var(--text-muted)">+8</div>
+          </div>
+          <div style="display:grid;gap:5px;font-size:11.5px;color:var(--text-muted)">
+            <div style="display:flex;justify-content:space-between"><span>Sales · 6</span><b style="color:var(--green)">on pace</b></div>
+            <div style="display:flex;justify-content:space-between"><span>Coaching · 3</span><b style="color:var(--green)">on pace</b></div>
+            <div style="display:flex;justify-content:space-between"><span>Media · 2</span><b style="color:var(--amber)">1 review due</b></div>
+          </div>
+          <div class="xlinks"><b>Related</b><span>Leaderboard</span><span>Hiring · 2 open</span></div>
+        </div>
+        <div class="card" style="grid-column:span 1;grid-row:span 1;display:flex;flex-direction:column;justify-content:center"><div style="font-size:10.5px;color:var(--text-dim)">Close rate</div><div class="big" style="font-size:24px">18%</div><div style="font-size:10px;color:var(--text-dim)">goal 22%</div></div>
+        <div class="card" style="grid-column:span 1;grid-row:span 1;display:flex;flex-direction:column;justify-content:center;background:var(--surface-2);box-shadow:none;border:1px dashed var(--accent-line)"><div style="font-size:10.5px;color:var(--accent-hi);font-weight:700">NEEDS YOU</div><div class="big" style="font-size:24px">1</div><div style="font-size:10px;color:var(--text-dim)">follow-up due</div></div>
+        <div class="card" style="grid-column:span 2;grid-row:span 1">
+          <h4 style="font-size:12px"><span class="dot" style="background:var(--honey)"></span>Funnel<span class="go">Ask ✦</span></h4>
+          <div style="display:flex;align-items:flex-end;gap:5px;height:44px;margin-top:8px">
+            <div style="flex:1;background:linear-gradient(180deg,var(--accent),var(--accent-hi));border-radius:5px 5px 0 0;height:100%"></div>
+            <div style="flex:1;background:var(--accent);opacity:.75;border-radius:5px 5px 0 0;height:82%"></div>
+            <div style="flex:1;background:var(--accent);opacity:.55;border-radius:5px 5px 0 0;height:64%"></div>
+            <div style="flex:1;background:var(--accent);opacity:.4;border-radius:5px 5px 0 0;height:38%"></div>
+            <div style="flex:1;background:var(--accent);opacity:.28;border-radius:5px 5px 0 0;height:12%"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--text-dim);margin-top:3px"><span>App 319</span><span>Book 273</span><span>Call 374</span><span>Done 196</span><span>Enr 35</span></div>
+        </div>
+        <div class="card" style="grid-column:span 2;grid-row:span 1">
+          <h4 style="font-size:12px"><span class="dot" style="background:var(--rose)"></span>Game Film<span class="go">Play →</span></h4>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:8px">Marcus · price objection @ 14:22 — <i>"Lucille graded this call 61/100. The stall came early."</i></div>
+          <div class="xlinks"><b>Related</b><span>Objection Gauntlet</span><span>Sales by rep</span></div>
+        </div>
+        <div class="card" style="grid-column:span 2;grid-row:span 1;display:flex;align-items:center;gap:12px">
+          <div><h4 style="font-size:12px"><span class="dot" style="background:var(--green)"></span>Operations</h4><div style="font-size:11.5px;color:var(--text-muted);margin-top:6px">9 of 10 systems green · Zoom debrief ⚠ · AI $179.54 MTD</div></div>
+        </div>
+        <div class="card" style="grid-column:span 2;grid-row:span 1;background:var(--surface-2);box-shadow:none;display:flex;align-items:center;gap:10px;font-size:11.5px;color:var(--text-muted)"><span style="font-size:15px">✦</span>Connected: GHL · Stripe · Zoom · Meta · WhatsApp — <b style="color:var(--accent-hi)">+ QuickBooks unlocks a P&amp;L tile</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="view mob">
+    <div class="phones">
+      <div class="phone-wrap">
+        <div class="phone"><div class="notch"></div>
+          <div class="pbody">
+            <div style="padding:8px 16px;display:flex;align-items:center;gap:8px"><div class="orb" style="width:24px;height:24px;border-radius:50%;background:var(--sun)"></div><span style="font-family:var(--serif);font-weight:600;font-size:15px">Canvas</span><span class="chip" style="margin-left:auto">Month</span></div>
+            <div style="flex:1;overflow:hidden;padding:6px 14px;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:min-content;gap:9px">
+              <div class="card" style="grid-column:1/3;padding:15px 17px"><div style="font-size:10px;color:var(--text-dim)">MONEY · MTD</div><div class="big" style="font-size:27px">$109,629 <span style="font-size:11px;color:var(--green);font-family:var(--sans)">▲+12%</span></div><svg width="100%" height="24" viewBox="0 0 300 24" preserveAspectRatio="none"><path d="M0 20 L50 18 L100 13 L150 14 L200 9 L250 6 L300 3" fill="none" stroke="#F0623E" stroke-width="2"/></svg></div>
+              <div class="card" style="padding:13px 15px"><div style="font-size:10px;color:var(--text-dim)">PEOPLE</div><div class="big" style="font-size:20px">12 · 2⚠</div><div style="font-size:10px;color:var(--text-dim)">Marcus, Jenna</div></div>
+              <div class="card" style="padding:13px 15px;background:var(--surface-2);box-shadow:none;border:1px dashed var(--accent-line)"><div style="font-size:10px;color:var(--accent-hi);font-weight:700">NEEDS YOU</div><div class="big" style="font-size:20px">1</div><div style="font-size:10px;color:var(--text-dim)">follow-up</div></div>
+              <div class="card" style="padding:13px 15px"><div style="font-size:10px;color:var(--text-dim)">CLOSE RATE</div><div class="big" style="font-size:20px">18%</div><div style="font-size:10px;color:var(--text-dim)">goal 22%</div></div>
+              <div class="card" style="padding:13px 15px"><div style="font-size:10px;color:var(--text-dim)">OPS</div><div class="big" style="font-size:20px">● 9/10</div><div style="font-size:10px;color:var(--text-dim)">Zoom ⚠</div></div>
+              <div class="card" style="grid-column:1/3;padding:12px 15px;font-size:11px;color:var(--text-muted)">🎬 <b>Game Film:</b> Marcus · price objection @14:22 · graded 61/100</div>
+            </div>
+            <div style="padding:0 14px 10px">
+              <div style="display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--border);border-radius:999px;padding:8px 8px 8px 16px;box-shadow:var(--elev-2)">
+                <span style="color:var(--text-faint);font-size:12px;flex:1">✦ Ask or jump anywhere…</span>
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:#fff;font-size:13px">🎙</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cap">Command bar docked at thumb · bento scroll · no nav tree at all</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes">
+    <div class="note"><b>Path to any number</b><div class="path">Glance: 0 (canvas is the answer)<br>Anything else: ⌘K / say it = 1</div></div>
+    <div class="note"><b>Why it works</b><div>One navigation habit total: the bar. Nothing to memorize, no tree to learn — search-first is how this generation already navigates (Spotlight, ChatGPT, Raycast). Cards carry Related chips, so browsing is associative, not hierarchical.</div></div>
+    <div class="note"><b>Stack-aware by design</b><div>The canvas is composed from whatever the client's integrations feed — the bottom strip literally sells the next connection ("+ QuickBooks unlocks a P&amp;L tile"). Great demo moment: dashboard grows as the stack connects.</div></div>
+    <div class="note"><b>Trade-off</b><div>Boldest bet: some owners want a visible menu for confidence. Discoverability rests entirely on ⌘K affordance — mitigate with the Related chips and a "Browse all" command.</div></div>
+  </div>
+</section>
+
+
+<!-- ================= CONCEPT 5 · CONSTELLATION ================= -->
+<section class="concept" id="c5">
+  <div class="c-head">
+    <div class="kicker">Concept 5 · Jarvis / Albert galaxy UI — Lucille as the brain, side menu kept</div>
+    <h2>Constellation</h2>
+    <p>The Albert 3D-brain look, worn by Lucille: the business is a living galaxy of floating nodes on a night-dawn canvas — Lucille's sun at the center, the four domains orbiting, sub-nodes linked the way the business actually connects (Marcus ties to Money through commissions, not just to "Team"). Click a node to fly to it; the HUD pill at the bottom is talk-or-type, exactly like Albert. Same Dawn colors — ember, honey, iris, rose — just after dark. The current sidebar stays.</p>
+  </div>
+
+  <div class="view web show">
+    <div class="mock" style="background:#160C11">
+      <div class="sb sb-dark">
+        <div class="brand"><div class="orb"></div><div><div class="bn">Lucille</div><div class="bs">Bariatric Rewrite</div></div></div>
+        <div class="search">⌕ Search or jump to… <kbd>⌘K</kbd></div>
+        <div class="sec">Pinned</div>
+        <a class="on"><span class="ico">✦</span>Constellation</a>
+        <a><span class="ico">⌂</span>Dashboard</a>
+        <a><span class="ico">💬</span>Chat</a>
+        <div class="sec">Learn</div>
+        <a><span class="ico">🎓</span>Sales Academy</a>
+        <a><span class="ico">🎙</span>Roleplay Dojo</a>
+        <a><span class="ico">🎬</span>Film Room</a>
+        <a><span class="ico">🏆</span>Leaderboard</a>
+        <div class="sec">Work</div>
+        <a><span class="ico">$</span>Revenue</a>
+        <a><span class="ico">↗</span>Sales funnel</a>
+        <a><span class="ico">▤</span>Sales by rep</a>
+        <a><span class="ico">◍</span>Recovery <span class="tag">$14k</span></a>
+        <a><span class="ico">◫</span>Pipeline</a>
+        <a><span class="ico">◉</span>Team</a>
+        <div class="sec">Growth</div>
+        <a><span class="ico">✎</span>Content Studio</a>
+        <a><span class="ico">◔</span>Analytics</a>
+        <div class="me"><div class="av">B</div><div style="font-size:12px;font-weight:600;color:#F5ECE0">Brent<small>Admin</small></div></div>
+      </div>
+      <div class="galaxy">
+        <div style="position:absolute;top:18px;right:20px;display:flex;gap:9px;z-index:6">
+          <span class="hudchip">Today</span><span class="hudchip on">Month</span><span class="hudchip">⌂ Dashboard</span>
+        </div>
+        <svg class="glines" viewBox="0 0 1000 640" preserveAspectRatio="none">
+          <line x1="500" y1="300" x2="255" y2="170"/><line x1="500" y1="300" x2="765" y2="165"/>
+          <line x1="500" y1="300" x2="240" y2="455"/><line x1="500" y1="300" x2="762" y2="465"/>
+          <line x1="255" y1="170" x2="130" y2="95"/><line x1="255" y1="170" x2="150" y2="265"/><line x1="255" y1="170" x2="365" y2="80"/>
+          <line x1="765" y1="165" x2="880" y2="90"/><line x1="765" y1="165" x2="895" y2="240"/>
+          <line x1="240" y1="455" x2="130" y2="545"/><line x1="240" y1="455" x2="345" y2="565"/>
+          <line x1="762" y1="465" x2="880" y2="555"/><line x1="762" y1="465" x2="655" y2="575"/>
+          <line x1="345" y1="565" x2="655" y2="575" class="xlink"/><line x1="150" y1="265" x2="240" y2="455" class="xlink"/>
+          <line x1="895" y1="240" x2="762" y2="465" class="xlink"/>
+        </svg>
+        <div class="gnode sun" style="left:50%;top:46.8%"><div class="gorb"></div><span class="glabel" style="font-size:13px;color:#FBF7F1">Lucille</span></div>
+        <div class="gnode f1" style="left:25.5%;top:26.5%"><div class="gdot" style="background:var(--accent);box-shadow:0 0 22px rgba(240,98,62,.8)"></div><span class="glabel">Money<b>$109.6k MTD ▲+12%</b></span></div>
+        <div class="gnode f2" style="left:76.5%;top:25.7%"><div class="gdot" style="background:var(--iris);box-shadow:0 0 22px rgba(109,92,240,.8)"></div><span class="glabel">People<b>12 · 2 need coaching</b></span></div>
+        <div class="gnode f3" style="left:24%;top:71%"><div class="gdot" style="background:var(--honey);box-shadow:0 0 22px rgba(247,178,74,.8)"></div><span class="glabel">Metrics<b>18% close · goal 22%</b></span></div>
+        <div class="gnode f2" style="left:76.2%;top:72.6%"><div class="gdot" style="background:var(--green);box-shadow:0 0 22px rgba(47,158,107,.8)"></div><span class="glabel">Operations<b>9/10 green · Zoom ⚠</b></span></div>
+        <div class="gnode f3 sm" style="left:13%;top:14.8%"><div class="gdot sm" style="background:var(--accent)"></div><span class="glabel">Revenue</span></div>
+        <div class="gnode f1 sm" style="left:36.5%;top:12.5%"><div class="gdot sm" style="background:var(--accent)"></div><span class="glabel">Pipeline · $84k</span></div>
+        <div class="gnode f2 sm" style="left:15%;top:41.4%"><div class="gdot sm" style="background:var(--rose)"></div><span class="glabel">Recovery · $14k</span></div>
+        <div class="gnode f1 sm" style="left:88%;top:14%"><div class="gdot sm" style="background:var(--iris)"></div><span class="glabel">Sarah K · 31% 🔥</span></div>
+        <div class="gnode f3 sm" style="left:89.5%;top:37.5%"><div class="gdot sm" style="background:var(--rose)"></div><span class="glabel">Marcus · 9% ⚠</span></div>
+        <div class="gnode f2 sm" style="left:13%;top:85.2%"><div class="gdot sm" style="background:var(--honey)"></div><span class="glabel">Funnel · 319→35</span></div>
+        <div class="gnode f1 sm" style="left:34.5%;top:88.3%"><div class="gdot sm" style="background:var(--honey)"></div><span class="glabel">Game Film · 3 flagged</span></div>
+        <div class="gnode f3 sm" style="left:88%;top:86.7%"><div class="gdot sm" style="background:var(--green)"></div><span class="glabel">Integrations · 5</span></div>
+        <div class="gnode f2 sm" style="left:65.5%;top:89.8%"><div class="gdot sm" style="background:var(--amber)"></div><span class="glabel">Zoom debrief ⚠ 4</span></div>
+        <div class="hudwrap">
+          <div class="inspector">
+            <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:#FBF7F1"><span class="dot" style="background:var(--rose)"></span>Marcus · close rate 9%</div>
+            <div style="font-size:11px;color:#B9A8B0;margin-top:4px;line-height:1.5">Linked: Commissions −$2.1k pace · 3 graded calls flagged "price objection" · Objection Gauntlet drill ready</div>
+            <div style="display:flex;gap:6px;margin-top:8px"><span class="hudchip on" style="font-size:10.5px">Coach with Lucille</span><span class="hudchip" style="font-size:10.5px">Fly to calls →</span></div>
+          </div>
+          <div class="hud">
+            <span style="color:rgba(251,247,241,.45);font-size:13.5px;flex:1;text-align:left">Talk to Lucille — "fly to Money", "why is Marcus down?"…</span>
+            <span class="hudchip" style="font-size:10px">⏎</span>
+            <div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:#fff;font-size:15px;box-shadow:0 0 26px rgba(240,98,62,.55)">🎙</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="view mob">
+    <div class="phones">
+      <div class="phone-wrap">
+        <div class="phone" style="background:#160C11"><div class="notch"></div>
+          <div class="pbody" style="background:radial-gradient(500px 420px at 50% 40%,rgba(240,98,62,.14),transparent 62%),radial-gradient(360px 300px at 18% 8%,rgba(109,92,240,.12),transparent 60%),#160C11">
+            <div style="display:flex;justify-content:space-between;padding:6px 16px;z-index:5"><span class="hudchip">☰</span><span class="hudchip">⌂ Dashboard</span></div>
+            <div style="flex:1;position:relative">
+              <svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 360 560" preserveAspectRatio="none">
+                <g stroke="rgba(251,247,241,.14)" stroke-width="1">
+                <line x1="180" y1="255" x2="85" y2="130"/><line x1="180" y1="255" x2="275" y2="125"/>
+                <line x1="180" y1="255" x2="80" y2="390"/><line x1="180" y1="255" x2="278" y2="395"/>
+                <line x1="85" y1="130" x2="45" y2="55"/><line x1="275" y1="125" x2="315" y2="50"/>
+                <line x1="80" y1="390" x2="48" y2="475"/><line x1="278" y1="395" x2="312" y2="478"/>
+                <line x1="48" y1="475" x2="312" y2="478" stroke-dasharray="3 4" stroke="rgba(240,98,62,.35)"/></g>
+              </svg>
+              <div class="gnode sun" style="left:50%;top:45.5%"><div class="gorb" style="width:64px;height:64px"></div><span class="glabel" style="color:#FBF7F1">Lucille</span></div>
+              <div class="gnode f1" style="left:23.5%;top:23%"><div class="gdot" style="background:var(--accent);box-shadow:0 0 18px rgba(240,98,62,.8)"></div><span class="glabel">Money<b>$109.6k</b></span></div>
+              <div class="gnode f2" style="left:76.5%;top:22%"><div class="gdot" style="background:var(--iris);box-shadow:0 0 18px rgba(109,92,240,.8)"></div><span class="glabel">People<b>12 · 2⚠</b></span></div>
+              <div class="gnode f3" style="left:22%;top:69.5%"><div class="gdot" style="background:var(--honey);box-shadow:0 0 18px rgba(247,178,74,.8)"></div><span class="glabel">Metrics<b>18%</b></span></div>
+              <div class="gnode f1" style="left:77%;top:70.5%"><div class="gdot" style="background:var(--green);box-shadow:0 0 18px rgba(47,158,107,.8)"></div><span class="glabel">Ops<b>9/10 ●</b></span></div>
+              <div class="gnode f2 sm" style="left:12.5%;top:9.8%"><div class="gdot sm" style="background:var(--accent)"></div><span class="glabel">Pipeline</span></div>
+              <div class="gnode f3 sm" style="left:87.5%;top:9%"><div class="gdot sm" style="background:var(--rose)"></div><span class="glabel">Marcus ⚠</span></div>
+              <div class="gnode f1 sm" style="left:13.5%;top:84.8%"><div class="gdot sm" style="background:var(--honey)"></div><span class="glabel">Funnel</span></div>
+              <div class="gnode f2 sm" style="left:86.5%;top:85.3%"><div class="gdot sm" style="background:var(--amber)"></div><span class="glabel">Zoom ⚠</span></div>
+            </div>
+            <div style="padding:0 14px 10px;z-index:5">
+              <div class="hud" style="padding:7px 7px 7px 16px">
+                <span style="color:rgba(251,247,241,.45);font-size:12px;flex:1">Talk, or tap a star…</span>
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:#fff;font-size:13px;box-shadow:0 0 22px rgba(240,98,62,.55)">🎙</div>
+              </div>
+              <div style="text-align:center;font-size:10px;color:rgba(251,247,241,.3);margin-top:7px">pinch to zoom · drag to orbit · swipe up for dashboard ⌃</div>
+            </div>
+          </div>
+        </div>
+        <div class="cap">The business as a galaxy · tap a star to fly, talk to navigate</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes">
+    <div class="note"><b>Path to any number</b><div class="path">Say it: 0 · tap a star: 1<br>Everything visible at once — the map IS the menu</div></div>
+    <div class="note"><b>Why it works</b><div>Pure spatial memory — the strongest human recall system. Money always lives upper-left, People upper-right; after a week the owner navigates without reading. The cross-links (Marcus ↔ Commissions) make the "brain-like" non-rigid navigation literal and visible.</div></div>
+    <div class="note"><b>Branding note</b><div>Same Dawn tokens on a night canvas derived from --text (#1B1216 family) — ember/honey/iris/rose glow exactly as-is. Read it as "Dawn, before sunrise." Sidebar unchanged, dark-skinned. If a dark mode is off-brand for launch, this ships as a toggleable "Galaxy view" next to Dashboard.</div></div>
+    <div class="note"><b>Trade-off</b><div>Highest wow-per-demo of all five — and the least conventional daily driver. Numbers-dense work (commission tables, funnels) still needs the classic pages behind each node. Best positioned as the signature view that sells the "your business has a brain now" story.</div></div>
+  </div>
+</section>
+
+<script>
+const tabs=document.querySelectorAll('#tabs button'),segs=document.querySelectorAll('#seg button');
+let curC='c1',curV='web';
+function render(){
+  document.querySelectorAll('.concept').forEach(s=>s.classList.toggle('show',s.id===curC));
+  document.querySelectorAll('.concept .view').forEach(v=>v.classList.toggle('show',v.classList.contains(curV==='web'?'web':'mob')));
+  tabs.forEach(b=>b.classList.toggle('on',b.dataset.c===curC));
+  segs.forEach(b=>b.classList.toggle('on',b.dataset.v===curV));
+}
+tabs.forEach(b=>b.onclick=()=>{curC=b.dataset.c;render()});
+segs.forEach(b=>b.onclick=()=>{curV=b.dataset.v;render()});
+render();
+</script>
+</body>
+</html>
